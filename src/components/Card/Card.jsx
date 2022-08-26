@@ -5,7 +5,7 @@ import s from './Card.module.css';
 
 export default function Card({ id, nickname, status, ranking, avatar }) {
   return (
-    <div className = {s.cardContainer}>
+    <div className = {`${s.cardContainer} ${s.gradientBorder}`}>
       <div className = {s.imageContainer}>
         <ImageLoader image = {avatar} alt = {nickname} />
       </div>
