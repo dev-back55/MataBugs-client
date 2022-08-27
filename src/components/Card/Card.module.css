@@ -75,12 +75,11 @@
 }
 
 .btnDetails {
-  grid-row: 4 / 5;
-}
 
-.btnDetails {
+  grid-row: 4 / 5;
+
   height: 100%;
-  width: 100%;
+  width: 50%;
   border-radius: 8px;
 
   align-self: center;
@@ -97,11 +96,12 @@
 
   letter-spacing: 2px;
 
-  transition: 0.5s box-shadow;
+  transition: 0.5s;
 }
 
 .btnDetails:hover {
   cursor: pointer;
+  width: 100%;
 }
 
 .title {
@@ -109,6 +109,8 @@
   font-size: 18px;
   color: white;
   text-transform: capitalize;
+
+  opacity: 0.8;
 }
 
 .subTitle,
@@ -129,6 +131,7 @@
 .subTitle {
   text-transform: uppercase;
   letter-spacing: 2px;
+  opacity: 0.8;
 }
 
 .gradientBorder {
@@ -194,10 +197,20 @@
 }
 
 .cardContainer:hover {
-  transform: translateY(-1rem);
+  /*transform: translateY(-1rem);*/
 }
 
-.cardContainer:hover > .detailsContainer > .containerRibbon > svg > path {
+.containerRibbon > svg > path,
+.containerTrophy > svg > g,
+.containerTag > svg > g,
+.infoId,
+.infoRanking,
+.title {
+  transition: 0.5s;
+}
+
+.cardContainer:hover > .detailsContainer > .containerRibbon > svg > path,
+.cardContainer:hover > .detailsContainer > .title {
   opacity: 1;
 }
 
@@ -209,4 +222,8 @@
 .cardContainer:hover > .detailsContainer > .infoId,
 .cardContainer:hover > .detailsContainer > .infoRanking {
   color: rgba(255, 255, 255, 1);
+}
+
+.cardContainer:hover > .detailsContainer > .subTitle {
+  opacity: 1;
 }

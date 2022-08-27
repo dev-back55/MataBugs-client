@@ -1,7 +1,7 @@
 export let chooseColor = function(status) {
   switch(status.toUpperCase()) {
     case "BRONCE":
-      return "#4A361A";
+      return "#CD7F32";
     case "PLATA":
       return "#c0c0c0";
     default:

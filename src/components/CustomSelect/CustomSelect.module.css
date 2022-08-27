@@ -1,0 +1,158 @@
+.containerGlobal {
+  width: 100%;
+  margin: 0.25rem 0 0.25rem 0;
+  position: relative;
+}
+
+.container {
+  width: 100%;
+  height: 3rem;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+
+  align-items: center;
+  align-content: center;
+
+  justify-content: center;
+  justify-items: center;
+
+  cursor: pointer;
+}
+
+.selectOption {
+  font-size: var(--fontSmallest);
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.selectSelected {
+  font-size: var(--fontSmallest);
+  font-weight: 700;
+  letter-spacing: 1px;
+
+  justify-self: flex-start;
+  text-transform: capitalize;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-top: 0.5rem solid transparent;
+  border-right: 0.5rem solid white;
+  border-bottom: 0.5rem solid transparent;
+
+  border-right-color: white;
+  transition: transform 0.2s;
+
+  justify-self: flex-end;
+}
+
+.open {
+  transform: rotate(-90deg);
+}
+
+.selectSelectedZone {
+  background: rgba(32, 32, 36, 1);
+  display: inline-block;
+  color: white;
+
+  padding: 0 1rem 0 1rem;
+
+  width: 100%;
+  height: inherit;
+
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 9fr 1fr;
+  grid-gap: 0.5rem;
+  justify-content: flex-start;
+  align-items: center;
+  justify-items: center;
+
+  box-sizing: border-box;
+
+  border-radius: 8px;
+}
+
+.selectOptionsZone {
+  display: none;
+  opacity: 0;
+
+  position: absolute;
+  top: 3.5rem;
+  left: 0;
+  width: 100%;
+  background-color: green;
+
+  z-index: 50;
+
+  padding: 1rem;
+
+  background: rgba(32, 32, 36, 1);
+  color: white;
+
+  border-radius: 8px;
+}
+
+.showOptions {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: auto;
+
+  animation: show 0.5s;
+  animation-fill-mode: both;
+
+  box-sizing: border-box;
+}
+
+.optionsContainer {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 5px;
+
+  max-height: 10rem;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.hoverSelected {
+  justify-self: center;
+}
+
+.disabled {
+  cursor: not-allowed;
+}
+
+.disabled > .selectSelectedZone {
+  box-shadow: inset 0px 1px 0px 0px #ffffff;
+  background: linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+  background-color: #ededed;
+  border: 1px solid #dcdcdc;
+  color: #777777;
+  text-shadow: 0px 1px 0px #ffffff;
+}
+
+.helperCloseOptions {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: transparent;
+  height: 100vh;
+  width: 100vw;
+
+  z-index: 19;
+}
+
+.selectOption {
+  cursor: pointer;
+}
