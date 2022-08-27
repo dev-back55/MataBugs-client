@@ -4,9 +4,6 @@ import Card from '../Card/Card';
 import s from './Cards.module.css';
 
 export default function Cards({ users }) {
-
-  console.log(users);
-
   return (
     <div className = {s.cardsContainer}>
     {

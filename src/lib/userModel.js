@@ -44,8 +44,5 @@ export const defaultUsers = [
 ]
 
 export const listOfUsers = generateRange(0, 9).map(index => {
-  console.log(defaultUsers.length);
-  console.log(index);
-  console.log(index % defaultUsers.length);
   return defaultUsers[index < 5 ? index : index % defaultUsers.length];
 });
