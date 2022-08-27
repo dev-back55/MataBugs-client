@@ -1,18 +1,13 @@
-import Card from './components/Card/Card';
+import Cards from './components/Cards/Cards';
 import './App.css';
 
-import { oneUser } from './lib/userModel';
+import { listOfUsers } from './lib/userModel';
 
 function App() {
   return (
     <div className="App">
-      <h1>Vamos MATABUGS</h1>
-      <Card
-        id = {oneUser.id}
-        nickname = {oneUser.nickname}
-        status = {oneUser.status}
-        ranking = {oneUser.ranking}
-        avatar = {oneUser.avatar}
+      <Cards
+        users = {listOfUsers}
       />
     </div>
   );

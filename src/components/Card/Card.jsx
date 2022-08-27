@@ -1,6 +1,8 @@
 import React from 'react';
 import ImageLoader from '../ImageLoader/ImageLoader';
 import Ribbon from '../SVG/Ribbon';
+import Tag from '../SVG/Tag';
+import Trophy from '../SVG/Trophy';
 
 import { chooseColor } from '../../lib/util';
 
@@ -18,8 +20,14 @@ export default function Card({ id, nickname, status, ranking, avatar }) {
         <div className = {s.containerRibbon}>
           <Ribbon status = {status}/>
         </div>
-        <span className = {s.info}>ID: {id}</span>
-        <span className = {s.info}>Ranking: {ranking}</span>
+        <div className = {s.containerTag}>
+          <Tag /> 
+        </div>
+        <span className = {s.infoId}>ID: {id}</span>
+        <div className = {s.containerTrophy}>
+          <Trophy /> 
+        </div>
+        <span className = {s.infoRanking}>{ranking}</span>
         <button className = {s.btnDetails}>Details</button>
       </div>
     </div>
