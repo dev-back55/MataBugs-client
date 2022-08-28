@@ -17,19 +17,32 @@
   box-shadow:inset 0px 0px 0px 3px rgba(255, 255, 255, 0.2);
 
   position: relative;
+
+  animation: showContainer 1s;
+  animation-fill-mode: both;
+}
+
+.hideContainer {
+  display: none;
 }
 
 .statusContainer {
+
+  height: 100%;
+  width: calc(70% - 2rem);
+
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 3fr 1fr;
+  grid-template-rows: 75% 25%;
 
   position: absolute;
   left: -6rem;
 }
 
-.medalContainer {
-  position: relative;
+.medal {
+  align-self: center;
+  justify-self: center;
+  max-width: 100%;
 }
 
 .spanStatus {
@@ -38,6 +51,9 @@
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
+
+  align-self: center;
+  justify-self: center;
 }
 
 .detailsContainer {
@@ -144,4 +160,15 @@
 
 .btnDetails:hover {
   box-shadow: 0px 0px 8px 0px rgba(255, 255, 255, 0.9);
+}
+
+@keyframes showContainer {
+  from {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

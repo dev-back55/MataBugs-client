@@ -9,3 +9,5 @@ export const getPlayer = createAsyncThunk(
     return player;
   }
 );
+
+export const clearPlayerDetails = createAction(ActionTypes.PLAYER_DETAILS_CLEARED);

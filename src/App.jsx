@@ -9,8 +9,8 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path = '/' element = { <SearchView /> } />
-        <Route path = '/player/{id}' element = { <CardDetails /> } />
+        <Route exact path = '/' element = { <SearchView /> } />
+        <Route exact path = '/player/:id' element = { <CardDetails /> } />
       </Routes>
     </div>
   );

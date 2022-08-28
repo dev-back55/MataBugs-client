@@ -1,9 +1,9 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { getPlayer } from "../action/playerDetailsActions";
+import { getPlayer, clearPlayerDetails } from "../action/playerDetailsActions";
 import { fetchHasFinished, fetchIsPending } from '../../lib/util';
 
 const initalState = {
-  player: {},
+  player: null,
   error: false,
   success: false,
   loading: false
@@ -12,6 +12,10 @@ const initalState = {
 const reducer = createReducer(initalState, builder => {
 
   builder
+
+    .addCase(clearPlayerDetails, state => {
+      state.player = null;
+    })
 
     .addCase(getPlayer.pending, state => {
       state.loading = true;
