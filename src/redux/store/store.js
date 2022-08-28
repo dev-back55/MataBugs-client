@@ -1,5 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore } from "@reduxjs/toolkit";
+import detailsReducer from '../reducer/playerDetailsReducer';
+//import commonReducer from '../reducer/commonReducer';
 
-export default configureStore({
-  reducer: {}
-})
+export const store = configureStore({
+  reducer: { details: detailsReducer },
+  devTools: process.env.NODE_ENV !== "production"
+});
+
+export default store;

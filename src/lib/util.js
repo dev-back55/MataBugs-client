@@ -11,4 +11,16 @@ export let chooseColor = function(status) {
 
 export let generateRange = function (start, stop, step = 1) {
   return Array.from({ length: (stop - start) / step + 1}, (_, i) => start + (i * step));
-} 
+}
+
+export let promisifiedSetTimeOut = function(delay) {
+  return new Promise((resolve) => setTimeout(resolve, delay));
+}
+
+export let fetchHasFinished = function(action) {
+  return !action.type.endsWith('pending');
+}
+
+export let fetchIsPending = function(action) {
+  return action.type.endsWith('pending');
+}

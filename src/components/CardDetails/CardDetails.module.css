@@ -125,15 +125,17 @@
   align-self: center;
   justify-self: center;
 
-  background: rgba(255, 255, 255, 0.75);
+  background: transparent;
   border-radius: 8px;
-  border: none;
+  border: 2px solid rgba(255, 255, 255, 0.2);
 
   font-size: 16px;
   font-weight: 600;
-  color: black;
+  color: rgba(255, 255, 255, 0.8);
 
   text-transform: uppercase;
+
+  letter-spacing: 1px;
 
   cursor: pointer;
 

@@ -14,9 +14,10 @@
   cursor: pointer;
 
   box-sizing: border-box;
-  border: 1px solid rgba(32, 32, 36, 1);
 
   transition: 0.5s;
+
+  box-shadow: inset 0px 0px 0px 1px rgba(255, 255, 255, 0.2);
 }
 
 .triangle {
@@ -44,13 +45,12 @@
 
 .container[disabled],
 .container[disabled]:hover {
-  border: 1px solid rgba(149, 151, 153, 0.5);
   background: transparent;
   cursor: default;
 }
 
 .container[disabled]:hover {
-  box-shadow: none;
+  box-shadow: inset 0px 0px 0px 1px rgba(255, 255, 255, 0.2);
 }
 
 .container[disabled] > .triangle,

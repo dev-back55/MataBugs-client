@@ -74,6 +74,8 @@
   box-sizing: border-box;
 
   border-radius: 8px;
+
+  box-shadow:inset 0px 0px 0px 1px rgba(255, 255, 255, 0.2);
 }
 
 .selectOptionsZone {
@@ -94,6 +96,8 @@
   color: white;
 
   border-radius: 8px;
+
+  box-shadow:inset 0px 0px 0px 1px rgba(255, 255, 255, 0.2);
 }
 
 .showOptions {
@@ -157,4 +161,8 @@
 
 .selectOption {
   cursor: pointer;
+}
+
+.selectOption:hover {
+  color: rgba(235, 0, 27, 1);
 }

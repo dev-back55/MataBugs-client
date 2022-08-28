@@ -14,7 +14,7 @@
 
   padding: 1rem;
 
-  background-color: black;
+  background-color: rgba(20, 20, 20, 1);
 
   transition: 0.2s;
 }
