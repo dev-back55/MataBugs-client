@@ -1,0 +1,35 @@
+.container {
+
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+
+  grid-row-gap: 1rem;
+}
+
+@media (min-width: 900px) {
+  .container {
+    grid-template-columns: 25% 75%;
+  }
+}
+
+@media (min-width: 1100px) {
+  .container {
+    grid-template-columns: 40% 60%;
+  }
+}
+
+@media (min-width: 1300px) {
+  .container {
+    grid-template-columns: 55% 45%;
+  }
+}
+
+@media (min-width: 1500px) {
+  .container {
+    grid-template-columns: 70% 30%;
+  }
+}
