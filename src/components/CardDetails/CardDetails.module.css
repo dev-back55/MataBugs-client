@@ -1,9 +1,10 @@
 .container {
-  height: 25rem;
-  width: 45rem;
+  height: 30rem;
+  width: 15rem;
 
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 20% 80%;
+  grid-template-columns: 1fr;
 
   grid-gap: 1rem;
 
@@ -20,6 +21,8 @@
 
   animation: showContainer 1s;
   animation-fill-mode: both;
+
+  margin-top: 5rem;
 }
 
 .hideContainer {
@@ -28,15 +31,15 @@
 
 .statusContainer {
 
-  height: 100%;
-  width: calc(70% - 2rem);
+  height: 40%;
+  width: 100%;
 
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 75% 25%;
 
   position: absolute;
-  left: -6rem;
+  top: -5rem;
 }
 
 .medal {
@@ -51,14 +54,14 @@
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
-
-  align-self: center;
   justify-self: center;
+
+  align-self: flex-end;
 }
 
 .detailsContainer {
-  grid-row: 1 / 2;
-  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  grid-column: 1 / 2;
 
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -85,7 +88,7 @@
   grid-row: 2 / 3;
   grid-column: 1 / 3;
 
-  font-size: 32px;
+  font-size: 25px;
   color: white;
   font-weight: 600;
   text-transform: capitalize;
@@ -135,8 +138,8 @@
   grid-row: 4 / 5;
   grid-column: 1 / 3;
 
-  width: 45%;
-  height: 80%;
+  width: 100%;
+  height: 60%;
 
   align-self: center;
   justify-self: center;
@@ -154,8 +157,6 @@
   letter-spacing: 1px;
 
   cursor: pointer;
-
-  transition: 0.3s;
 }
 
 .btnDetails:hover {
@@ -170,5 +171,47 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (min-width: 900px) {
+  .container {
+
+    height: 25rem;
+    width: 45rem;
+
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .statusContainer {
+
+    height: 100%;
+    width: calc(70% - 2rem);
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 75% 25%;
+
+    position: absolute;
+    left: -6rem;
+  }
+
+  .detailsContainer {
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+  }
+
+  .spanStatus {
+    align-self: center;
+  }
+
+  .btnDetails {
+    height: 80%;
+    width: 45%;
+  }
+
+  .title {
+    font-size: 32px;
   }
 }
