@@ -1,7 +1,6 @@
 .container {
     padding: 20px;
-    // height: 20rem;
-    width: 15rem;
+    width: 20rem;
     padding: 1rem;
     background-color: black;
     border-radius: 8px;
@@ -22,6 +21,10 @@
     img {
         width: 250px;
     }
+}
+
+.title {
+  color: white;
 }
 
 .containerInput {
@@ -57,7 +60,7 @@
   background-color: rgba(0, 66, 255, 0.5); /* Green */
   border: none;
   color: white;
-  padding: 16px 32px;
+  padding: 10px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -70,6 +73,18 @@
   &:hover{
     background-color: rgba(235, 0, 27, 0.5);
     color: white;
+  }
+}
+
+.changeLoginLogout {
+  margin-top: 10px;
+}
+
+.loginlogup {
+  cursor: pointer;
+  color: rgb(76, 167, 247);
+  &:hover {
+    color: rgb(41, 120, 188);
   }
 }
 
@@ -87,9 +102,9 @@
   
 @media (min-width: 900px) {
 .container {
-        height: 25rem;
-        width: 45rem;
-        grid-template-rows: 1fr;
-        grid-template-columns: 1fr 1fr;
+        // height: 25rem;
+        width: 18rem;
+        // grid-template-rows: 1fr;
+        // grid-template-columns: 1fr 1fr;
     }
 }

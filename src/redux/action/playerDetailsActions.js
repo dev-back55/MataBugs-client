@@ -14,11 +14,11 @@ export const getPlayer = createAsyncThunk(
 export const clearPlayerDetails = createAction(ActionTypes.PLAYER_DETAILS_CLEARED);
 
 
-export const createPlayer = createAsyncThunk(
-  ActionTypes.CREATE_PLAYER,
+export const signupPlayer = createAsyncThunk(
+  ActionTypes.SIGNUP_PLAYER,
   async (player) => {
-    console.log(player)
-    const mensajePlayer = await axios.post('http://localhost:3003/player/createPlayer', player)
+    const mensajePlayer = await axios.post('http://localhost:3003/signup', player)
+    console.log(mensajePlayer.data)
     return mensajePlayer.data;
   }
 );

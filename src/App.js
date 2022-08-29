@@ -1,7 +1,7 @@
 import React from 'react';
 import SearchView from './views/SearchView/SearchView';
 import CardDetails from './components/CardDetails/CardDetails';
-import CreatePlayer from './components/CreatePlayer/CreatePlayer';
+import LogInLogUp from './components/LogInLogUp/LogInLogUp';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 
@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route exact path = '/' element = { <SearchView /> } />
         <Route exact path = '/player/:id' element = { <CardDetails /> } />
-        <Route exact path = '/createPlayer' element = { <CreatePlayer /> } />
+        <Route exact path = '/login' element = { <LogInLogUp /> } />
       </Routes>
     </div>
   );
