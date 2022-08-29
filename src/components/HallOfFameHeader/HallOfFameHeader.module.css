@@ -1,0 +1,198 @@
+.container {
+  margin-top: 5rem;
+  height: 12rem;
+  width: 95%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 12rem;
+
+  position: relative;
+}
+
+.containerCrown {
+  position: absolute;
+
+  height: 6rem;
+  width: 6rem;
+
+  align-self: center;
+  justify-self: center;
+  transform: translateY(-8rem);
+}
+
+@media (min-width: 700px) {
+  .container {
+    width: 90%;
+  }
+}
+
+@media (min-width: 900px) {
+  .container {
+    width: 80%;
+  }
+}
+
+@media (min-width: 1100px) {
+  .container {
+    width: 70%;
+  }
+}
+
+@media (min-width: 1300px) {
+  .container {
+    width: 60%;
+  }
+}
+
+@media (min-width: 1500px) {
+  .container {
+    width: 50%;
+  }
+}
+
+.containerThirdPlace {
+
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+
+  height: 50%;
+  aspect-ratio: 1 / 1;
+
+  align-self: center;
+  justify-self: center;
+
+  overflow: hidden;
+
+  border-radius: 50%;
+
+  background: linear-gradient(rgba(13, 13, 13, 1.0),  rgba(13, 13, 13, 1.0)) padding-box,
+    linear-gradient(to right, darkblue, darkorchid) border-box;
+  border: 5px solid transparent;
+  z-index: 3;
+}
+
+.containerFirstPlace {
+
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+
+  height: 80%;
+  aspect-ratio: 1 / 1;
+
+  align-self: center;
+  justify-self: center;
+
+  overflow: hidden;
+
+  border-radius: 50%;
+  background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+              radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+  border: 7px solid transparent;
+  z-index: 3;
+}
+
+.containerSecondPlace {
+
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+
+  height: 50%;
+  aspect-ratio: 1 / 1;
+
+  align-self: center;
+  justify-self: center;
+
+  overflow: hidden;
+
+  border-radius: 50%;
+
+  background: linear-gradient( rgba(13, 13, 13, 1.0),  rgba(13, 13, 13, 1.0)) padding-box,
+    linear-gradient(to right, darkblue, darkorchid) border-box;
+  border: 5px solid transparent;
+  z-index: 3;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  background-color: rgba(13, 13, 13, 1.0);
+}
+
+.containerThirdPlaceNumber {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  z-index: 5;
+  border-radius: 50%;
+  height: 2.5rem;
+  width: 2.5rem;
+  background: linear-gradient(to right, darkblue, darkorchid) border-box;
+  color: rgba(13, 13, 13, 1.0);
+  border: 5px solid rgba(13, 13, 13, 1.0);
+
+  align-self: center;
+  justify-self: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 24px;
+  font-weight: 700;
+
+  position: relative;
+  transform: translateY(3rem);
+}
+
+.containerFirstPlaceNumber {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  z-index: 5;
+  border-radius: 50%;
+  height: 2.5rem;
+  width: 2.5rem;
+  background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+              radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+  color: white;
+  border: 5px solid rgba(13, 13, 13, 1.0);
+
+  align-self: center;
+  justify-self: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 24px;
+  font-weight: 700;
+
+  position: relative;
+  transform: translateY(5rem);
+}
+
+.containerSecondPlaceNumber {
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+  z-index: 5;
+  border-radius: 50%;
+  height: 2.5rem;
+  width: 2.5rem;
+  background: linear-gradient(to right, darkblue, darkorchid) border-box;
+  color: rgba(13, 13, 13, 1.0);
+  border: 5px solid rgba(13, 13, 13, 1.0);
+
+  align-self: center;
+  justify-self: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 24px;
+  font-weight: 700;
+
+  position: relative;
+  transform: translateY(3rem);
+}

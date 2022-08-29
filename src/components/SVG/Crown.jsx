@@ -1,10 +1,10 @@
 import React from 'react';
 
-export default function Crown() {
+export default function Crown({ opacity = 0.5 }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33.1 33.1" style = {{enableBackground: "new 0 0 33.1 33.1"}}>
       <g>
-        <g fill = {"goldenrod"} opacity = {0.5}>
+        <g fill = {"goldenrod"} opacity = {opacity}>
           <path d="M8.824 9.897c.893 0 1.613-.648 1.613-1.449s-.72-1.449-1.613-1.449c-.887 0-1.609.648-1.609 1.449s.723 1.449 1.609 1.449zM16.184 7.247c1.527 0 2.764-1.111 2.764-2.484s-1.237-2.487-2.764-2.487c-1.523 0-2.762 1.113-2.762 2.486s1.238 2.485 2.762 2.485z"/>
           <ellipse cx="24.156" cy="8.532" rx="1.611" ry="1.45"/>
           <path d="M6.209 25.852H26.16v4.971H6.209z"/>

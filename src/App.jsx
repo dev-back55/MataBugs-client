@@ -1,7 +1,7 @@
 import React from 'react';
 import SearchView from './views/SearchView/SearchView';
 import CardDetails from './components/CardDetails/CardDetails';
-import HallOfFame from './components/HallOfFame/HallOfFame';
+import HallOfFameView from './views/HallOfFameView/HallOfFameView';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 
@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route exact path = '/' element = { <SearchView /> } />
         <Route exact path = '/player/:id' element = { <CardDetails /> } />
-        <Route exact path = '/hallOfFame' element = { <HallOfFame /> } />
+        <Route exact path = '/hallOfFame' element = { <HallOfFameView /> } />
       </Routes>
     </div>
   );
