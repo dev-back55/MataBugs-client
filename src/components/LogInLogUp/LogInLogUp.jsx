@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { signupPlayer } from '../../redux/action/playerDetailsActions';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import s from './LogInLogUp.module.scss'
 
 export function LogInLogUp(props) {
@@ -99,14 +99,13 @@ export function LogInLogUp(props) {
 
                                 {login && ( <>
                                 <label className={s.labelInput}> Avatar: </label>{dataErrors.image && (<span className='danger'>{dataErrors.image}</span>)}
-                                    <input className={s.inputCreate} placeholder='Add an link avatar' type='text' name='avatar' onChange={(e) => handleChangePlayer(e)}></input>
+                                    <input className={s.inputCreate} placeholder='Add a avatar¨s link' type='text' name='avatar' onChange={(e) => handleChangePlayer(e)}></input>
                                     <br></br>
                                 </> )}
                             </div>
 
                             <div >
                                 <button className={s.buttonCreate} type='submit'>{login ? "Sign Up" : "Sign In"}</button>{dataErrors.withErrors && (<span className='danger'>Please check all Errors, before to submit.</span>)}
-                                    {/* {created.game && (<p>Game created successfully, Greate.!!!</p>)} */}
                             </div>
                             <div className={s.changeLoginLogout}>
                                 {login ? "No account yet?" : "Already a user?"} <span onClick={(e) => handleChangeLogin(e)} className={s.loginlogup}>{login ? "Sign up here!" : "Sign In here!"}</span>

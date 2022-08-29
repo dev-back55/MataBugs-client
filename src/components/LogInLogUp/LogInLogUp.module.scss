@@ -1,6 +1,6 @@
 .container {
     padding: 20px;
-    width: 20rem;
+    width: 30rem;
     padding: 1rem;
     background-color: black;
     border-radius: 8px;
@@ -25,6 +25,7 @@
 
 .title {
   color: white;
+  margin-top: 0px;
 }
 
 .containerInput {
@@ -37,7 +38,8 @@
 .inputCreate{
 	width: 100%;
   padding: 12px 20px;
-  margin: 8px 0;
+  margin-top: 5px;
+  font-weight: bold;
   display: inline-block;
   border: 1px solid #ccc;
   background-color: rgba(172, 172, 172, 0.623);
@@ -54,6 +56,7 @@
 .labelInput {
   align-self: flex-start;
   font-weight: 500;
+  color: rgb(133, 133, 133);
 }
 
 .buttonCreate {
@@ -100,7 +103,7 @@
     }
   }
   
-@media (min-width: 900px) {
+@media (max-width: 900px) {
 .container {
         // height: 25rem;
         width: 18rem;

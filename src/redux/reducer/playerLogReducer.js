@@ -3,7 +3,7 @@ import { signupPlayer } from "../action/playerDetailsActions";
 // import { fetchHasFinished, fetchIsPending } from '../../lib/util';
 
 const initalState = {
-  player: null,
+  player: {},
   error: false,
   success: false,
   loading: false
