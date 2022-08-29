@@ -10,34 +10,41 @@
   box-sizing: border-box;
 
   box-shadow: inset 0px -1px 0px 0px rgba(255, 255, 255, 0.1);
+
+  position: relative;
 }
 
 .btnDetails {
   width: fit-content;
   height: 100%;
-
-  padding: 0 1.5rem 0 1.5rem;
-
+  padding: 0 0.5rem 0 0.5rem;
   align-self: center;
   justify-self: center;
-
   background: transparent;
-  border-radius: 8px;
   border: none;
-
   font-size: 16px;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.8);
-
   text-transform: uppercase;
-
   letter-spacing: 3px;
-
   cursor: pointer;
-
-  box-shadow:inset 0px 0px 0px 3px rgba(255, 255, 255, 0.2);
+  transition: color 0.5s;
 }
 
 .btnDetails:hover {
-  background: linear-gradient(65.58deg, rgba(0, 66, 255, 0.5) -11.84%, rgba(235, 0, 27, 0.5) 98.75%);;
+  color: crimson;
+}
+
+.containerLogin {
+  height: 100%;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: 1fr;
+  grid-gap: 1rem;
+}
+
+.modalPickOptionStyle {
+  right: 1.8rem;
+  bottom: -6rem;
+  width: fit-content;
 }

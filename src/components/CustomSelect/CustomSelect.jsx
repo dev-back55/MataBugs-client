@@ -1,4 +1,5 @@
 import React from 'react';
+import ModalPickOption from '../ModalPickOption/ModalPickOption';
 
 import s from './CustomSelect.module.css';
 
@@ -23,25 +24,13 @@ export default function CustomSelect({valueSelected, values, handleValue}) {
           <div className = {`${s.triangle} ${showOptions ? s.open : ''}`}></div>
         </div>
       </div>
-      <div className = {`${s.selectOptionsZone} ${showOptions ? s.showOptions : ''}`}>
-        <div className = {s.optionsContainer}>
-          {
-            values && values.length > 0 && values.map((value, index) => 
-              <span
-                className = {s.selectOption}
-                onClick = {() => handlePickOption(value)}
-                key = {`select-option-${value}-${index}`}
-              >
-                {value}
-              </span>
-            )
-          }
-        </div>
-      </div>
-      {
-        showOptions &&
-        <div className = {s.helperCloseOptions} onClick = {handleOpenSelect}></div>
-      }
+      <ModalPickOption 
+        style = {s.modalPickOptionStyle}
+        values = {values}
+        show = {showOptions}
+        handleClose = {handleOpenSelect}
+        handlePickOption = {handlePickOption}
+      />
     </div>
   );
 }
