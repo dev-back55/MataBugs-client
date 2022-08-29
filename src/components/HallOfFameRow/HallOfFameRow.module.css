@@ -1,0 +1,120 @@
+.container {
+  display: grid;
+  grid-template-columns: 10% 15% 25% 15% 15% 20%;
+  grid-template-rows: 4rem;
+
+  padding: 0.5rem;
+
+  color: white;
+
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+
+  border-radius: 8px;
+
+  background-color: rgba(20, 20, 20, 1);
+
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 1px;
+
+  box-shadow:inset 0px 0px 0px 3px rgba(255, 255, 255, 0.2);
+}
+
+.first {
+  background: linear-gradient(65.58deg, rgba(0, 66, 255, 0.5) -11.84%, rgba(235, 0, 27, 0.5) 98.75%);
+}
+
+.second {
+  background: linear-gradient(65.58deg, rgba(0, 66, 255, 0.5) -11.84%, rgba(235, 0, 27, 0.5) 98.75%);
+}
+
+.avatarContainer {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+
+  height: 80%;
+  aspect-ratio: 1 / 1;
+}
+
+.spanNickname {
+  text-transform: capitalize;
+}
+
+.spanStatus {
+  padding: 0.4rem;
+  border-radius: 8px;
+  text-transform: uppercase;
+
+  font-size: 12px;
+  letter-spacing: 3px;
+  width: 80%;
+}
+
+.spanRanking {
+  font-weight: 900;
+}
+
+.oro {
+  background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+              radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+}
+
+.plata {
+  background: linear-gradient(180deg, hsl(0,0%,78%)  0%, 
+    hsl(0,0%,90%) 47%, 
+    hsl(0,0%,78%) 53%,
+    hsl(0,0%,70%)100%);
+
+  color: grey;
+}
+
+.bronce {
+  background: linear-gradient(
+    -72deg,
+    #ca7345,
+    #ffdeca 16%,
+    #ca7345 21%,
+    #ffdeca 24%,
+    #a14521 27%,
+    #ca7345 36%,
+    #ffdeca 45%,
+    #ffdeca 60%,
+    #ca7345 72%,
+    #ffdeca 80%,
+    #ca7345 84%,
+    #732100
+  );
+
+  color: saddlebrown;
+}
+
+.containerIndex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+}
+
+.containerHexagon {
+
+  width: 3.5rem;
+  height: 3.5rem;
+
+  z-index: 3;
+
+  position: absolute;
+}
+
+.containerTrophy {
+  width: 2rem;
+  height: 2rem;
+
+  z-index: 5;
+
+  position: absolute;
+}

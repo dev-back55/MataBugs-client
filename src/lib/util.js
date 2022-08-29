@@ -7,7 +7,7 @@ export let chooseColor = function(status) {
     default:
       return "#ffd700";
   }
-} 
+}
 
 export let generateRange = function (start, stop, step = 1) {
   return Array.from({ length: (stop - start) / step + 1}, (_, i) => start + (i * step));
@@ -23,4 +23,8 @@ export let fetchHasFinished = function(action) {
 
 export let fetchIsPending = function(action) {
   return action.type.endsWith('pending');
+}
+
+export let numberWithCommas = function(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
