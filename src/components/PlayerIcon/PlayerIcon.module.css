@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+
+  height: 80%;
+  aspect-ratio: 1 / 1;
+}
+
+.large {
+  height: 100%;
+}

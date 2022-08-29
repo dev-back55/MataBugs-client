@@ -1,0 +1,43 @@
+.container {
+  width: 100%;
+  height: 6.5rem;
+  padding: 1.8rem;
+  background: #131313;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+
+  box-shadow: inset 0px -1px 0px 0px rgba(255, 255, 255, 0.1);
+}
+
+.btnDetails {
+  width: fit-content;
+  height: 100%;
+
+  padding: 0 1.5rem 0 1.5rem;
+
+  align-self: center;
+  justify-self: center;
+
+  background: transparent;
+  border-radius: 8px;
+  border: none;
+
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+
+  text-transform: uppercase;
+
+  letter-spacing: 3px;
+
+  cursor: pointer;
+
+  box-shadow:inset 0px 0px 0px 3px rgba(255, 255, 255, 0.2);
+}
+
+.btnDetails:hover {
+  background: linear-gradient(65.58deg, rgba(0, 66, 255, 0.5) -11.84%, rgba(235, 0, 27, 0.5) 98.75%);;
+}

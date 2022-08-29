@@ -1,0 +1,82 @@
+.container {
+  background: rgba(32, 32, 36, 1);
+  border: none;
+
+  height: 100%;
+  width: 100%;
+
+  border-radius: 8px;
+
+  display: grid;
+  grid-template-columns: 8fr 2fr;
+  grid-template-rows: 100%;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+
+  box-sizing: border-box;
+
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+}
+
+.inputStyle {
+  border: none;
+  background: transparent;
+
+  height: 100%;
+  width: 100%;
+
+  font-size: 15;
+  color: rgba(255, 255, 255, 1);
+  font-weight: 500;
+
+  justify-self: flex-start;
+}
+
+.inputStyle:focus {
+  outline: none;
+}
+
+.inputStyle[disabled],
+.inputStyle::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.searchContainer {
+  grid-row: 1 / 2;
+  grid-column: 2 / 3;
+
+  height: 100%;
+  aspect-ratio: 1 / 1;
+
+  justify-self: flex-end;
+  cursor: pointer;
+}
+
+.searchContainer:hover > svg > path {
+  fill: rgba(235, 0, 27, 1);
+}
+
+.inputStyle:focus {
+  outline: none;
+}
+
+.rotate {
+  cursor: default;
+}
+
+.rotate > svg {
+  animation: rotateLoading 2s infinite;
+  animation-timing-function: linear;
+  fill: var(--secondaryColor);
+}
+
+@keyframes rotateLoading {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import ImageLoader from '../ImageLoader/ImageLoader';
+import PlayerIcon from '../PlayerIcon/PlayerIcon';
 import Trophy from '../SVG/Trophy';
 import Crown from '../SVG/Crown';
 import Hexagon from '../SVG/Hexagon';
@@ -30,9 +30,7 @@ export default function HallOfFameRow({ id, nickname, status, ranking, avatar, i
       }
         <span className = {s.spanIndex}>{index}</span>
       </div>
-      <div className = {s.avatarContainer}>
-        <ImageLoader image = {avatar} alt = {nickname} />
-      </div>
+      <PlayerIcon avatar = {avatar} nickname = {nickname} />
       <span className = {s.spanNickname}>{nickname}</span>
       <span className = {s.spanId}>{id}</span>
       <span className = {`${s.spanStatus} ${s[status]}`}>{status}</span>
