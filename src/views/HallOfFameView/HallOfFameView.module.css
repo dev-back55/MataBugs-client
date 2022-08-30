@@ -1,0 +1,10 @@
+.container {
+  width: 100%;
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: 100%;
+  grid-gap: 3rem;
+
+  align-items: center;
+  justify-items: center;
+}

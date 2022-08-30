@@ -1,0 +1,54 @@
+.containerOptions {
+  display: none;
+  opacity: 0;
+  position: absolute;
+  z-index: 50;
+  padding: 1rem;
+  background: rgba(32, 32, 36, 1);
+  color: white;
+  border-radius: 8px;
+  box-shadow:inset 0px 0px 0px 1px rgba(255, 255, 255, 0.2);
+}
+
+.showOptions {
+  display: grid;
+  grid-auto-rows: auto;
+  grid-template-columns: auto;
+  animation: show 0.5s;
+  animation-fill-mode: both;
+  box-sizing: border-box;
+  grid-gap: 0.5rem;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.selectOption {
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.selectOption:hover {
+  color: rgba(235, 0, 27, 1);
+}
+
+.helperCloseOptions {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: transparent;
+  height: 100vh;
+  width: 100vw;
+
+  z-index: 19;
+}
