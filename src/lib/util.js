@@ -31,7 +31,7 @@ export let numberWithCommas = function(x) {
 
 export let generateQueryWithState = function(state) {
   return generateQuery({
-    text: "",
+    text: state.search,
     orderBy: state.orderBy,
     order: state.order,
     status: state.status,

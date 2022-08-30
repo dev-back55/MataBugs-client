@@ -43,11 +43,11 @@ export default function PaginationControllers() {
         name = {"order"}
       />
       <PaginationButton
-        disabled = {searchState.loading || searchState.currentPage === 1}
+        disabled = {searchState.loading || searchState.currentPage <= 1}
         handler = {handlePreviousPage}
       />
       <PaginationButton
-        disabled = {searchState.loading || searchState.currentPage === searchState.pages}
+        disabled = {searchState.loading || searchState.currentPage >= searchState.pages}
         handler = {handleNextPage}
         reverse = {true}
       />

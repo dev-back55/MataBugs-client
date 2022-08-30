@@ -1,5 +1,5 @@
-import { createReducer } from "@reduxjs/toolkit";
-import { searchPlayers, updateFilter } from "../action/searchPlayersActions";
+import { createReducer, current } from "@reduxjs/toolkit";
+import { searchPlayers, updateFilter, updateFilterResetPage } from "../action/searchPlayersActions";
 import { fetchHasFinished, fetchIsPending } from '../../lib/util';
 
 const initalState = {
@@ -20,6 +20,11 @@ const initalState = {
 const reducer = createReducer(initalState, builder => {
 
   builder
+
+    .addCase(updateFilterResetPage, (state, action) => {
+      state[action.payload.field] = action.payload.newValue;
+      state.currentPage = 1;
+    })
 
     .addCase(updateFilter, (state, action) => {
       state[action.payload.field] = action.payload.newValue;

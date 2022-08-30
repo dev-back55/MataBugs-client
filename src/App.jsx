@@ -20,11 +20,11 @@ function App() {
     <div className="App">
       <NavBar />
       <Routes>
-        <Route exact path = '/' element = { <SearchView /> } />
+        <Route exact path = '/search' element = { <SearchView /> } />
         <Route exact path = '/login' element = { !player?.player ? <LogInLogUp /> : <Navigate to="/"/> } />
         <Route exact path = '/player/:id' element = { <CardDetails /> } />
-        <Route exact path = '/hallOfFame' element = { <HallOfFameView /> } />
-        <Route path = "*" element = { <Navigate to = "/" replace /> } />
+        <Route exact path = '/home' element = { <HallOfFameView /> } />
+        <Route path = "*" element = { <Navigate to = "/home" replace /> } />
       </Routes>
     </div>
   );
