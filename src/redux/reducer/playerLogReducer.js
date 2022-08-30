@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { signupPlayer } from "../action/playerDetailsActions";
+import { signupPlayer, signinPlayer } from "../action/playerDetailsActions";
 // import { fetchHasFinished, fetchIsPending } from '../../lib/util';
 
 const initalState = {
@@ -19,8 +19,18 @@ const reducer = createReducer(initalState, builder => {
       state.success = true;
       state.player = action.payload;
     })
-    .addCase(signupPlayer.rejected, state => {
-      state.error = true;
+    .addCase(signupPlayer.rejected, (state, action) => {
+      state.error = action.error;
+    })
+    .addCase(signinPlayer.pending, state => {
+      state.loading = true;
+    })
+    .addCase(signinPlayer.fulfilled, (state, action) => {
+      state.success = true;
+      state.player = action.payload;
+    })
+    .addCase(signinPlayer.rejected, (state, action) => {
+      state.error = action.error;
     })
 });
 
