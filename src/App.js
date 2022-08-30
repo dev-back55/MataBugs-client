@@ -9,9 +9,9 @@ import './App.css';
 function App() {
   const { player } = useSelector((state) => state.player);
 
-useEffect(() => {
-    // Envia a Home cuando esta logeado
-}, [player])
+// useEffect(() => {
+//     // Envia a Home cuando esta logeado
+// }, [player])
 
   return (
     <div className="App">
