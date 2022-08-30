@@ -3,16 +3,16 @@ import ModalPickOption from '../ModalPickOption/ModalPickOption';
 
 import s from './CustomSelect.module.css';
 
-export default function CustomSelect({valueSelected, values, handleValue}) {
+export default function CustomSelect({valueSelected, values, handleValue, name, disabled}) {
 
   let [ showOptions, setShowOptions ] = React.useState(false);
 
   let handleOpenSelect = function() {
-    setShowOptions(!showOptions);
+    if (!disabled) setShowOptions(!showOptions);
   }
 
   let handlePickOption = function(value) {
-    handleValue(value);
+    handleValue(name, value);
     setShowOptions(false);
   }
 

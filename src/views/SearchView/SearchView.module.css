@@ -8,6 +8,12 @@
   grid-template-rows: auto auto;
 
   grid-row-gap: 1rem;
+
+  width: 100%;
+
+  padding: 0 1rem 0 1rem;
+
+  box-sizing: border-box;
 }
 
 @media (min-width: 900px) {
