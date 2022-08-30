@@ -1,4 +1,5 @@
 import { ActionTypes } from './index';
+import axios from 'axios';
 import { createAsyncThunk, createAction } from '@reduxjs/toolkit';
 import { promisifiedSetTimeOut } from '../../lib/util';
 
@@ -11,3 +12,13 @@ export const getPlayer = createAsyncThunk(
 );
 
 export const clearPlayerDetails = createAction(ActionTypes.PLAYER_DETAILS_CLEARED);
+
+
+export const signupPlayer = createAsyncThunk(
+  ActionTypes.SIGNUP_PLAYER,
+  async (player) => {
+    const newPlayer = await axios.post('http://localhost:3003/signup', player)
+    console.log(newPlayer.data)
+    return newPlayer.data;
+  }
+);
