@@ -18,7 +18,14 @@ export const signupPlayer = createAsyncThunk(
   ActionTypes.SIGNUP_PLAYER,
   async (player) => {
     const newPlayer = await axios.post('http://localhost:3003/signup', player)
-    console.log(newPlayer.data)
     return newPlayer.data;
+  }
+);
+
+export const signinPlayer = createAsyncThunk(
+  ActionTypes.SIGNIN_PLAYER,
+  async (player) => {
+    const getPlayer = await axios.post('http://localhost:3003/login', player)
+    return getPlayer.data;
   }
 );

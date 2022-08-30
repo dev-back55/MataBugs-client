@@ -4,6 +4,7 @@ import Cards from '../../components/Cards/Cards';
 import PaginationControllers from '../../components/PaginationControllers/PaginationControllers';
 import { searchPlayers } from '../../redux/action/searchPlayersActions';
 import { generateQueryWithState } from '../../lib/util';
+import Sidebar from '../../components/Sidebar/Sidebar';
 
 import s from './SearchView.module.css';
 
