@@ -1,46 +1,66 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import CustomSelect from '../CustomSelect/CustomSelect';
-import PaginationButton from '../PaginationButton/PaginationButton';
+import { searchPlayers, updateFilter, updateFilterResetPage } from '../../redux/action/searchPlayersActions';
+import { generateQueryWithState } from '../../lib/util';
 
 import s from './Sidebar.module.scss';
 
-export default function Sidebar() {
-  const [ status, setStatus ] = React.useState("All");
-  const [ order, setOrder ] = React.useState("ascending");
-  const [ value, setValue ] = React.useState("ranking");
+export default function Sidebar() {  
+  const dispatch = useDispatch();
+  const searchState = useSelector((state) => state.search);
+  const [ showSidebarResponsive, setShowSidebarResponsive ] = React.useState(false);
+
+  let handleChangeSelect = function(field, newValue) {
+    if (searchState[field] === newValue) return;
+    dispatch(updateFilter({ field, newValue }));
+    dispatch(searchPlayers(generateQueryWithState({ ...searchState, [field]: newValue })));
+  }
+
+  let handleChangeSelectResetPage = function(field, newValue) {
+    if (searchState[field] === newValue) return;
+    dispatch(updateFilterResetPage({ field, newValue }));
+    dispatch(searchPlayers(generateQueryWithState({ ...searchState, [field]: newValue, currentPage: 1 })));
+  }
   
   return (
-    <div className = {s.container}>
-      <h4>Pagination: </h4>
-      <div className={s.containerPagination} >
-        <PaginationButton
-          disabled = {false}
-          handler = {() => console.log("Ok")}
+    <>
+      <div className = {`${s.container} ${showSidebarResponsive ? s.showSidebarResponsive : ''}`}>
+        <h4>Filter Status: </h4>
+        <CustomSelect
+          disabled = {searchState.loading}
+          valueSelected = {searchState.status}
+          values = {["all", "oro", "plata", "bronce"]}
+          handleValue = {handleChangeSelectResetPage}
+          name = {"status"}
         />
-        <PaginationButton
-          disabled = {true}
-          handler = {() => console.log("Ok")}
-          reverse = {true}
+        <h4>Order By: </h4>
+        <CustomSelect
+          disabled = {searchState.loading}
+          valueSelected = {searchState.orderBy}
+          values = {["ranking", "nickname"]}
+          handleValue = {handleChangeSelect}
+          name = {"orderBy"}
         />
+        <h4>Order: </h4>
+        <CustomSelect
+          disabled = {searchState.loading}
+          valueSelected = {searchState.order}
+          values = {["ascending", "descending"]}
+          handleValue = {handleChangeSelect}
+          name = {"order"}
+        />
+        {
+          showSidebarResponsive && 
+          <button className = {s.btnCloseSideBarResponsive} onClick = {() => setShowSidebarResponsive(false)}>Close</button>
+        }
       </div>
-      <h4>Filter Status: </h4>
-      <CustomSelect
-        valueSelected = {status}
-        values = {["All", "oro", "bronce", "plata"]}
-        handleValue = {(newValue) => setStatus(newValue)}
-      />
-      <h4>Order Ranking: </h4>
-      <CustomSelect
-        valueSelected = {order}
-        values = {["ascending", "descending"]}
-        handleValue = {(newValue) => setOrder(newValue)}
-      />
-      <h4>Order Rank/Nick: </h4>
-      <CustomSelect
-        valueSelected = {value}
-        values = {["ranking", "nickname"]}
-        handleValue = {(newValue) => setValue(newValue)}
-      />
-    </div>
+      {
+        !showSidebarResponsive &&
+        <button className = {s.btnShowSidebarResponsive} onClick = {() => setShowSidebarResponsive(true)}>
+          ☢
+        </button>
+      }
+    </>
   )
 }

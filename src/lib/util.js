@@ -26,5 +26,19 @@ export let fetchIsPending = function(action) {
 }
 
 export let numberWithCommas = function(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+export let generateQueryWithState = function(state) {
+  return generateQuery({
+    text: state.search,
+    orderBy: state.orderBy,
+    order: state.order,
+    status: state.status,
+    page: state.currentPage
+  });
+}
+
+export let generateQuery = function({ text = '', orderBy = 'ranking', order = 'descending', status = 'all', page = 1 }) {
+  return `order=${orderBy},${order === 'descending' ? 'desc' : 'asc'}${text.length > 0 ? `&text=${text}` : ''}${status !== 'all' ? `&status=${status}` : ''}&page=${page}`;
 }
