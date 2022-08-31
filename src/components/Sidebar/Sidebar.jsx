@@ -9,6 +9,7 @@ import s from './Sidebar.module.scss';
 export default function Sidebar() {  
   const dispatch = useDispatch();
   const searchState = useSelector((state) => state.search);
+  const [ showSidebarResponsive, setShowSidebarResponsive ] = React.useState(false);
 
   let handleChangeSelect = function(field, newValue) {
     if (searchState[field] === newValue) return;
@@ -23,31 +24,43 @@ export default function Sidebar() {
   }
   
   return (
-    <div className = {s.container}>
-      <h4>Filter Status: </h4>
-      <CustomSelect
-        disabled = {searchState.loading}
-        valueSelected = {searchState.status}
-        values = {["all", "oro", "plata", "bronce"]}
-        handleValue = {handleChangeSelectResetPage}
-        name = {"status"}
-      />
-      <h4>Order By: </h4>
-      <CustomSelect
-        disabled = {searchState.loading}
-        valueSelected = {searchState.orderBy}
-        values = {["ranking", "nickname"]}
-        handleValue = {handleChangeSelect}
-        name = {"orderBy"}
-      />
-      <h4>Order: </h4>
-      <CustomSelect
-        disabled = {searchState.loading}
-        valueSelected = {searchState.order}
-        values = {["ascending", "descending"]}
-        handleValue = {handleChangeSelect}
-        name = {"order"}
-      />
-    </div>
+    <>
+      <div className = {`${s.container} ${showSidebarResponsive ? s.showSidebarResponsive : ''}`}>
+        <h4>Filter Status: </h4>
+        <CustomSelect
+          disabled = {searchState.loading}
+          valueSelected = {searchState.status}
+          values = {["all", "oro", "plata", "bronce"]}
+          handleValue = {handleChangeSelectResetPage}
+          name = {"status"}
+        />
+        <h4>Order By: </h4>
+        <CustomSelect
+          disabled = {searchState.loading}
+          valueSelected = {searchState.orderBy}
+          values = {["ranking", "nickname"]}
+          handleValue = {handleChangeSelect}
+          name = {"orderBy"}
+        />
+        <h4>Order: </h4>
+        <CustomSelect
+          disabled = {searchState.loading}
+          valueSelected = {searchState.order}
+          values = {["ascending", "descending"]}
+          handleValue = {handleChangeSelect}
+          name = {"order"}
+        />
+        {
+          showSidebarResponsive && 
+          <button className = {s.btnCloseSideBarResponsive} onClick = {() => setShowSidebarResponsive(false)}>Close</button>
+        }
+      </div>
+      {
+        !showSidebarResponsive &&
+        <button className = {s.btnShowSidebarResponsive} onClick = {() => setShowSidebarResponsive(true)}>
+          ☢
+        </button>
+      }
+    </>
   )
 }

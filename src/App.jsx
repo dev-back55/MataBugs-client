@@ -27,6 +27,7 @@ function App() {
           <Route exact path = '/login' element = { !player?.player ? <LogInLogUp /> : <Navigate to="/"/> } />
           <Route exact path = '/player/:id' element = { <CardDetails /> } />
           <Route exact path = '/home' element = { <HallOfFameView /> } />
+          <Route path = "*" element = { <Navigate to = "/" replace /> } />
         </Routes>
       </div>
     </div>
