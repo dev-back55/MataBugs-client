@@ -18,6 +18,7 @@ const selectMedal = {
 export default function CardDetails() {
 
   const { player } = useSelector(state => state.details);
+  const loginPlayer  = useSelector(state => state.player.player);
   const dispatch = useDispatch();
   const { id } = useParams();
   const [ show, setShow ] = React.useState({ avatar: false, medal: false, both: false });
@@ -60,7 +61,7 @@ export default function CardDetails() {
           <span>RANKING</span>
           <span>{player.ranking}</span>
         </div>
-        <button className = {s.btnDetails}>Editar Perfil</button>
+        {loginPlayer.admin && <button className = {s.btnDetails}>Editar Perfil</button>}
       </div>
     </div>
   );
