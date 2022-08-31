@@ -8,7 +8,7 @@
   border-radius: 8px;
 
   display: grid;
-  grid-template-columns: 8fr 2fr;
+  grid-template-columns: 1fr min-content;
   grid-template-rows: 100%;
   padding: 0.5rem 1rem 0.5rem 1rem;
 
@@ -27,7 +27,9 @@
   height: 100%;
   width: 100%;
 
-  font-size: 15;
+  font-size: 15px;
+
+  letter-spacing: 1px;
   color: rgba(255, 255, 255, 1);
   font-weight: 500;
 

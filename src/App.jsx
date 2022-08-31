@@ -7,6 +7,7 @@ import SearchView from './views/SearchView/SearchView';
 import CardDetails from './components/CardDetails/CardDetails';
 import HallOfFameView from './views/HallOfFameView/HallOfFameView';
 import './App.css';
+import Sidebar from './components/Sidebar/Sidebar';
 
 function App() {
 
@@ -18,14 +19,17 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar />
-      <Routes>
-        <Route exact path = '/' element = { <SearchView /> } />
-        <Route exact path = '/login' element = { !player?.player ? <LogInLogUp /> : <Navigate to="/"/> } />
-        <Route exact path = '/player/:id' element = { <CardDetails /> } />
-        <Route exact path = '/hallOfFame' element = { <HallOfFameView /> } />
-        <Route path = "*" element = { <Navigate to = "/" replace /> } />
-      </Routes>
+      <Sidebar />
+      <div className = "mainZone">
+        <NavBar />
+        <Routes>
+          <Route exact path = '/search' element = { <SearchView /> } />
+          <Route exact path = '/login' element = { !player?.player ? <LogInLogUp /> : <Navigate to="/"/> } />
+          <Route exact path = '/player/:id' element = { <CardDetails /> } />
+          <Route exact path = '/home' element = { <HallOfFameView /> } />
+          <Route path = "*" element = { <Navigate to = "/" replace /> } />
+        </Routes>
+      </div>
     </div>
   );
 }

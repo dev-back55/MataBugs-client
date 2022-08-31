@@ -1,32 +1,38 @@
 import React from 'react';
-import CustomSelect from '../CustomSelect/CustomSelect';
+import { useSelector, useDispatch } from 'react-redux';
 import PaginationButton from '../PaginationButton/PaginationButton';
+import { searchPlayers, updateFilter } from '../../redux/action/searchPlayersActions';
+import { generateQueryWithState } from '../../lib/util';
+
 import s from './PaginationControllers.module.css';
 
 export default function PaginationControllers() {
 
-  const [ value, setValue ] = React.useState("ranking");
-  const [ order, setOrder ] = React.useState("ascending");
+  const dispatch = useDispatch();
+  const searchState = useSelector((state) => state.search);
+
+  let handleChangePage = function(newValue) {
+    dispatch(updateFilter({ field: "currentPage", newValue }));
+    dispatch(searchPlayers(generateQueryWithState({ ...searchState, currentPage: newValue })));
+  }
+
+  let handleNextPage = function() {
+    handleChangePage(searchState.currentPage + 1);
+  }
+
+  let handlePreviousPage = function() {
+    handleChangePage(searchState.currentPage - 1);
+  }
 
   return (
     <div className = {s.container}>
-      <CustomSelect
-        valueSelected = {value}
-        values = {["ranking", "nickname"]}
-        handleValue = {(newValue) => setValue(newValue)}
-      />
-      <CustomSelect
-        valueSelected = {order}
-        values = {["ascending", "descending"]}
-        handleValue = {(newValue) => setOrder(newValue)}
+      <PaginationButton
+        disabled = {searchState.loading || searchState.currentPage <= 1}
+        handler = {handlePreviousPage}
       />
       <PaginationButton
-        disabled = {false}
-        handler = {() => console.log("Ok")}
-      />
-      <PaginationButton
-        disabled = {true}
-        handler = {() => console.log("Ok")}
+        disabled = {searchState.loading || searchState.currentPage >= searchState.pages}
+        handler = {handleNextPage}
         reverse = {true}
       />
     </div>
