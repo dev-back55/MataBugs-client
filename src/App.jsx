@@ -13,13 +13,13 @@ function App() {
 
    const { player } = useSelector((state) => state.player);
 
-  useEffect(() => {
-      // Envia a Home cuando esta logeado
-  }, [player])
+  // useEffect(() => {
+  //     // Envia a Home cuando esta logeado
+  // }, [player])
 
   return (
     <div className="App">
-      <Sidebar />
+      {/* <Sidebar /> */}
       <div className = "mainZone">
         <NavBar />
         <Routes>
@@ -27,7 +27,7 @@ function App() {
           <Route exact path = '/login' element = { !player?.player ? <LogInLogUp /> : <Navigate to="/"/> } />
           <Route exact path = '/player/:id' element = { <CardDetails /> } />
           <Route exact path = '/home' element = { <HallOfFameView /> } />
-          <Route path = "*" element = { <Navigate to = "/" replace /> } />
+          {/* <Route path = "*" element = { <Navigate to = "/" replace /> } /> */}
         </Routes>
       </div>
     </div>

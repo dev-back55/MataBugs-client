@@ -8,7 +8,7 @@ import { API_ROUTE } from '../../lib/constants';
 export const searchPlayers = createAsyncThunk(
   ActionTypes.PLAYERS_FOUND,
   async (searchQuery) => {
-    const players = await axios.get(`${API_ROUTE}/search?${searchQuery}`)
+    const players = await axios.get(`${API_ROUTE}/player/search?${searchQuery}`)
     return players.data;
   }
 );
