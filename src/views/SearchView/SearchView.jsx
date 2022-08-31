@@ -2,9 +2,8 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Cards from '../../components/Cards/Cards';
 import PaginationControllers from '../../components/PaginationControllers/PaginationControllers';
-import { searchPlayers } from '../../redux/action/searchPlayersActions';
+import { searchPlayers, resetFilter } from '../../redux/action/searchPlayersActions';
 import { generateQueryWithState } from '../../lib/util';
-import Sidebar from '../../components/Sidebar/Sidebar';
 
 import s from './SearchView.module.css';
 
@@ -15,6 +14,10 @@ export default function SearchView() {
 
   React.useEffect(() => {
     dispatch(searchPlayers(generateQueryWithState(searchState)));
+
+    return (() => {
+      dispatch(resetFilter());
+    })
   }, []);
 
   return (

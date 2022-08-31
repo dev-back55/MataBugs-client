@@ -55,7 +55,7 @@
   width: fit-content;
 }
 
-@media (min-width: 700px) {
+/*@media (min-width: 700px) {
   .container {
     grid-template-columns: 100%;
     grid-template-rows: 2.5rem 1rem;
@@ -67,7 +67,7 @@
     grid-template-columns: 70% 30%;
     grid-template-rows: 2.5rem;
   }
-}
+}*/
 
 @media (min-width: 1100px) {
   .container {

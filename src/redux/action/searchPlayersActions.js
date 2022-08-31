@@ -15,5 +15,6 @@ export const searchPlayers = createAsyncThunk(
 
 export const updateFilter = createAction(ActionTypes.FILTER_UPDATED);
 export const updateFilterResetPage = createAction(ActionTypes.FILTER_UPDATED_RETURNED_TO_PAGE_ONE);
+export const resetFilter = createAction(ActionTypes.FILTER_RESETED);
 
 //export const clearPlayerDetails = createAction(ActionTypes.PLAYER_DETAILS_CLEARED);

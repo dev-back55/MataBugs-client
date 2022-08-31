@@ -1,10 +1,18 @@
 body {
   background: rgba(13, 13, 13, 1.0);
+  overflow-y: scroll;
 }
 
 .App {
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
 
+.mainZone {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,5 +1,5 @@
-import { createReducer, current } from "@reduxjs/toolkit";
-import { searchPlayers, updateFilter, updateFilterResetPage } from "../action/searchPlayersActions";
+import { createReducer } from "@reduxjs/toolkit";
+import { resetFilter, searchPlayers, updateFilter, updateFilterResetPage } from "../action/searchPlayersActions";
 import { fetchHasFinished, fetchIsPending } from '../../lib/util';
 
 const initalState = {
@@ -20,6 +20,16 @@ const initalState = {
 const reducer = createReducer(initalState, builder => {
 
   builder
+
+    .addCase(resetFilter, state => {
+      state.search = "";
+      state.order = "descending";
+      state.orderBy = "ranking";
+      state.status = "all";
+      state.currentPage = 1;
+      state.pages = 1;
+      state.results = 0;
+    })
 
     .addCase(updateFilterResetPage, (state, action) => {
       state[action.payload.field] = action.payload.newValue;
