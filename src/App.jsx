@@ -23,11 +23,11 @@ function App() {
       <div className = "mainZone">
         <NavBar />
         <Routes>
+          <Route exact path = '/home' element = { <HallOfFameView /> } />
           <Route exact path = '/search' element = { <SearchView /> } />
           <Route exact path = '/login' element = { !player?.player ? <LogInLogUp /> : <Navigate to="/"/> } />
           <Route exact path = '/player/:id' element = { <CardDetails /> } />
-          <Route exact path = '/home' element = { <HallOfFameView /> } />
-          <Route path = "*" element = { <Navigate to = "/" replace /> } />
+          <Route path = "*" element = { <Navigate to = "/home" replace /> } />
         </Routes>
       </div>
     </div>
