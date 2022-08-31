@@ -59,6 +59,14 @@
   align-self: flex-end;
 }
 
+.spanEditChange {
+  font-size: 16px;
+  color: white;
+  font-weight: 300;
+  margin: 5px 0px;
+  align-self: flex-end;
+}
+
 .detailsContainer {
   grid-row: 2 / 3;
   grid-column: 1 / 2;

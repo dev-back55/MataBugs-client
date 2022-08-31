@@ -33,8 +33,11 @@ export const signinPlayer = createAsyncThunk(
 
 export const editPlayer = createAsyncThunk(
   ActionTypes.EDIT_PLAYER,
-  async (id, data) => {
-    const playerEdited = await axios.put(`${API_ROUTE}/player/${id}`, data)
+  async (data) => {
+    const playerEdited = await axios.put(`${API_ROUTE}/player/${data.id}`, data)
     return playerEdited.data;
   }
 );
+
+
+export const clearEditPlayer = createAction(ActionTypes.CLEAR_EDIT_PLAYER);
