@@ -18,7 +18,8 @@ export default function Sidebar() {
           <button className = {s.btnCloseSideBarResponsive} onClick = {() => setShowSidebarResponsive(false)}>Close</button>
         }
       </div>
-      <ToggleSideBarResponsive show = {showSidebarResponsive} handler = {() => setShowSidebarResponsive(true)} />
+      <ToggleSideBarResponsive showSideBar = {showSidebarResponsive} handler = {() => setShowSidebarResponsive(true)} />
+      <Links showAsFooter = {true}/>
     </>
   )
 }

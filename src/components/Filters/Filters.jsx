@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import SidebarTitle from '../SidebarTitle/SidebarTitle';
 import CustomSelect from '../CustomSelect/CustomSelect';
@@ -7,7 +8,8 @@ import { generateQueryWithState } from '../../lib/util';
 
 import s from './Filters.module.css';
 
-export default function Filters() {  
+export default function Filters() {
+  const location = useLocation();
   const dispatch = useDispatch();
   const searchState = useSelector((state) => state.search);
 
@@ -22,8 +24,12 @@ export default function Filters() {
     dispatch(updateFilterResetPage({ field, newValue }));
     dispatch(searchPlayers(generateQueryWithState({ ...searchState, [field]: newValue, currentPage: 1 })));
   }
+
+  let isActive = function() {
+    return location.pathname === '/search';
+  }
   
-  return (
+  if (isActive()) return (
     <>
       <SidebarTitle title = {"Options"} />
       <h4 className = {s.label}>Filter Status: </h4>

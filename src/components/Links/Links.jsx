@@ -7,25 +7,31 @@ import Info from '../SVG/Info';
 
 import s from './Links.module.css';
 
-export default function Links() {
+export default function Links({ showAsFooter = false }) {
   return (
-    <>
-      <SidebarTitle title = {"Explore"} />
+    <div className = {`${showAsFooter ? s.containerAsFooter : s.container}`}>
+      {
+        !showAsFooter &&
+        <SidebarTitle title = {"Explore"} />
+      }
       <SectionLink
         title = {"Hall of Fame"}
         path = {"/home"}
         icon = {Stars}
+        showVertical = {showAsFooter}
       />
       <SectionLink
         title = {"All Players"}
         path = {"/search"}
         icon = {World}
+        showVertical = {showAsFooter}
       />
       <SectionLink
         title = {"About"}
         path = {"/about"}
         icon = {Info}
+        showVertical = {showAsFooter}
       />
-    </>
+    </div>
   );
 }
