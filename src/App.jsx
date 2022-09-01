@@ -19,7 +19,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Sidebar /> */}
+      <Sidebar />
       <div className = "mainZone">
         <NavBar />
         <Routes>

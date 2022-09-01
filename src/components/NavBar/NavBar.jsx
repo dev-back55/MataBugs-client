@@ -2,7 +2,6 @@ import React from 'react';
 import SearchPlayer from '../SearchPlayer/SearchPlayer';
 import PlayerIcon from '../PlayerIcon/PlayerIcon';
 import ModalPickOption from '../ModalPickOption/ModalPickOption';
-import { Link } from 'react-router-dom';
 import { listOfUsers } from '../../lib/userModel';
 
 import s from './NavBar.module.css';
@@ -23,8 +22,6 @@ export default function NavBar() {
   return (
     <div className = {s.container}>
       <SearchPlayer />
-      <Link to="/login"><h3>login</h3></Link>
-      <Link to="/search"><h3>search</h3></Link>
       {
         true && 
         <PlayerIcon
