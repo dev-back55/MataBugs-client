@@ -96,8 +96,6 @@ export default function CardDetails() {
     setInfo({idEditer: loginPlayer?.id, idCard: id})
   }
 
-
-
   if (!player) return <span>cargando</span>;
 
   return (
