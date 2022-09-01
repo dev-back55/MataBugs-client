@@ -21,12 +21,7 @@ export function LogInLogUp() {
     const [errorsAvatar, setErrorsAvatar] = useState({})
 
     const [ dataErrors, setDataErrors] = useState(false);
-    // const [ errors, setErrors] = useState({});
-    
-    // const [ created, setCreated ] = useState({game: false})
-    // let errors = {};
-    
-
+  
     // Email Control // NickName Control  // Image Control  // Email Control
     function handleChangePlayer(e){
         e.preventDefault();
