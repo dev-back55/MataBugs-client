@@ -36,7 +36,7 @@
 
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 75% 5% 20%;
+  grid-template-rows: 75% 25%;
 
   position: absolute;
   top: -5rem;
@@ -242,7 +242,7 @@
 
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 75% 5% 20%;
+    grid-template-rows: 75% 25%;
 
     position: absolute;
     left: -6rem;
