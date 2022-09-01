@@ -7,4 +7,6 @@
   font-weight: 300;
 
   text-transform: uppercase;
+
+  font-size: var(--fontMedium);
 }

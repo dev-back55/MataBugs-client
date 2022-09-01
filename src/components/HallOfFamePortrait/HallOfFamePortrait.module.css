@@ -1,5 +1,5 @@
 .containerAvatar {
-  height: 50%;
+  height: var(--avatarHallOfFame);
   aspect-ratio: 1 / 1;
 
   align-self: center;
@@ -9,16 +9,14 @@
 
   border-radius: 50%;
 
-  background: linear-gradient(rgba(13, 13, 13, 1.0),  rgba(13, 13, 13, 1.0)) padding-box,
-    linear-gradient(to right, darkblue, darkorchid) border-box;
+  background: var(--silverGradient);
   border: 5px solid transparent;
   z-index: 3;
 }
 
 .containerAvatar.large {
-  height: 80%;
-  background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
-              radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+  height: var(--avatarHallOfFameLarge);
+  background: var(--goldenGradient);
   border: 7px solid transparent;
 }
 
@@ -28,7 +26,7 @@
 
   object-fit: cover;
 
-  background-color: rgba(13, 13, 13, 1.0);
+  background-color: var(--primaryColorDark);
 }
 
 .containerNumber {
@@ -36,7 +34,7 @@
   border-radius: 50%;
   height: 2.5rem;
   width: 2.5rem;
-  background: linear-gradient(to right, darkblue, darkorchid) border-box;
+  background: var(--silverGradient);
   color: rgba(13, 13, 13, 1.0);
   border: 5px solid rgba(13, 13, 13, 1.0);
 
@@ -55,8 +53,7 @@
 }
 
 .containerNumber.large {
-  background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
-              radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+  background: var(--goldenGradient);
   color: white;
   transform: translateY(5rem);
 }

@@ -57,7 +57,7 @@
   grid-column: 1 / 4;
   grid-row: 2 / 3;
   justify-self: center;
-  font-size: 12px;
+  font-size: var(--fontSmall);
   margin-bottom: 0;
   margin-top: 0;
 }

@@ -22,13 +22,13 @@
 }
 
 .selectOption {
-  font-size: var(--fontSmallest);
+  font-size: var(--fontSmall);
   font-weight: 700;
   text-transform: capitalize;
 }
 
 .selectSelected {
-  font-size: var(--fontSmallest);
+  font-size: var(--fontSmall);
   font-weight: 700;
   letter-spacing: 1px;
 
@@ -54,7 +54,7 @@
 }
 
 .selectSelectedZone {
-  background: rgba(32, 32, 36, 1);
+  background: var(--primaryColorLight);
   display: inline-block;
   color: white;
 
@@ -75,20 +75,7 @@
 
   border-radius: 8px;
 
-  box-shadow: inset 0px 0px 0px 1px rgba(255, 255, 255, 0.2);
-}
-
-.disabled {
-  cursor: not-allowed;
-}
-
-.disabled > .selectSelectedZone {
-  box-shadow: inset 0px 1px 0px 0px #ffffff;
-  background: linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
-  background-color: #ededed;
-  border: 1px solid #dcdcdc;
-  color: #777777;
-  text-shadow: 0px 1px 0px #ffffff;
+  box-shadow: var(--borderInside);
 }
 
 .modalPickOptionStyle {

@@ -2,12 +2,13 @@ import React, { useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import NavBar from './components/NavBar/NavBar';
+import Sidebar from './components/Sidebar/Sidebar';
 import LogInLogUp from './components/LogInLogUp/LogInLogUp';
 import SearchView from './views/SearchView/SearchView';
 import CardDetails from './components/CardDetails/CardDetails';
 import HallOfFameView from './views/HallOfFameView/HallOfFameView';
+import './constants.css';
 import './App.css';
-import Sidebar from './components/Sidebar/Sidebar';
 
 function App() {
 

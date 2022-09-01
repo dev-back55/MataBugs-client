@@ -4,7 +4,7 @@
 
   padding: 1rem;
   box-shadow: inset 0px 0px 0px 3px rgba(255, 255, 255, 0.2);
-  background-color: rgba(20, 20, 20, 1);
+  background-color: var(--primaryColor);
 
   border-radius: 8px;
 
@@ -24,7 +24,7 @@
 .spanMessage {
   color: white;
   opacity: 0.7;
-  font-size: 20px;
+  font-size: var(--fontSubTitle);
   font-weight: 700;
   letter-spacing: 3px;
 
