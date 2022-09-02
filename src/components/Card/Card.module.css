@@ -4,8 +4,8 @@
 
   border-radius: 8px;
 
-  height: 20rem;
-  width: 12rem;
+  height: var(--cardHeight);
+  width: var(--cardWidth);
 
   display: grid;
   grid-template-rows: 1fr 1fr;
@@ -15,7 +15,7 @@
 
   padding: 1rem;
 
-  background-color: rgba(20, 20, 20, 1);
+  background-color: var(--primaryColor);
 
   transition: 0.2s;
 }
@@ -33,33 +33,15 @@
 }
 
 .oro {
-  background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
-              radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+  background: var(--goldenGradient);
 }
 
 .plata {
-  background: linear-gradient(180deg, hsl(0,0%,78%)  0%, 
-    hsl(0,0%,90%) 47%, 
-    hsl(0,0%,78%) 53%,
-    hsl(0,0%,70%)100%);
+  background: var(--silverGradient);
 }
 
 .bronce {
-  background: linear-gradient(
-    -72deg,
-    #ca7345,
-    #ffdeca 16%,
-    #ca7345 21%,
-    #ffdeca 24%,
-    #a14521 27%,
-    #ca7345 36%,
-    #ffdeca 45%,
-    #ffdeca 60%,
-    #ca7345 72%,
-    #ffdeca 80%,
-    #ca7345 84%,
-    #732100
-  );
+  background: var(--bronzeGradient);
 }
 
 .imageContainer {
@@ -134,14 +116,14 @@
   align-self: center;
   justify-self: center;
 
-  background: linear-gradient(65.58deg, rgba(0, 66, 255, 1) -11.84%, rgba(235, 0, 27, 1) 98.75%);
+  background: var(--primaryGradient);
   background-size: 150% 150%;
 
   color: white;
   border: none;
 
   font-weight: 600;
-  font-size: 16px;
+  font-size: var(--fontMedium);
 
   letter-spacing: 2px;
 
@@ -155,7 +137,7 @@
 
 .title {
   font-weight: 600;
-  font-size: 18px;
+  font-size: var(--fontLarge);
   color: white;
   text-transform: capitalize;
 
@@ -172,7 +154,7 @@
 
 .infoRanking,
 .infoId {
-  font-size: 14px;
+  font-size: var(--fontSmall);
   color: rgba(255, 255, 255, 0.4);
   letter-spacing: 2px;
 }
@@ -196,7 +178,7 @@
   left: calc(-1 * var(--borderWidth));
   height: calc(100% + var(--borderWidth) * 2);
   width: calc(100% + var(--borderWidth) * 2);
-  background: linear-gradient(65.58deg, rgba(0, 66, 255, 1) -11.84%, rgba(235, 0, 27, 1) 98.75%);
+  background: var(--primaryGradient);
   border-radius: calc(2 * var(--borderWidth));
   z-index: -1;
   
@@ -221,12 +203,9 @@
   animation: animatedgradient 3s ease alternate infinite
 }
 
-.btnDetails:hover {
-  box-shadow: 0px 0px 8px 0px rgba(255, 255, 255, 0.9);
-}
-
+.btnDetails:hover,
 .gradientBorder:hover {
-  box-shadow: 0px 0px 16px 0px rgba(255, 255, 255, 0.9);
+  box-shadow: var(--glowOutside);
 }
 
 .containerRibbon {
@@ -242,10 +221,6 @@
 .containerTrophy {
   grid-row: 3 / 4;
   grid-column: 5 / 6;
-}
-
-.cardContainer:hover {
-  /*transform: translateY(-1rem);*/
 }
 
 .containerRibbon > svg > path,
