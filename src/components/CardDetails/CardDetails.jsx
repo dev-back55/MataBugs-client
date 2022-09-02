@@ -123,7 +123,7 @@ export default function CardDetails() {
       </div>
       <div className = {s.detailsContainer}>
         <div>
-          <Link to="/search"><h3 className={s.closeCard}>X</h3></Link>
+          <Link to="/search"><button className={s.closeCard} name="closeCardDetail">X</button></Link>
         </div>
         <div className = {s.imageContainer}>
           <ImageLoader image = {player.avatar} alt = {"Thor"} setImageLoaded = {handleOnLoadAvatar} delay = {0}/>
@@ -146,8 +146,8 @@ export default function CardDetails() {
             {player.ranking}
           </span>
         </div>
-        {isAdmin && !editPerfil&& <button className = {s.btnDetails} onClick={(e) => handleEdit(e)}>Edit Profile</button>}
-        {isAdmin && editPerfil && <button className = {s.btnDetails} onClick={(e) => handleConfirme(e)}>Confirme</button>}
+        {isAdmin && !editPerfil&& <button className = {s.btnDetails} name="editprofile" onClick={(e) => handleEdit(e)}>Edit Profile</button>}
+        {isAdmin && editPerfil && <button className = {s.btnDetails} name="confirme" onClick={(e) => handleConfirme(e)}>Confirme</button>}
       </div>
     </div>
   );

@@ -20,12 +20,12 @@ export function LogInLogUp() {
     const [errorsNickname, setErrorsNickname] = useState({})
     const [errorsAvatar, setErrorsAvatar] = useState({})
 
-    const [ dataErrors, setDataErrors] = useState(false);
+    // const [ dataErrors, setDataErrors] = useState(false);
   
     // Email Control // NickName Control  // Image Control  // Email Control
     function handleChangePlayer(e){
         e.preventDefault();
-        setDataErrors(false)
+        // setDataErrors(false)
         setPlayer({
             ...player,
             [e.target.name]: e.target.value
@@ -39,6 +39,11 @@ export function LogInLogUp() {
     
     function handleChangeSignup(e) {
         e.preventDefault();
+        if(!signup) {
+            setErrorsNickname({})
+            setErrorsAvatar({})
+            // setDataErrors(false)
+        } 
         setSignup(!signup)
     }
     
@@ -47,76 +52,66 @@ export function LogInLogUp() {
         e.preventDefault();
         setErrorsEmail(validateEmail({...player,[e.target.name]: e.target.value}))
         setErrorsPassword(validatePassword({...player,[e.target.name]: e.target.value}))
+        console.log("submit sign in: false", signup)
         if(signup) {
             setErrorsNickname(validateNickname({...player,[e.target.name]: e.target.value}))
             setErrorsAvatar(validateAvatar({...player,[e.target.name]: e.target.value}));
-            if(!errorsEmail.email && !errorsPassword.password && !errorsNickname.nickname && !errorsAvatar.avatar){
-                setDataErrors(false)
+
+            if(errorsEmail.email === true && errorsPassword.password === true && errorsNickname.nickname === true && errorsAvatar.avatar === true ){
+                // setDataErrors(false)
                 dispatch(signupPlayer(player))
-            } else {
-                setDataErrors(true);
-            }
+            } 
         } else {
-            setErrorsNickname({})
-            setErrorsAvatar({})
-            if(!errorsEmail.email && !errorsPassword.password ){
-                setDataErrors(false)
+            if(errorsEmail.email === true && errorsPassword.password === true ){
+                // setDataErrors(false)
                 dispatch(signinPlayer(player))
-            } else {
-                setDataErrors(true);
-            }
+            } 
         }
     }
 
     useEffect(() => {
-        if(errorsEmail.email || errorsPassword.password || errorsNickname.nickname || errorsAvatar.avatar){
-            setDataErrors(true)
-        }        
-    }, [errorsEmail, errorsNickname, errorsPassword, errorsAvatar])
+        if(player.email !== '') setErrorsEmail(validateEmail(player));
+        if(player.password !== '') setErrorsPassword(validatePassword(player));
+        if(player.nickname !== '' && signup) setErrorsNickname(validateNickname(player));
+        if(player.avatar !== '' && signup) setErrorsAvatar(validateAvatar(player));    
+    }, [ signup, player ])
 
-
-    useEffect(() => {
-        if(!signup && error) {
-
-        }   
-    }, [error])
 
         return (
             <div className = {s.container}>
                 <div className={s.containerCreatePlayer}>
                     <div>
-                        
                         <h2 className={s.title}> {signup ? "Sign Up" : "Sign In" } </h2>
                         <form onSubmit={e => handleOnSubmit(e)}> 
                             <div className={s.containerInput}>
                                     <label className={s.labelInput}> 
                                         Email: * 
-                                        {errorsEmail?.email && (<span className={s.danger}>{errorsEmail.email}</span>)} 
+                                        {errorsEmail?.email !== true && (<span className={s.danger}>{errorsEmail.email}</span>)} 
                                         {error && (<span className={s.danger}>{error.message}</span>)} 
                                     </label>
                                     <input className={s.inputCreate} placeholder='Add an email' type='email' value={player.email} name='email' onChange={(e) => handleChangePlayer(e)}></input>                   
                                     <br></br>
 
                                 {signup && ( <>
-                                    <label className={s.labelInput}> NickName: * {errorsNickname?.nickname && (<span className={s.danger}>{errorsNickname.nickname}</span>)}</label>
+                                    <label className={s.labelInput}> NickName: * {errorsNickname?.nickname !== true && (<span className={s.danger}>{errorsNickname.nickname}</span>)}</label>
                                         <input className={s.inputCreate} placeholder='Write a nickname' type='text' value={player.nickname} name='nickname' onChange={(e) => handleChangePlayer(e)}></input>                   
                                         <br></br> 
                                 </> )}
 
-                                <label className={s.labelInput}> Password: * {errorsPassword?.password && (<span className={s.danger}>{errorsPassword.password}</span>)} </label>
+                                <label className={s.labelInput}> Password: * {errorsPassword?.password !== true && (<span className={s.danger}>{errorsPassword.password}</span>)} </label>
                                     <input className={s.inputCreate} placeholder='Add a password' type='text' value={player.password} name='password' onChange={(e) => handleChangePlayer(e)}></input>
                                     <br></br>
 
                                 {signup && ( <>
-                                <label className={s.labelInput}> Avatar: {errorsAvatar.avatar && (<span className={s.danger}>{errorsAvatar.avatar}</span>)} </label>
+                                <label className={s.labelInput}> Avatar: {errorsAvatar?.avatar !== true && (<span className={s.danger}>{errorsAvatar.avatar}</span>)} </label>
                                     <input className={s.inputCreate} placeholder='Add a avatar¨s link' type='text' value={player.avatar} name='avatar' onChange={(e) => handleChangePlayer(e)}></input>
                                     <br></br>
                                 </> )}
                             </div>
 
-                                {dataErrors && (<span className={s.danger}>Please check all Errors, before to submit.</span>)}
+                                {/* {dataErrors && (<span className={s.danger}>Please check all Errors, before to submit.</span>)} */}
                             <div >
-                                <button className={s.buttonCreate} type='submit'>{signup ? "Sign Up" : "Sign In"}</button>{dataErrors.withErrors && (<span className='danger'>Please check all Errors, before to submit.</span>)}
+                                <button className={s.buttonCreate} type='submit'>{signup ? "Sign Up" : "Sign In"}</button>
                             </div>
                             <div className={s.changeLoginLogout}>
                                 {signup ? "Already a user?" : "No account yet?" } <span onClick={(e) => handleChangeSignup(e)} className={s.loginlogup}>{signup ? "Sign In here!" : "Sign Up here!"}</span>

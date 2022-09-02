@@ -39,7 +39,7 @@ export default function Card({ id, nickname, status, ranking, avatar }) {
           <Trophy /> 
         </div>
         <span className = {s.infoRanking}>{ranking}</span>
-        <button className = {s.btnDetails} onClick = {handleClick}>Details</button>
+        <button className = {s.btnDetails} name="details" onClick = {handleClick}>Details</button>
       </div>
     </div>
   );

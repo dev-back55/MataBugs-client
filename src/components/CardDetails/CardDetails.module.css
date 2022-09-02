@@ -204,9 +204,12 @@
 
 .closeCard {
   color: white;
+  background: rgba(255, 255, 255, 0);
+  border-color: #ffffff00;
   position: fixed;
   right: 25px;
-  top: 0px;
+  top: 25px;
+  font-size: 15px;
   cursor: pointer;
 }
 
