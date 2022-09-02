@@ -26,7 +26,7 @@ export default function NavBar() {
       <Logo isInNavbar = {true} />
       <div className = {s.navbarOptions}>
         {
-          false && 
+          true && 
           <PlayerIcon
             avatar = {onePlayer.avatar}
             nickname = {onePlayer.nickname}
@@ -36,10 +36,9 @@ export default function NavBar() {
           />
         }
         {
-          true &&
+          false &&
           <div className = {s.containerLogin}>
             <button className = {s.btnDetails}>LOGIN</button>
-            <button className = {s.btnDetails}>SIGN IN</button>
           </div>
         }
       </div>
