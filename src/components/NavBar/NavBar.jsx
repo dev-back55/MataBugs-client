@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import SearchPlayer from '../SearchPlayer/SearchPlayer';
 import Logo from '../Logo/Logo';
 import PlayerIcon from '../PlayerIcon/PlayerIcon';
@@ -13,7 +14,7 @@ export default function NavBar() {
   const onePlayer = listOfUsers[0];
 
   let handleClick = function() {
-    setShowOptions(!showOptions)
+    setShowOptions(!showOptions);
   }
 
   let handlePickOption = function(value) {
@@ -26,7 +27,7 @@ export default function NavBar() {
       <Logo isInNavbar = {true} />
       <div className = {s.navbarOptions}>
         {
-          true && 
+          false && 
           <PlayerIcon
             avatar = {onePlayer.avatar}
             nickname = {onePlayer.nickname}
@@ -36,10 +37,12 @@ export default function NavBar() {
           />
         }
         {
-          false &&
-          <div className = {s.containerLogin}>
-            <button className = {s.btnDetails}>LOGIN</button>
-          </div>
+          true &&
+          <Link to = '/login' style = {{textDecoration: 'none'}}>
+            <div className = {s.containerLogin}>
+              <button className = {s.btnDetails}>SIGN IN</button>
+            </div>
+          </Link>
         }
       </div>
       <ModalPickOption 

@@ -101,7 +101,7 @@ export default function CardDetails() {
     {
       (!player || !show.both) && !noPlayerFound && !error &&
       <div className = {s.loadingContainer}>
-        <ShowLoading message = {"Searching"}/>
+        <ShowLoading message = {"Loading"}/>
       </div>
     }
     {
