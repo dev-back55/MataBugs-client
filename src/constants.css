@@ -10,6 +10,8 @@
   --crownWidth: 6rem;
   --rowHallOfFame: 4rem;
   --paddingStatus: 0.4rem;
+  --logo: 50px;
+  --logoText: 165px;
 
   --fontTitle: 32px;
   --fontSubTitle: 20px;
@@ -115,5 +117,8 @@
     --fontSmall: 11px;
 
     --marginBottom: 10rem;
+
+    --logo: 40px;
+    --logoText: 145px;
   }
 }

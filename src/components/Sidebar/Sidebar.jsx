@@ -1,4 +1,5 @@
 import React from 'react';
+import Logo from '../Logo/Logo';
 import Links from '../Links/Links';
 import Filters from '../Filters/Filters';
 import ToggleSideBarResponsive from '../ToggleSideBarResponsive/ToggleSideBarResponsive';
@@ -11,6 +12,7 @@ export default function Sidebar() {
   return (
     <>
       <div className = {`${s.container} ${showSidebarResponsive ? s.showSidebarResponsive : ''}`}>
+        <Logo />
         <Links />
         <Filters />
         {
