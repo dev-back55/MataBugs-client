@@ -1,15 +1,11 @@
 import React from 'react';
-import Loading from '../SVG/Loading';
-
-import s from './ShowLoading.module.css';
+import ShowBox from '../ShowBox/ShowBox';
 
 export default function ShowLoading({ message = "Loading" }) {
   return (
-    <div className = {s.container}>
-      <div className = {s.loadingContainer}>
-        <Loading />
-      </div>
-      <span className = {s.spanMessage}>{message}</span>
-    </div>
+    <ShowBox
+      type = {"LOADING"}
+      message = {message}
+    />
   );
 }

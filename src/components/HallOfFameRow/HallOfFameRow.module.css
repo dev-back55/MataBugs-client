@@ -1,7 +1,7 @@
 .container {
   display: grid;
   grid-template-columns: 10% 15% 25% 15% 15% 20%;
-  grid-template-rows: 4rem;
+  grid-template-rows: var(--rowHallOfFame);
 
   padding: 0.5rem;
 
@@ -14,21 +14,18 @@
 
   border-radius: 8px;
 
-  background-color: rgba(20, 20, 20, 1);
+  background-color: var(--primaryColor);
 
-  font-size: 16px;
+  font-size: var(--fontMedium);
   font-weight: 500;
   letter-spacing: 1px;
 
   box-shadow:inset 0px 0px 0px 3px rgba(255, 255, 255, 0.2);
 }
 
-.first {
-  background: linear-gradient(65.58deg, rgba(0, 66, 255, 0.5) -11.84%, rgba(235, 0, 27, 0.5) 98.75%);
-}
-
+.first,
 .second {
-  background: linear-gradient(65.58deg, rgba(0, 66, 255, 0.5) -11.84%, rgba(235, 0, 27, 0.5) 98.75%);
+  background: var(--primaryGradientWithLessOpacity);
 }
 
 .avatarContainer {
@@ -45,11 +42,11 @@
 }
 
 .spanStatus {
-  padding: 0.4rem;
+  padding: var(--paddingStatus);
   border-radius: 8px;
   text-transform: uppercase;
 
-  font-size: 12px;
+  font-size: var(--fontSmallest);
   letter-spacing: 3px;
   width: 80%;
 }
@@ -59,35 +56,17 @@
 }
 
 .oro {
-  background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
-              radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+  background: var(--goldenGradient);
 }
 
 .plata {
-  background: linear-gradient(180deg, hsl(0,0%,78%)  0%, 
-    hsl(0,0%,90%) 47%, 
-    hsl(0,0%,78%) 53%,
-    hsl(0,0%,70%)100%);
+  background: var(--silverGradient);
 
   color: grey;
 }
 
 .bronce {
-  background: linear-gradient(
-    -72deg,
-    #ca7345,
-    #ffdeca 16%,
-    #ca7345 21%,
-    #ffdeca 24%,
-    #a14521 27%,
-    #ca7345 36%,
-    #ffdeca 45%,
-    #ffdeca 60%,
-    #ca7345 72%,
-    #ffdeca 80%,
-    #ca7345 84%,
-    #732100
-  );
+  background: var(--bronzeGradient);
 
   color: saddlebrown;
 }
@@ -102,8 +81,8 @@
 
 .containerHexagon {
 
-  width: 3.5rem;
-  height: 3.5rem;
+  width: calc(var(--rowHallOfFame) * 0.8);
+  height: calc(var(--rowHallOfFame) * 0.8);
 
   z-index: 3;
 
@@ -111,8 +90,8 @@
 }
 
 .containerTrophy {
-  width: 2rem;
-  height: 2rem;
+  width: calc(var(--rowHallOfFame) * 0.5);
+  height: calc(var(--rowHallOfFame) * 0.5);
 
   z-index: 5;
 

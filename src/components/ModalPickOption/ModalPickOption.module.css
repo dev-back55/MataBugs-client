@@ -4,10 +4,10 @@
   position: absolute;
   z-index: 50;
   padding: 1rem;
-  background: rgba(32, 32, 36, 1);
+  background: var(--primaryColorLight);
   color: white;
   border-radius: 8px;
-  box-shadow:inset 0px 0px 0px 1px rgba(255, 255, 255, 0.2);
+  box-shadow: var(--borderInside);
 }
 
 .showOptions {
@@ -36,6 +36,7 @@
   letter-spacing: 1px;
   cursor: pointer;
   text-transform: capitalize;
+  font-size: var(--fontSmall);
 }
 
 .selectOption:hover {

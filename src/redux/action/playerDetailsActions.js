@@ -1,19 +1,17 @@
 import { ActionTypes } from './index';
 import axios from 'axios';
 import { createAsyncThunk, createAction } from '@reduxjs/toolkit';
-import { promisifiedSetTimeOut } from '../../lib/util';
 import { API_ROUTE } from '../../lib/constants';
-
-export const getPlayer = createAsyncThunk(
-  ActionTypes.PLAYER_FOUND,
-  async (player) => {
-    await promisifiedSetTimeOut(1000);
-    return player;
-  }
-);
 
 export const clearPlayerDetails = createAction(ActionTypes.PLAYER_DETAILS_CLEARED);
 
+export const getPlayerDetails = createAsyncThunk(
+  ActionTypes.PLAYER_FOUND,
+  async (playerId) => {
+    const playerFound = await axios.get(`${API_ROUTE}/search?text=${playerId}`);
+    return playerFound.data;
+  }
+);
 
 export const signupPlayer = createAsyncThunk(
   ActionTypes.SIGNUP_PLAYER,

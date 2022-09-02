@@ -13,12 +13,16 @@ export default function SearchView() {
   const searchState = useSelector((state) => state.search);
 
   React.useEffect(() => {
-    dispatch(searchPlayers(generateQueryWithState(searchState)));
+    loadPlayers();
 
     return (() => {
       dispatch(resetFilter());
     })
   }, []);
+
+  let loadPlayers = function() {
+    dispatch(searchPlayers(generateQueryWithState(searchState)));
+  }
 
   return (
     <div className = {s.container}>
@@ -26,6 +30,8 @@ export default function SearchView() {
       <Cards
         users = {searchState.players}
         loading = {searchState.loading}
+        error = {searchState.error}
+        retryCB = {loadPlayers}
       />
     </div>
   );

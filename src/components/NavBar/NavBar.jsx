@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchPlayer from '../SearchPlayer/SearchPlayer';
+import Logo from '../Logo/Logo';
 import PlayerIcon from '../PlayerIcon/PlayerIcon';
 import ModalPickOption from '../ModalPickOption/ModalPickOption';
 import { listOfUsers } from '../../lib/userModel';
@@ -22,23 +23,25 @@ export default function NavBar() {
   return (
     <div className = {s.container}>
       <SearchPlayer />
-      {
-        true && 
-        <PlayerIcon
-          avatar = {onePlayer.avatar}
-          nickname = {onePlayer.nickname}
-          minimize = {false}
-          showNickName = {true}
-          handleClick = {handleClick}
-        />
-      }
-      {
-        false &&
-        <div className = {s.containerLogin}>
-          <button className = {s.btnDetails}>LOGIN</button>
-          <button className = {s.btnDetails}>SIGN IN</button>
-        </div>
-      }
+      <Logo isInNavbar = {true} />
+      <div className = {s.navbarOptions}>
+        {
+          true && 
+          <PlayerIcon
+            avatar = {onePlayer.avatar}
+            nickname = {onePlayer.nickname}
+            minimize = {false}
+            showNickName = {true}
+            handleClick = {handleClick}
+          />
+        }
+        {
+          false &&
+          <div className = {s.containerLogin}>
+            <button className = {s.btnDetails}>LOGIN</button>
+          </div>
+        }
+      </div>
       <ModalPickOption 
         style = {s.modalPickOptionStyle}
         values = {["View Profile", "Edit Profile", "Logout"]}
