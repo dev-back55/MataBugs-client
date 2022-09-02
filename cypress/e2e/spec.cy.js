@@ -1,6 +1,6 @@
 describe('empty spec', () => {
   beforeEach('',()=>{
-    cy.visit('http://localhost:3000')
+    cy.visit('/')
   })
   it('frontpag can be opened', () => {
     cy.contains('thor')

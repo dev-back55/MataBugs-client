@@ -59,6 +59,14 @@
   align-self: flex-end;
 }
 
+.spanEditChange {
+  font-size: 16px;
+  color: white;
+  font-weight: 300;
+  margin: 5px 0px;
+  align-self: flex-end;
+}
+
 .detailsContainer {
   grid-row: 2 / 3;
   grid-column: 1 / 2;
@@ -159,8 +167,51 @@
   cursor: pointer;
 }
 
+.inputCreate{
+	width: 40%;
+  padding: 8px 10px;
+  margin-top: 5px;
+  font-weight: bold;
+  display: inline-block;
+  border: 1px solid #ccc;
+  background-color: rgba(172, 172, 172, 0.623);
+  border-radius: 4px;
+  box-sizing: border-box;
+
+}
+
+.inputCreate::placeholder {
+  font-weight: bold;
+  opacity: .5;
+  color: rgb(255, 255, 255);
+}
+
+.btnEditFeature {
+  cursor: pointer;
+  padding-top: 5px;
+  background-color: #7f5e5e00;
+  border-color: #ffffff00;
+  font-size: 25px;
+}
+
 .btnDetails:hover {
   box-shadow: 0px 0px 8px 0px rgba(255, 255, 255, 0.9);
+}
+
+.btnEditFeature:hover {
+  text-shadow: 1px 1px 2px pink;
+}
+
+.closeCard {
+  color: white;
+  position: fixed;
+  right: 25px;
+  top: 0px;
+  cursor: pointer;
+}
+
+.closeCard:hover {
+  text-shadow: 1px 1px 2px pink;
 }
 
 @keyframes showContainer {
@@ -204,6 +255,11 @@
 
   .spanStatus {
     align-self: center;
+  }
+
+  .spanStatus h6 {
+    margin-top: 10px;
+    margin-bottom: 0px;
   }
 
   .btnDetails {
