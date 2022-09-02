@@ -1,12 +1,13 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { getPlayer, clearPlayerDetails } from "../action/playerDetailsActions";
+import { clearPlayerDetails, getPlayerDetails } from "../action/playerDetailsActions";
 import { fetchHasFinished, fetchIsPending } from '../../lib/util';
 
 const initalState = {
   player: null,
   error: false,
   success: false,
-  loading: false
+  loading: false,
+  noPlayerFound: false,
 };
 
 const reducer = createReducer(initalState, builder => {
@@ -15,16 +16,18 @@ const reducer = createReducer(initalState, builder => {
 
     .addCase(clearPlayerDetails, state => {
       state.player = null;
+      state.noPlayerFound = false;
     })
 
-    .addCase(getPlayer.pending, state => {
+    .addCase(getPlayerDetails.pending, state => {
       state.loading = true;
     })
-    .addCase(getPlayer.fulfilled, (state, action) => {
+    .addCase(getPlayerDetails.fulfilled, (state, action) => {
       state.success = true;
-      state.player = action.payload;
+      if (action.payload.results === 1) state.player = action.payload.players;
+      else state.noPlayerFound = true;
     })
-    .addCase(getPlayer.rejected, state => {
+    .addCase(getPlayerDetails.rejected, state => {
       state.error = true;
     })
 

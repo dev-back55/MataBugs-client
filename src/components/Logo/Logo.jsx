@@ -9,7 +9,7 @@ export default function Logo({ isInNavbar = false }) {
       <div className = {s.imageContainer}>
         <img src = {logo} alt = {"Bugs Hunter Hall Of Fame"} className = {s.logo} />
       </div>
-      <span className = {s.spanLogoTitle}>Bugs Hunter ©</span>
+      <span className = {s.spanLogoTitle}>Bugs Hunters ©</span>
       <div className = {s.spanLogoSubTitle}>Hall of Fame</div>
     </div>
   );

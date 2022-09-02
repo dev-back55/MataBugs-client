@@ -1,10 +1,10 @@
 import React from 'react';
 import ShowBox from '../ShowBox/ShowBox';
 
-export default function ShowLoading({ message = "Loading" }) {
+export default function ShowNotFound({ message = "Error" }) {
   return (
     <ShowBox
-      type = {"LOADING"}
+      type = {"NOTFOUND"}
       message = {message}
     />
   );
