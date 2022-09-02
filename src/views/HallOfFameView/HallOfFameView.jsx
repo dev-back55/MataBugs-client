@@ -1,22 +1,39 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import ShowLoading from '../../components/ShowLoading/ShowLoading';
 import HallOfFameHeader from '../../components/HallOfFameHeader/HallOfFameHeader';
 import HallOfFameRows from '../../components/HallOfFameRows/HallOfFameRows';
-import { listOfUsers } from '../../lib/userModel';
+import { clearHallOfFame, getHallOfFame } from '../../redux/action/hallOfFameActions';
 
 import s from './HallOfFameView.module.css';
 
 export default function HallOfFameView() {
 
-  const listOfUsersSortedByRange = listOfUsers.sort((prevUser, nextUser) => nextUser.ranking - prevUser.ranking);
+  const dispatch = useDispatch();
+  const { hallOfFame, loading } = useSelector((state) => state.hallOfFame);
+
+  React.useEffect(() => {
+    dispatch(getHallOfFame());
+
+    return (() => {
+      dispatch(clearHallOfFame());
+    })
+  }, []);
+
+  if (hallOfFame.length === 0 || loading) return (
+    <div className = {s.loadingContainer}>
+      <ShowLoading message = {"Loading"}/>
+    </div>
+  );
 
   return (
     <div className = {s.container}>
       <HallOfFameHeader 
-        first = {listOfUsersSortedByRange[0].avatar} 
-        second = {listOfUsersSortedByRange[1].avatar} 
-        third = {listOfUsersSortedByRange[2].avatar}
+        first = {hallOfFame[0].avatar} 
+        second = {hallOfFame[1].avatar} 
+        third = {hallOfFame[2].avatar}
       />
-      <HallOfFameRows players = {listOfUsersSortedByRange} />
+      <HallOfFameRows players = {hallOfFame} />
     </div>
   );
 }
