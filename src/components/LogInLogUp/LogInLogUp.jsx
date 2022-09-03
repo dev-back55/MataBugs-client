@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { signupPlayer, signinPlayer } from '../../redux/action/playerDetailsActions';
+import { signupPlayer, signinPlayer } from '../../redux/action/PlayerLogActions';
 import { useDispatch, useSelector } from "react-redux";
 import s from './LogInLogUp.module.scss';
 import { validateEmail, validatePassword, validateNickname, validateAvatar } from "../../lib/validate";

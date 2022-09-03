@@ -1,6 +1,7 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { signupPlayer, signinPlayer, editPlayer, clearEditPlayer } from "../action/playerDetailsActions";
-// import { fetchHasFinished, fetchIsPending } from '../../lib/util';
+import { editPlayer, clearEditPlayer } from "../action/playerDetailsActions";
+import { signupPlayer, signinPlayer, logoutPlayer } from "../action/PlayerLogActions";
+import { fetchHasFinished, fetchIsPending } from '../../lib/util';
 
 const initalState = {
   player: {},
@@ -15,6 +16,7 @@ const initalState = {
 const reducer = createReducer(initalState, builder => {
 
   builder
+
     .addCase(signupPlayer.pending, state => {
       state.loading = true;
     })
@@ -25,6 +27,7 @@ const reducer = createReducer(initalState, builder => {
     .addCase(signupPlayer.rejected, (state, action) => {
       state.error = action.error;
     })
+
     .addCase(signinPlayer.pending, state => {
       state.loading = true;
     })
@@ -35,6 +38,18 @@ const reducer = createReducer(initalState, builder => {
     .addCase(signinPlayer.rejected, (state, action) => {
       state.error = action.error;
     })
+
+    .addCase(logoutPlayer.pending, state => {
+      state.loading = true;
+    })
+    .addCase(logoutPlayer.fulfilled, state => {
+      state.success = true;
+      state.player = {};
+    })
+    .addCase(logoutPlayer.rejected, state => {
+      state.error = true;
+    })
+
     .addCase(editPlayer.pending, state => {
       state.loadingEditPlayer = true;
     })
@@ -45,10 +60,20 @@ const reducer = createReducer(initalState, builder => {
     .addCase(editPlayer.rejected, (state, action) => {
       state.errorEditPlayer = action.error;
     })
+
     .addCase(clearEditPlayer, (state) => {
       state.errorEditPlayer = false;
       state.successEditPlayer = false;
       state.loadingEditPlayer = false;
+    })
+
+    .addMatcher(fetchIsPending, state => {
+      state.error = false;
+      state.success = false;
+    })
+
+    .addMatcher(fetchHasFinished, state => {
+      state.loading = false;
     })
 });
 

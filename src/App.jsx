@@ -8,6 +8,8 @@ import SearchView from './views/SearchView/SearchView';
 import CardDetails from './components/CardDetails/CardDetails';
 import HallOfFameView from './views/HallOfFameView/HallOfFameView';
 import PasswordRecoveryModal from './components/PasswordRecoveryModal/PasswordRecoveryModal';
+import ChangePasswordModal from './components/ChangePasswordModal/ChangePasswordModal';
+
 import './constants.css';
 import './App.css';
 
@@ -30,6 +32,7 @@ function App() {
           <Route exact path = '/login' element = { !player?.player ? <LogInLogUp /> : <Navigate to="/"/> } />
           <Route exact path = '/player/:id' element = { <CardDetails /> } />
           <Route exact path = '/recovery' element = { <PasswordRecoveryModal /> } />
+          <Route exact path = '/change' element = { <ChangePasswordModal /> } />
           <Route path = "*" element = { <Navigate to = "/home" replace /> } />
         </Routes>
       </div>
