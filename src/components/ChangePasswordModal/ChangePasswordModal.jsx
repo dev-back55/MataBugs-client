@@ -1,12 +1,20 @@
 import React from 'react';
+import { useSearchParams, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import SidebarTitle from '../SidebarTitle/SidebarTitle';
 import PasswordInput from '../PasswordInput/PasswordInput';
+import { recoverPassword, clearPasswordModal } from '../../redux/action/passwordActions';
 import { validatePassword } from '../../lib/validate';
 
 import s from './ChangePasswordModal.module.css';
 
 export default function ChangePasswordModal() {
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const { loading, success, error } = useSelector((state) => state.password);
   const [ newPassword, setNewPassword ] = React.useState({ 
     value: {
       input: '',
@@ -20,6 +28,17 @@ export default function ChangePasswordModal() {
     },
     view: false
   });
+  const [ token, setToken ] = React.useState(null);
+
+  React.useEffect(() => {
+    let tokenFound = searchParams.get('token');
+    if (!tokenFound) navigate('/home');
+    else setToken(tokenFound);
+
+    return (() => {
+      dispatch(clearPasswordModal());
+    })
+  }, []);
 
   React.useEffect(() => {
     let idTimeOutValue, idTimeOutRepeat;
@@ -39,6 +58,11 @@ export default function ChangePasswordModal() {
       clearTimeout(idTimeOutRepeat);
     })
   }, [newPassword.value.animate, newPassword.repeat.animate]);
+
+  React.useEffect(() => {
+    if (!error) return;
+    setNewPassword({ ...newPassword, value: { ...newPassword.value, animate: true, errorMsg: 'Server error. Try again.' } });
+  }, [error]);
 
   let handleOnChange = function(e) {
     const { name, value } = e.target;
@@ -60,11 +84,23 @@ export default function ChangePasswordModal() {
     const passwordsAreNotEqual = newPassword.value.input !== newPassword.repeat.input ? 'Passwords does not match' : false;
 
     setNewPassword({ 
-      value: { ...newPassword.value, errorMsg: errorPassword ? errorPassword : '', animate: errorPassword ? true : false },
-      repeat: { ...newPassword.repeat, errorMsg: passwordsAreNotEqual ? passwordsAreNotEqual : '', animate: passwordsAreNotEqual ? true : false },
+      value: { 
+        ...newPassword.value,
+        errorMsg: errorPassword ? errorPassword : '',
+        animate: errorPassword ? true : false
+      },
+      repeat: {
+        ...newPassword.repeat,
+        errorMsg: passwordsAreNotEqual ? passwordsAreNotEqual : '',
+        animate: passwordsAreNotEqual ? true : false
+      },
       view: newPassword.view
     });
+
+    if (!errorPassword && !passwordsAreNotEqual) dispatch(recoverPassword({ password: newPassword.value.input, token }));
   }
+
+  if (!token) return <></>;
 
   return (
     <div className = {s.container}>
@@ -79,7 +115,7 @@ export default function ChangePasswordModal() {
         placeholder = {'Insert a new password'}
         errorMsg = {newPassword.value.errorMsg}
         viewPassword = {newPassword.view}
-        disabled = {false}
+        disabled = {loading}
         handleOnChange = {handleOnChange}
         animate = {newPassword.value.animate}
       />
@@ -90,7 +126,7 @@ export default function ChangePasswordModal() {
         placeholder = {'Repeat the inserted password'}
         errorMsg = {newPassword.repeat.errorMsg}
         viewPassword = {newPassword.view}
-        disabled = {false}
+        disabled = {loading}
         handleOnChange = {handleOnChange}
         animate = {newPassword.repeat.animate}
       />
@@ -98,8 +134,8 @@ export default function ChangePasswordModal() {
         <label className = {s.labelInputCheck}>View Password</label>
         <input type = 'checkbox' value = {newPassword.view} onChange = {handleChangeCheck} name = 'view'/>
       </div>
-      <button className = {s.btnDetails} onClick = {handleUpdate} disabled = {false}>
-        { !false ? 'Update' : 'Updating...' }
+      <button className = {s.btnDetails} onClick = {handleUpdate} disabled = {loading}>
+        { !loading ? 'Update' : 'Updating...' }
       </button>
     </div>
   );

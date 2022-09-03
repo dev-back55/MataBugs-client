@@ -7,8 +7,16 @@ import { API_ROUTE } from '../../lib/constants';
 export const sendEmailToRecoverPassword = createAsyncThunk(
   ActionTypes.EMAIL_SENT_TO_RECOVER_PASSWORD,
   async (emailToSend) => {
-    const result = await axios.post(`${API_ROUTE}/password`, { email: emailToSend });
-    return result.data;
+    await axios.post(`${API_ROUTE}/password`, { email: emailToSend });
+    return;
+  }
+);
+
+export const recoverPassword = createAsyncThunk(
+  ActionTypes.PASSWORD_RECOVERED,
+  async (passwordWithToken) => {
+    await axios.put(`${API_ROUTE}/password`, passwordWithToken);
+    return;
   }
 );
 

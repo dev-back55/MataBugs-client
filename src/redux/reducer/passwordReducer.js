@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { clearPasswordModal, sendEmailToRecoverPassword } from "../action/passwordActions";
+import { clearPasswordModal, recoverPassword, sendEmailToRecoverPassword } from "../action/passwordActions";
 import { fetchHasFinished, fetchIsPending } from '../../lib/util';
 
 const initalState = {
@@ -23,13 +23,22 @@ const reducer = createReducer(initalState, builder => {
     .addCase(sendEmailToRecoverPassword.pending, state => {
       state.loading = true;
     })
-    .addCase(sendEmailToRecoverPassword.fulfilled, (state, action) => {
+    .addCase(sendEmailToRecoverPassword.fulfilled, state => {
       state.success = true;
-      console.log(action.payload);
     })
     .addCase(sendEmailToRecoverPassword.rejected, (state, action) => {
       state.error = true;
       if (action.error.message.includes("400")) state.playerNotFound = true;
+    })
+
+    .addCase(recoverPassword.pending, state => {
+      state.loading = true;
+    })
+    .addCase(recoverPassword.fulfilled, state => {
+      state.success = true;
+    })
+    .addCase(recoverPassword.rejected, state => {
+      state.error = true;
     })
 
     .addMatcher(fetchIsPending, state => {
