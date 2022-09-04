@@ -32,6 +32,7 @@ export default function NavBar() {
       case "View Profile":
         break;
       case "Edit Password":
+        navigate('/updatepassword');
         break;
       default:
         dispatch(logoutPlayer());

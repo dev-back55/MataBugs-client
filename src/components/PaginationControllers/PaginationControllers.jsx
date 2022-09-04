@@ -30,6 +30,9 @@ export default function PaginationControllers() {
         disabled = {searchState.loading || searchState.currentPage <= 1}
         handler = {handlePreviousPage}
       />
+      <span className = {s.pageCounter}>
+        {`${searchState.currentPage} / ${searchState.pages}`}
+      </span>
       <PaginationButton
         disabled = {searchState.loading || searchState.currentPage >= searchState.pages}
         handler = {handleNextPage}

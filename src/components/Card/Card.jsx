@@ -14,7 +14,6 @@ export default function Card({ id, nickname, status, ranking, avatar }) {
   const navigate = useNavigate(); 
 
   let handleClick = function() {
-    localStorage.setItem(`PLAYER-${id}`, JSON.stringify({ id, nickname, status, ranking, avatar }));
     navigate(`/player/${id}`);
   }
 

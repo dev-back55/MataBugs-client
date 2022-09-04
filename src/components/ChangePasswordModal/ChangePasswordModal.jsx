@@ -15,6 +15,7 @@ export default function ChangePasswordModal() {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
+  const { player } = useSelector((state) => state.player);
   const { loading, success, error } = useSelector((state) => state.password);
   const [ newPassword, setNewPassword ] = React.useState({ 
     value: {
@@ -29,12 +30,12 @@ export default function ChangePasswordModal() {
     },
     view: false
   });
+  const [ oldPassword, setOldPassword ] = React.useState(null);
   const [ token, setToken ] = React.useState(null);
 
   React.useEffect(() => {
     let tokenFound = searchParams.get('token');
-    if (!tokenFound) navigate('/home');
-    else setToken(tokenFound);
+    setToken(tokenFound);
 
     return (() => {
       dispatch(clearPasswordModal());
@@ -42,7 +43,7 @@ export default function ChangePasswordModal() {
   }, []);
 
   React.useEffect(() => {
-    let idTimeOutValue, idTimeOutRepeat;
+    let idTimeOutValue, idTimeOutRepeat, idTimeOutOld;
 
     if (newPassword.value.animate) 
       idTimeOutValue = setTimeout(() => 
@@ -54,16 +55,30 @@ export default function ChangePasswordModal() {
         setNewPassword((newPassword) => { return { ...newPassword, repeat: { ...newPassword.repeat, animate: false } } })
         , 315);
 
+    if (oldPassword && oldPassword.animate)
+      idTimeOutOld = setTimeout(() =>
+        setOldPassword((oldPassword) => { return { ...oldPassword, animate: false } })
+        , 315);
+
     return (() => {
       clearTimeout(idTimeOutValue);
       clearTimeout(idTimeOutRepeat);
+      clearTimeout(idTimeOutOld);
     })
-  }, [newPassword.value.animate, newPassword.repeat.animate]);
+  }, [newPassword.value.animate, newPassword.repeat.animate, oldPassword]);
 
   React.useEffect(() => {
     if (!error) return;
     setNewPassword({ ...newPassword, value: { ...newPassword.value, animate: true, errorMsg: 'Server error. Try again.' } });
   }, [error]);
+
+  React.useEffect(() => {
+    if (player && player.player) setOldPassword({
+      input: '',
+      errorMsg: '',
+      animate: false
+    });
+  }, [player]);
 
   let handleOnChange = function(e) {
     const { name, value } = e.target;
@@ -76,11 +91,19 @@ export default function ChangePasswordModal() {
     });
   }
 
+  let handleOnChangeOldPassword = function(e) {
+    const { value } = e.target;
+    setOldPassword({
+      ...oldPassword,
+      input: value 
+    });
+  }
+
   let handleChangeCheck = function() {
     setNewPassword({ ...newPassword, view: !newPassword.view });
   }
 
-  let handleUpdate = function() {
+  let getValidationNewPassword = function() {
     const { password: errorPassword } = validatePassword({ password: newPassword.value.input });
     const passwordsAreNotEqual = newPassword.value.input !== newPassword.repeat.input ? 'Passwords does not match' : false;
 
@@ -98,19 +121,58 @@ export default function ChangePasswordModal() {
       view: newPassword.view
     });
 
-    if (!errorPassword && !passwordsAreNotEqual) dispatch(recoverPassword({ password: newPassword.value.input, token }));
+    return (!errorPassword && !passwordsAreNotEqual);
   }
 
-  if (!token) return <></>;
+  let getValidationOldPassword = function() {
+    const { password: errorOldPassword } = validatePassword({ password: oldPassword.input });
+    setOldPassword({
+      ...oldPassword,
+      errorMsg: errorOldPassword ? errorOldPassword : '',
+      animate: errorOldPassword ? true : false
+    });
+
+    return !errorOldPassword;
+  }
+
+  let handleUpdate = function() {
+    let newPasswordIsValid = getValidationNewPassword();
+
+    if (!oldPassword) handleRecoverPassword(newPasswordIsValid);
+    else handleUpdatePassword(getValidationOldPassword() && newPasswordIsValid);
+  }
+
+  let handleRecoverPassword = function(newPasswordIsValid) {
+    if (newPasswordIsValid) dispatch(recoverPassword({ password: newPassword.value.input, token }));
+  }
+
+  let handleUpdatePassword = function(bothPasswordsAreValid) {
+    if (bothPasswordsAreValid) console.log('Ok');
+    else console.error('NOT OK');
+  }
 
   return (
     <div className = {s.container}>
       <div className = {s.closeCardContainer}>
-        <Link to = "/login" style = {{ textDecoration: 'none' }}>
+        <Link to = {`${ !oldPassword ? '/login' : '/home' }`} style = {{ textDecoration: 'none' }}>
           <h3 className = {s.closeCard}>X</h3>
         </Link>
       </div>
-      <SidebarTitle title = { !success ? "Restore Password" : "Password Updated"} />
+      <SidebarTitle title = { !success ? (player?.player ? "Update Password" : "Restore Password") : "Password Updated"} />
+      {
+        oldPassword &&
+        <PasswordInput
+          title = {'Current Password'}
+          name = {'oldPassword'}
+          value = {oldPassword.input}
+          placeholder = {'Insert the current password'}
+          errorMsg = {oldPassword.errorMsg}
+          viewPassword = {newPassword.view}
+          disabled = {loading}
+          handleOnChange = {handleOnChangeOldPassword}
+          animate = {oldPassword.animate}
+        />
+      }
       {
         !success && 
         <>

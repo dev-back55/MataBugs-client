@@ -4,7 +4,7 @@ import s from './ImageLoader.module.css';
 import ImageNotFound from '../SVG/ImageNotFound';
 import Loading from '../SVG/Loading';
 
-export default function ImageLoader({ image, alt, setImageLoaded = null, delay = 1500}) {
+export default function ImageLoader({ image, alt, setImageLoaded = null, delay = 500}) {
 
   let [ errorLoadingImage, setErrorLoadingImage ] = React.useState(false);
   let [ showImage, setShowImage ] = React.useState(false);

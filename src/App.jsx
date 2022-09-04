@@ -34,9 +34,9 @@ function App() {
           <Routes>
             <Route exact path = '/home' element = { <HallOfFameView /> } />
             <Route exact path = '/search' element = { <SearchView /> } />
-            <Route exact path = '/login' element = { !player?.player ? <LogInLogUp /> : <Navigate to="/"/> } />
+            <Route exact path = '/login' element = { !player?.player ? <LogInLogUp /> : <Navigate to = "/"/> } />
             <Route exact path = '/player/:id' element = { <CardDetails /> } />
-            <Route exact path = '/recoverpassword' element = { <PasswordRecoveryModal /> } />
+            <Route exact path = '/recoverpassword' element = { !player?.player ? <PasswordRecoveryModal /> : <Navigate to = "/"/>} />
             <Route exact path = '/updatepassword' element = { <ChangePasswordModal /> } />
             <Route path = "*" element = { <Navigate to = "/home" replace /> } />
           </Routes>
