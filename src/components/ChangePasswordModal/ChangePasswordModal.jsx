@@ -1,8 +1,9 @@
 import React from 'react';
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import { Link, useSearchParams, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import SidebarTitle from '../SidebarTitle/SidebarTitle';
 import PasswordInput from '../PasswordInput/PasswordInput';
+import Shield from '../SVG/Shield';
 import { recoverPassword, clearPasswordModal } from '../../redux/action/passwordActions';
 import { validatePassword } from '../../lib/validate';
 
@@ -105,38 +106,67 @@ export default function ChangePasswordModal() {
   return (
     <div className = {s.container}>
       <div className = {s.closeCardContainer}>
-        <h3 className = {s.closeCard}>X</h3>
+        <Link to = "/login" style = {{ textDecoration: 'none' }}>
+          <h3 className = {s.closeCard}>X</h3>
+        </Link>
       </div>
-      <SidebarTitle title = {"Restore Password"} />
-      <PasswordInput
-        title = {'New Password'}
-        name = {'value'}
-        value = {newPassword.value.input}
-        placeholder = {'Insert a new password'}
-        errorMsg = {newPassword.value.errorMsg}
-        viewPassword = {newPassword.view}
-        disabled = {loading}
-        handleOnChange = {handleOnChange}
-        animate = {newPassword.value.animate}
-      />
-      <PasswordInput
-        title = {'Repeat Password'}
-        name = {'repeat'}
-        value = {newPassword.repeat.input}
-        placeholder = {'Repeat the inserted password'}
-        errorMsg = {newPassword.repeat.errorMsg}
-        viewPassword = {newPassword.view}
-        disabled = {loading}
-        handleOnChange = {handleOnChange}
-        animate = {newPassword.repeat.animate}
-      />
-      <div className = {s.containerCheck}>
-        <label className = {s.labelInputCheck}>View Password</label>
-        <input type = 'checkbox' value = {newPassword.view} onChange = {handleChangeCheck} name = 'view'/>
-      </div>
-      <button className = {s.btnDetails} onClick = {handleUpdate} disabled = {loading}>
+      <SidebarTitle title = { !success ? "Restore Password" : "Password Updated"} />
+      {
+        !success && 
+        <>
+          <PasswordInput
+            title = {'New Password'}
+            name = {'value'}
+            value = {newPassword.value.input}
+            placeholder = {'Insert a new password'}
+            errorMsg = {newPassword.value.errorMsg}
+            viewPassword = {newPassword.view}
+            disabled = {loading}
+            handleOnChange = {handleOnChange}
+            animate = {newPassword.value.animate}
+          />
+          <PasswordInput
+            title = {'Repeat Password'}
+            name = {'repeat'}
+            value = {newPassword.repeat.input}
+            placeholder = {'Repeat the inserted password'}
+            errorMsg = {newPassword.repeat.errorMsg}
+            viewPassword = {newPassword.view}
+            disabled = {loading}
+            handleOnChange = {handleOnChange}
+            animate = {newPassword.repeat.animate}
+          />
+          <div className = {s.containerCheck}>
+            <label className = {s.labelInputCheck}>View Password</label>
+            <input type = 'checkbox' value = {newPassword.view} onChange = {handleChangeCheck} name = 'view'/>
+          </div>
+        </>
+      }
+      {
+        success &&
+        <>
+          <label className = {s.labelInput}> 
+            Your password has been updated successfully!
+          </label>
+          <div className = {s.svgContainer}>
+            <Shield />
+          </div>
+        </>
+      }
+      {
+        !success &&
+        <button className = {s.btnDetails} onClick = {handleUpdate} disabled = {loading}>
         { !loading ? 'Update' : 'Updating...' }
-      </button>
+        </button>
+      }
+      {
+        success &&
+        <Link to = "/login" style = {{ textDecoration: 'none' }}>
+          <button className = {s.btnDetails}>
+            Go Back To Login
+          </button>
+        </Link>
+      }
     </div>
   );
 }

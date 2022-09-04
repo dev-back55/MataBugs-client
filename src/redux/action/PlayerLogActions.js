@@ -1,7 +1,8 @@
 import { ActionTypes } from './index';
 import axios from 'axios';
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { API_ROUTE } from '../../lib/constants';
+import { getHeaderWithToken, getToken } from '../../lib/util';
 
 export const signupPlayer = createAsyncThunk(
   ActionTypes.SIGNUP_PLAYER,
@@ -25,3 +26,15 @@ export const logoutPlayer = createAsyncThunk(
     await axios.post(`${API_ROUTE}/logout`);
   }
 );
+
+export const fetchPlayerWithToken = createAsyncThunk(
+  ActionTypes.PLAYER_FETCHED_WITH_TOKEN,
+  async () => {
+    let { token, id } = getToken();
+    const playerFetched = await axios.post(`${API_ROUTE}/reload`, { id }, getHeaderWithToken(token));
+    return playerFetched.data;
+  }
+);
+
+export const dontFetchPlayerWithToken = createAction(ActionTypes.NO_PLAYER_FETCHED_WITH_TOKEN);
+export const finishDelay = createAction(ActionTypes.DELAY_FINISHED);

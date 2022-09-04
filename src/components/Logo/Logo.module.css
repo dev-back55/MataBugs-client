@@ -57,3 +57,29 @@
     display: none;
   }
 }
+
+.alwaysVisible {
+  display: grid !important;
+}
+
+.alwaysVisible {
+  --logo: 150px;
+  --logoText: 495px;
+
+  grid-template-columns: var(--logo) auto;
+}
+
+.alwaysVisible > .spanLogoTitle {
+  font-size: var(--fontMedium);
+}
+
+.alwaysVisible > .spanLogoSubTitle {
+  font-size: var(--fontTitle);
+}
+
+@media (max-width: 700px) {
+  .alwaysVisible {
+    --logo: 105px;
+    grid-template-columns: var(--logo) auto;
+  }
+}
