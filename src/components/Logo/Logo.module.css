@@ -58,6 +58,20 @@
   }
 }
 
+@media (max-width: 400px) {
+  .showOnNavbar {
+    grid-template-columns: var(--logo);
+  }
+
+  .spanLogoTitle {
+    display: none;
+  }
+
+  .spanLogoSubTitle {
+    display: none;
+  }
+}
+
 .alwaysVisible {
   display: grid !important;
 }

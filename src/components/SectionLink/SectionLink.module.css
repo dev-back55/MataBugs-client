@@ -61,3 +61,18 @@
   margin-bottom: 0;
   margin-top: 0;
 }
+
+@media (max-width: 400px) {
+  .verticalLink {
+    grid-template-columns: 2rem;
+  }
+
+  .verticalLink > svg {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+
+  .verticalLink > .label {
+    display: none;
+  }
+}
