@@ -5,7 +5,7 @@ import s from './Logo.module.css';
 
 export default function Logo({ isInNavbar = false }) {
   return (
-    <div className = {`${s.container} ${isInNavbar ? s.showOnNavbar : ''}`}>
+    <div id="componentLogo" className = {`${s.container} ${isInNavbar ? s.showOnNavbar : ''}`}>
       <div className = {s.imageContainer}>
         <img src = {logo} alt = {"Bugs Hunter Hall Of Fame"} className = {s.logo} />
       </div>

@@ -78,7 +78,7 @@ export function LogInLogUp() {
 
 
         return (
-            <div className = {s.container}>
+            <div id="componentLogin" className = {s.container}>
                 <div className={s.containerCreatePlayer}>
                     <div>
                         <h2 className={s.title}> {signup ? "Sign Up" : "Sign In" } </h2>

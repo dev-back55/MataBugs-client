@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { signupPlayer, signinPlayer, editPlayer, clearEditPlayer } from "../action/playerDetailsActions";
+import { signupPlayer, signinPlayer, editPlayer, clearEditPlayer, logoutPlayer } from "../action/playerDetailsActions";
 // import { fetchHasFinished, fetchIsPending } from '../../lib/util';
 
 const initalState = {
@@ -33,6 +33,7 @@ const reducer = createReducer(initalState, builder => {
       state.player = action.payload;
     })
     .addCase(signinPlayer.rejected, (state, action) => {
+      console.log(action.error)
       state.error = action.error;
     })
     .addCase(editPlayer.pending, state => {
@@ -49,6 +50,12 @@ const reducer = createReducer(initalState, builder => {
       state.errorEditPlayer = false;
       state.successEditPlayer = false;
       state.loadingEditPlayer = false;
+    })
+    .addCase(logoutPlayer.fulfilled, (state, action) => {
+      state.player = {};
+      state.error = false;
+      state.success = false;
+      state.loading = false;
     })
 });
 

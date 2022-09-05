@@ -27,7 +27,7 @@ export default function HallOfFameView() {
   );
 
   return (
-    <div className = {s.container}>
+    <div id="componentHallOfFame"className = {s.container}>
       <HallOfFameHeader 
         first = {hallOfFame[0].avatar} 
         second = {hallOfFame[1].avatar} 

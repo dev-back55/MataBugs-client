@@ -29,6 +29,14 @@ export const signinPlayer = createAsyncThunk(
   }
 );
 
+export const logoutPlayer = createAsyncThunk(
+  ActionTypes.LOGOUT_PLAYER,
+  async () => {
+    const logoutPlayer = await axios.get(`${API_ROUTE}/logout`)
+    return logoutPlayer.data;
+  }
+);
+
 export const editPlayer = createAsyncThunk(
   ActionTypes.EDIT_PLAYER,
   async (data) => {

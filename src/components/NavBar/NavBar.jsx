@@ -1,17 +1,23 @@
 import React from 'react';
 import SearchPlayer from '../SearchPlayer/SearchPlayer';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import Logo from '../Logo/Logo';
 import PlayerIcon from '../PlayerIcon/PlayerIcon';
 import ModalPickOption from '../ModalPickOption/ModalPickOption';
+import { logoutPlayer } from '../../redux/action/playerDetailsActions';
 import { Link } from 'react-router-dom';
-import { listOfUsers } from '../../lib/userModel';
+// import { listOfUsers } from '../../lib/userModel';
 
 import s from './NavBar.module.css';
 
 export default function NavBar() {
 
   const [ showOptions, setShowOptions ] = React.useState(false);
-  const onePlayer = listOfUsers[0];
+  const loginPlayer  = useSelector(state => state.player.player.player); 
+  const dispatch = useDispatch();
+  const navigate = useNavigate(); 
+  // const onePlayer = listOfUsers[0];
 
   let handleClick = function() {
     setShowOptions(!showOptions)
@@ -19,27 +25,30 @@ export default function NavBar() {
 
   let handlePickOption = function(value) {
     console.log(value);
+    if(value === "Logout") { dispatch(logoutPlayer()) }
+    if(value === "View Profile") { navigate(`/player/${loginPlayer.id}`) }
+    
   }
 
   return (
-    <div className = {s.container}>
+    <div id="componentNavBar" className = {s.container}>
       <SearchPlayer />
       <Logo isInNavbar = {true} />
       <div className = {s.navbarOptions}>
         {
-          true && 
+          loginPlayer && 
           <PlayerIcon
-            avatar = {onePlayer.avatar}
-            nickname = {onePlayer.nickname}
+            avatar = {loginPlayer.avatar}
+            nickname = {loginPlayer.nickname}
             minimize = {false}
             showNickName = {true}
             handleClick = {handleClick}
           />
         }
         {
-          false &&
+          !loginPlayer &&
           <div className = {s.containerLogin}>
-            <button className = {s.btnDetails}>LOGIN</button>
+            <Link to="/login"><button name="buttonLoginNavbar" className = {s.btnDetails}>LOGIN</button></Link>
           </div>
         }
       </div>

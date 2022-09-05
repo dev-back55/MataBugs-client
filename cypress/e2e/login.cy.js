@@ -1,13 +1,29 @@
 const randomNumber = Cypress.env("randomNumber")
 
-describe("Render the Login", () => {
-    // beforeEach(() => {
-    //     cy.visit("/login");
-    // });    
-    xit("Renders correctly component Login", () => {
-        cy.visit("/login");
-        cy.get(".LogInLogUp_container__JYEzn").should("exist");
+describe("Render the Login components:", () => {
+    before(() => {
+        cy.visit("/home");
+        cy.get("button[name=buttonLoginNavbar]").should("exist");
+        cy.get("button[name=buttonLoginNavbar]").click();
+    });
+    it("Renders correctly NavBar", () => {
+        cy.get("#componentNavBar").should("exist");
     })
+    it("Renders correctly SideBar", () => {
+        cy.get("#componentSidebar").should("exist");
+    })
+    it("Renders correctly Logo", () => {
+        cy.get("#componentLogo").should("exist");
+    })
+    it("Renders correctly Links", () => {
+        cy.get("#componentLinks").should("exist");
+    })
+    it("Renders correctly Login", () => {
+        cy.get("#componentLogin").should("exist");
+    })
+});
+
+describe("Render the Login", () => {
     xit("Sign Up Form: Check exist inputs", () => {
         cy.get('input[name=email]').should("exist");
         cy.get('input[name=nickname]').should("exist");

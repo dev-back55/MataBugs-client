@@ -1,3 +1,29 @@
+describe("Render the Detail Page components:", () => {
+    before(() => {
+        cy.visit("/home");
+        cy.findAllByText("All Players").should("exist");
+        cy.findAllByText("All Players").first().click();
+        cy.url().should("include", "search");
+        cy.get('button[name=details]').first().click();
+    });
+    it("Renders correctly NavBar", () => {
+        cy.get("#componentNavBar").should("exist");
+    })
+    it("Renders correctly SideBar", () => {
+        cy.get("#componentSidebar").should("exist");
+    })
+    it("Renders correctly Logo", () => {
+        cy.get("#componentLogo").should("exist");
+    })
+    it("Renders correctly Links", () => {
+        cy.get("#componentLinks").should("exist");
+    })
+    it("Renders correctly Card Details", () => {
+        cy.get("#componentCardDetail").should("exist");
+    })
+});
+
+
 describe("Render Search View:", () => {
     it("Renders correctly NavBar", () => {
         cy.visit("/search", { timeout: 10000 });
