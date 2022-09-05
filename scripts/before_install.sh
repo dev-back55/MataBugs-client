@@ -17,16 +17,16 @@ fi
 echo 'run after_install.sh: ' >> /home/ec2-user/app/MataBugs-client/deploy.log
 
 #give permission for everything in the express-app directory
-sudo chmod -R 777 /home/ec2-user/app/MataBugs-cient >> /home/ec2-user/app/MataBugs-client/deploy.log
+sudo chmod -R 777 /home/ec2-user/app/MataBugs-client >> /home/ec2-user/app/MataBugs-client/deploy.log
 
 echo 'cd /home/ec2-user/app/MataBugs-client' >> /home/ec2-user/app/MataBugs-client/deploy.log
-cd /home/ec2-user/app/MataBugs-client >> /home/ec2-user/app/MataBugs-client/deploy.log
+#cd /home/ec2-user/app/MataBugs-client >> /home/ec2-user/app/MataBugs-client/deploy.log
 
 echo 'npm install' >> /home/ec2-user/app/MataBugs-client/deploy.log 
-sudo npm install >> /home/ec2-user/app/MataBugs-client/deploy.log
+#sudo npm install >> /home/ec2-user/app/MataBugs-client/deploy.log
 echo 'Run build' >> /home/ec2-user/app/MataBugs-client/deploy.log
-sudo npm run build >> /home/ec2-user/app/MataBugs-client/deploy.log
+#sudo npm run build >> /home/ec2-user/app/MataBugs-client/deploy.log
 
 echo 'Copy build to nginx/html' >> /home/ec2-user/app/MataBugs-client/deploy.log
-sudo cp -R /home/ec2-user/app/MataBugs-client/build/* /usr/share/nginx/html/ >> /home/ec2-user/app/MataBugs-client/deploy.log
+#sudo cp -R /home/ec2-user/app/MataBugs-client/build/* /usr/share/nginx/html/ >> /home/ec2-user/app/MataBugs-client/deploy.log
 
