@@ -5,9 +5,9 @@ export function validateEmail(player) {
     const errorsEmail = {}
 
     if (validator.isEmpty(player.email)){
-            errorsEmail.email = "Add an email"
+            errorsEmail.email = "Add an e-mail"
     } else if (!validator.isEmail(player.email)){
-            errorsEmail.email = "Insert a valid email adress"
+            errorsEmail.email = "Insert a valid e-mail adress"
     } 
 
         return errorsEmail

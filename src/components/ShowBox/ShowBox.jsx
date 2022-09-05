@@ -18,7 +18,7 @@ export default function ShowBox({ type, message = "Loading", retryCB = null }) {
         <NotFound />
       }
       {
-        type == "RETRY" &&
+        type === "RETRY" &&
         <Retry />
       }
       </div>

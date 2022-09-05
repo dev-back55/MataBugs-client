@@ -8,7 +8,7 @@
 
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
 
   grid-gap: 0.5rem;
 
@@ -16,4 +16,11 @@
   align-content: center;
   align-items: center;
   justify-items: center;
+}
+
+.pageCounter {
+  font-weight: 500;
+  font-size: var(--fontLarge);
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 3px;
 }

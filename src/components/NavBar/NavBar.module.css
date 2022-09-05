@@ -44,7 +44,7 @@
 .containerLogin {
   height: 100%;
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: auto;
   grid-template-rows: 1fr;
   grid-gap: 1rem;
 }
@@ -52,6 +52,7 @@
 .modalPickOptionStyle {
   right: 1.5rem;
   bottom: -7.2rem;
+  bottom: -1rem;
   width: fit-content;
 }
 
@@ -65,6 +66,10 @@
     grid-template-columns: 1fr;
     grid-template-rows: 1rem 2.5rem;
   }
+
+  .modalPickOptionStyle {
+    bottom: -1.8rem;
+  }
 }
 
 @media (min-width: 1100px) {
@@ -76,6 +81,10 @@
   .navbarOptions {
     grid-row: 1 / 2;
     grid-column: 2 / 3;
+  }
+
+  .modalPickOptionStyle {
+    bottom: -5.3rem;
   }
 }
 

@@ -46,7 +46,7 @@ const reducer = createReducer(initalState, builder => {
     .addCase(searchPlayers.fulfilled, (state, action) => {
       state.success = true;
       
-      state.players = action.payload.players;
+      state.players = Array.isArray(action.payload.players) ? action.payload.players : [ action.payload.players ];
       state.pages = action.payload.totalPages;
       state.results = action.payload.results 
     })
