@@ -32,7 +32,7 @@ npm install >> /home/ec2-user/app/MataBugs-client/deploy.log
 #echo 'copy example to env' >> /home/ec2-user/app/MataBugs-API/deploy.log
 #sudo cp .env.example .env >> /home/ec2-user/app/MataBugs-API/deploy.log
 
-echo 'npm run build' >> /home/ec2-user/app/MataBugs-client/deploy.log
+#echo 'npm run build' >> /home/ec2-user/app/MataBugs-client/deploy.log
 #sudo rm -r build >> /home/ec2-user/app/MataBugs-client/deploy.log
 #echo 'Ejecutando' >> /home/ec2-user/app/MataBugs-client/deploy.log
 #npm run build >> /home/ec2-user/app/MataBugs-client/deploy.log
