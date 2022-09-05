@@ -20,13 +20,13 @@ echo 'run after_install.sh: ' >> /home/ec2-user/app/MataBugs-client/deploy.log
 sudo chmod -R 777 /home/ec2-user/app/ >> /home/ec2-user/app/MataBugs-client/deploy.log
 
 echo 'cd /home/ec2-user/app/MataBugs-client' >> /home/ec2-user/app/MataBugs-client/deploy.log
-cd /home/ec2-user/app/MataBugs-client >> /home/ec2-user/app/MataBugs-client/deploy.log
+sudo cd /home/ec2-user/app/MataBugs-client >> /home/ec2-user/app/MataBugs-client/deploy.log
 
 echo 'npm install' >> /home/ec2-user/app/MataBugs-client/deploy.log 
-npm install >> /home/ec2-user/app/MataBugs-client/deploy.log
+sudo npm install >> /home/ec2-user/app/MataBugs-client/deploy.log
 echo 'Run build' >> /home/ec2-user/app/MataBugs-client/deploy.log
-npm run build >> /home/ec2-user/app/MataBugs-client/deploy.log
+sudo npm run build >> /home/ec2-user/app/MataBugs-client/deploy.log
 
 echo 'Copy build to nginx/html' >> /home/ec2-user/app/MataBugs-client/deploy.log
-cp -R /home/ec2-user/app/MataBugs-client/build/* /usr/share/nginx/html/ >> /home/ec2-user/app/MataBugs-client/deploy.log
+sudo cp -R /home/ec2-user/app/MataBugs-client/build/* /usr/share/nginx/html/ >> /home/ec2-user/app/MataBugs-client/deploy.log
 
