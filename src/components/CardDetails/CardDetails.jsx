@@ -98,80 +98,79 @@ export default function CardDetails() {
 
   return (
     <>
-        {
-          (!player || !show.both) && !noPlayerFound && !error &&
-          <div className = {s.loadingContainer}>
-            <ShowLoading message = {"Searching"}/>
-          </div>
+    {
+      (!player || !show.both) && !noPlayerFound && !error &&
+      <div className = {s.loadingContainer}>
+        <ShowLoading message = {"Loading"}/>
+      </div>
+    }
+    {
+      noPlayerFound &&
+      <div className = {s.loadingContainer}>
+        <ShowNotFound message = {"Player Not Found"}/>
+      </div>
+    }
+    {
+      error &&
+      <div className = {s.loadingContainer}>
+        <ShowRetry message = {"Server Error. Retry?"} retryCB = {loadPlayerDetails}/>
+      </div>
+    }
+    {
+        player && !noPlayerFound && !error &&
+        
+        <div id="componentCardDetail" className = {`${s.container} ${!show.both ? s.hideContainer : '' }`}>
+          <div className = {s.statusContainer}>
+            <img src = {selectMedal[player.status]} alt = {`MEDALLA-${player.status}`} className = {s.medal} onLoad = {handleOnLoadMedal} />
+            <span className = {s.spanStatus}>
+              {`status: ${player.status}`}
+              {editPerfil && <h6>New Player Data:</h6> }
+              {info?.ranking && <h5 className = {s.spanEditChange}> New Ranking: {info.ranking}</h5> }
+              {info?.avatar && <h5 className = {s.spanEditChange}> New Avatar: {info.avatar.slice(0,10)}</h5> }
+              {info?.nickname && <h5 className = {s.spanEditChange}> New Nickname: {info.nickname}</h5> }
+              {successEditPlayer && <h5 className = {s.spanEditChange}> ✅{successEditPlayer} </h5> } 
+            </span>
+            <span className = {s.spanEditChange}>
 
-        }
-        {
-          noPlayerFound &&
-          <div className = {s.loadingContainer}>
-            <ShowNotFound message = {"Player Not Found"}/>
+              {editPerfilFeature.ranking && <input className={s.inputCreate} placeholder='New Ranking' type='text' name='ranking' onChange={(e) => handleChange(e)}></input>}
+              {editPerfilFeature.ranking && <button name='ranking' className={s.btnEditFeature} onClick={(e) => handleConfirmeFeature(e)}>✅</button>}
+              {editPerfilFeature.avatar && <input className={s.inputCreate} placeholder='New avatar' type='text' name='avatar' onChange={(e) => handleChange(e)}></input>}
+              {editPerfilFeature.avatar && <button name='avatar' className={s.btnEditFeature} onClick={(e) => handleConfirmeFeature(e)}>✅</button>}
+              {editPerfilFeature.nickname && <input className={s.inputCreate} placeholder='New nickname' type='text' name='nickname' onChange={(e) => handleChange(e)}></input>}
+              {editPerfilFeature.nickname && <button name='nickname' className={s.btnEditFeature} onClick={(e) => handleConfirmeFeature(e)}>✅</button>}
+
+            </span>
           </div>
-        }
-        {
-          error &&
-          <div className = {s.loadingContainer}>
-            <ShowRetry message = {"Server Error. Retry?"} retryCB = {loadPlayerDetails}/>
-          </div>
-        }
-        {
-          player && !noPlayerFound && !error &&
-          
-          <div id="componentCardDetail" className = {`${s.container} ${!show.both ? s.hideContainer : '' }`}>
-            <div className = {s.statusContainer}>
-              <img src = {selectMedal[player.status]} alt = {`MEDALLA-${player.status}`} className = {s.medal} onLoad = {handleOnLoadMedal} />
-              <span className = {s.spanStatus}>
-                {`status: ${player.status}`}
-                {editPerfil && <h6>New Player Data:</h6> }
-                {info?.ranking && <h5 className = {s.spanEditChange}> New Ranking: {info.ranking}</h5> }
-                {info?.avatar && <h5 className = {s.spanEditChange}> New Avatar: {info.avatar.slice(0,10)}</h5> }
-                {info?.nickname && <h5 className = {s.spanEditChange}> New Nickname: {info.nickname}</h5> }
-                {successEditPlayer && <h5 className = {s.spanEditChange}> ✅{successEditPlayer} </h5> } 
+          <div className = {s.detailsContainer}>
+            <div>
+              <Link to="/search"><h3 className={s.closeCard}>X</h3></Link>
+            </div>
+            <div className = {s.imageContainer}>
+              <ImageLoader image = {player.avatar} alt = {"Thor"} setImageLoaded = {handleOnLoadAvatar} delay = {0}/>
+              {editPerfil && <button className = {s.btnEditFeature} name='avatar' onClick={(e) => handleEditFeature(e)}>🪶</button>}
+            </div>
+            <span className = {s.title}>
+              {player.nickname}
+              {editPerfil && <button className = {s.btnEditFeature} name='nickname' onClick={(e) => handleEditFeature(e)}>🪶</button>}
               </span>
-              <span className = {s.spanEditChange}>
-
-                {editPerfilFeature.ranking && <input className={s.inputCreate} placeholder='New Ranking' type='text' name='ranking' onChange={(e) => handleChange(e)}></input>}
-                {editPerfilFeature.ranking && <button name='ranking' className={s.btnEditFeature} onClick={(e) => handleConfirmeFeature(e)}>✅</button>}
-                {editPerfilFeature.avatar && <input className={s.inputCreate} placeholder='New avatar' type='text' name='avatar' onChange={(e) => handleChange(e)}></input>}
-                {editPerfilFeature.avatar && <button name='avatar' className={s.btnEditFeature} onClick={(e) => handleConfirmeFeature(e)}>✅</button>}
-                {editPerfilFeature.nickname && <input className={s.inputCreate} placeholder='New nickname' type='text' name='nickname' onChange={(e) => handleChange(e)}></input>}
-                {editPerfilFeature.nickname && <button name='nickname' className={s.btnEditFeature} onClick={(e) => handleConfirmeFeature(e)}>✅</button>}
-
+            <div className = {s.infoId}>
+              <span>ID</span>
+              <span>{player.id}</span>
+            </div>
+            <div className = {s.infoRanking}>
+              <span>
+                RANKING
+                {editPerfil && loginPlayer?.admin && <button className={s.btnEditFeature} name='ranking' onClick={(e) => handleEditFeature(e)}>🪶</button>}
+              </span>
+              <span>
+                {player.ranking}
               </span>
             </div>
-            <div className = {s.detailsContainer}>
-              <div>
-                <Link to="/search"><h3 className={s.closeCard}>X</h3></Link>
-              </div>
-              <div className = {s.imageContainer}>
-                <ImageLoader image = {player.avatar} alt = {"Thor"} setImageLoaded = {handleOnLoadAvatar} delay = {0}/>
-                {editPerfil && <button className = {s.btnEditFeature} name='avatar' onClick={(e) => handleEditFeature(e)}>🪶</button>}
-              </div>
-              <span className = {s.title}>
-                {player.nickname}
-                {editPerfil && <button className = {s.btnEditFeature} name='nickname' onClick={(e) => handleEditFeature(e)}>🪶</button>}
-                </span>
-              <div className = {s.infoId}>
-                <span>ID</span>
-                <span>{player.id}</span>
-              </div>
-              <div className = {s.infoRanking}>
-                <span>
-                  RANKING
-                  {editPerfil && loginPlayer?.admin && <button className={s.btnEditFeature} name='ranking' onClick={(e) => handleEditFeature(e)}>🪶</button>}
-                </span>
-                <span>
-                  {player.ranking}
-                </span>
-              </div>
-              {isAdmin && !editPerfil&& <button className = {s.btnDetails} onClick={(e) => handleEdit(e)}>Edit Profile</button>}
-              {isAdmin && editPerfil && <button className = {s.btnDetails} onClick={(e) => handleConfirme(e)}>Confirme</button>}
-            </div>
+            {isAdmin && !editPerfil&& <button className = {s.btnDetails} onClick={(e) => handleEdit(e)}>Edit Profile</button>}
+            {isAdmin && editPerfil && <button className = {s.btnDetails} onClick={(e) => handleConfirme(e)}>Confirme</button>}
           </div>
-        }
+        </div>
+      }
     </>
   );
 }

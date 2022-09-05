@@ -13,6 +13,7 @@
   --paddingStatus: 0.4rem;
   --logo: 50px;
   --logoText: 165px;
+  --modalPassword: 25rem;
 
   --fontTitle: 32px;
   --fontSubTitle: 20px;
@@ -95,6 +96,8 @@
 
     --fontTitle: 25px;
     --fontSmallest: 8px;
+
+    --modalPassword: 70%;
   }
 }
 

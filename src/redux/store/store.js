@@ -3,10 +3,16 @@ import hallOfFameReducer from '../reducer/hallOfFameReducer';
 import searchReducer from '../reducer/searchPlayersReducer';
 import detailsReducer from '../reducer/playerDetailsReducer';
 import playerLogPlayer from '../reducer/playerLogReducer';
-//import commonReducer from '../reducer/commonReducer';
+import passwordReducer from '../reducer/passwordReducer';
 
 export const store = configureStore({
-  reducer: { details: detailsReducer, player: playerLogPlayer, search: searchReducer, hallOfFame: hallOfFameReducer},
+  reducer: { 
+    details: detailsReducer,
+    player: playerLogPlayer,
+    search: searchReducer,
+    hallOfFame: hallOfFameReducer,
+    password: passwordReducer
+  },
   devTools: process.env.NODE_ENV !== "production"
 });
 

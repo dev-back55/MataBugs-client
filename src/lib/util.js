@@ -42,3 +42,25 @@ export let generateQueryWithState = function(state) {
 export let generateQuery = function({ text = '', orderBy = 'ranking', order = 'descending', status = 'all', page = 1 }) {
   return `order=${orderBy},${order === 'descending' ? 'desc' : 'asc'}${text.length > 0 ? `&text=${text}` : ''}${status !== 'all' ? `&status=${status}` : ''}&page=${page}`;
 }
+
+export let saveToken = function(id, token) {
+  localStorage.setItem('player', JSON.stringify({ token, id }));
+}
+
+export let getToken = function() {
+  return JSON.parse(localStorage.getItem('player'));
+}
+
+export let existToken = function() {
+  return localStorage.getItem('player');
+}
+
+export let getHeaderWithToken = function(token) {
+  return { 
+    headers: {
+             "Content-type": "application/json",
+              "Authorization": `Bearer ${token}`
+    },
+    withCredentials: true,
+  }
+}

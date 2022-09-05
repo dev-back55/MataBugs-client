@@ -42,3 +42,9 @@
 .clickable {
   cursor: pointer;
 }
+
+@media (max-width: 400px) {
+  .showNickName {
+    display: none;
+  }
+}
