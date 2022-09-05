@@ -29,6 +29,7 @@ npm install >> /home/ec2-user/app/MataBugs-client/deploy.log
 #sudo cp .env.example .env >> /home/ec2-user/app/MataBugs-API/deploy.log
 
 echo 'npm run build' >> /home/ec2-user/app/MataBugs-client/deploy.log
+sudo rm -r build
 npm run build >>/home/ec2-user/app/MataBugs-client/deploy.log
 
 #sudo cp -r /home/ec2-user/app/MataBugs-client/build/* /usr/share/nginx/html/
