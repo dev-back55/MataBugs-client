@@ -13,7 +13,7 @@
 #  echo "Creating ${DIR} directory"
 #  mkdir ${DIR}
 #fi
-
+#
 echo 'run after_install.sh: ' >> /home/ec2-user/app/MataBugs-client/deploy.log
 
 #echo 'Restart Nginx' >> /home/ec2-user/app/MataBugs-client/deploy.log
