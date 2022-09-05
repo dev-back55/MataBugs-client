@@ -47,8 +47,5 @@ export function validateAvatar(player) {
         if (player.avatar === '') {
                 return errorsAvatar
         } 
-        else if (!(/^(https?:\/\/)?([\da-z-]+)\.([a-z]{2,6})([\w -])\/?/.test(player.nickname))){
-                errorsAvatar.avatar = "Add a correct link"
-        } 
     return errorsAvatar
 };
