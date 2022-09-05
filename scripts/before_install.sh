@@ -41,5 +41,5 @@ npm install >> /home/ec2-user/app/MataBugs-client/deploy.log
 #sudo chmod -R -f 777 /home/ec2-user/app/MataBugs-client/build >> /home/ec2-user/app/MataBugs-client/deploy.log
 
 #sudo cp -r /home/ec2-user/app/MataBugs-client/build/* /usr/share/nginx/html/
-
+#
 
