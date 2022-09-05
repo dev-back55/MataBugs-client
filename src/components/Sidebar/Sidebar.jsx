@@ -11,7 +11,7 @@ export default function Sidebar() {
   
   return (
     <>
-      <div className = {`${s.container} ${showSidebarResponsive ? s.showSidebarResponsive : ''}`}>
+      <div id="componentSidebar" className = {`${s.container} ${showSidebarResponsive ? s.showSidebarResponsive : ''}`}>
         <Logo />
         <Links />
         <Filters />

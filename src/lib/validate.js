@@ -2,19 +2,19 @@ import validator from 'validator';
 
 
 export function validateEmail(player) {
-    const errorsEmail = {}
+    const errorsEmail = { email: true };
 
     if (validator.isEmpty(player.email)){
-            errorsEmail.email = "Add an email"
+            errorsEmail.email = "Add an e-mail"
     } else if (!validator.isEmail(player.email)){
-            errorsEmail.email = "Insert a valid email adress"
+            errorsEmail.email = "Insert a valid e-mail adress"
     } 
 
         return errorsEmail
 };
 
 export function validatePassword(player) {
-    const errorsPassword = {}
+    const errorsPassword = { password: true };
 
     if (validator.isEmpty(player.password)){
             errorsPassword.password = "Add a password"
@@ -28,7 +28,7 @@ export function validatePassword(player) {
 };
 
 export function validateNickname(player) {
-        const errorsNickname = {}
+        const errorsNickname = { nickname: true };
         
         if (validator.isEmpty(player.nickname)){
                 errorsNickname.nickname = "Add a nickname"
@@ -42,11 +42,12 @@ export function validateNickname(player) {
 
 
 export function validateAvatar(player) {
-        const errorsAvatar = {}
+        const errorsAvatar = { avatar: true };
 
         if (player.avatar === '') {
                 return errorsAvatar
-        } else if (!(/^(https?:\/\/)?([\da-z-]+)\.([a-z]{2,6})([\w -])\/?/.test(player.nickname))){
+        } 
+        else if (!(/^(https?:\/\/)?([\da-z-]+)\.([a-z]{2,6})([\w -])\/?/.test(player.nickname))){
                 errorsAvatar.avatar = "Add a correct link"
         } 
     return errorsAvatar
