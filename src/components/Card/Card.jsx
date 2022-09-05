@@ -18,7 +18,7 @@ export default function Card({ id, nickname, status, ranking, avatar }) {
   }
 
   return (
-    <div className = {`${s.cardContainer} ${s.gradientBorder}`}>
+    <div id="componentCard" className = {`${s.cardContainer} ${s.gradientBorder}`}>
       <div className = {`${s.banner} ${s[status]}`}>
       </div>
       <div className = {s.imageContainer}>

@@ -152,7 +152,7 @@ export default function ChangePasswordModal() {
   }
 
   return (
-    <div className = {s.container}>
+    <div id="editUpdatePassword" className = {s.container}>
       <div className = {s.closeCardContainer}>
         <Link to = {`${ !oldPassword ? '/login' : '/home' }`} style = {{ textDecoration: 'none' }}>
           <h3 className = {s.closeCard}>X</h3>

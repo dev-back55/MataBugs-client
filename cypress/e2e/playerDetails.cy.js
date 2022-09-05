@@ -24,45 +24,39 @@ describe("Render the Detail Page components:", () => {
 });
 
 
-describe("Render Search View:", () => {
-    it("Renders correctly NavBar", () => {
-        cy.visit("/search", { timeout: 10000 });
-        cy.get('button[name=details]').first().click();
-        cy.get(".NavBar_container__bSMZq", { timeout: 10000 }).should("exist");
+describe("Render Card Details elements", () => {
+    it("Card Player: Renders correctly Card Image", () => {
+        cy.get("#imageCardDetail").should("exist");
     })
-    xit("Renders correctly Card Detail", () => {
-        cy.get(".CardDetails_container__pJs5H").should("exist");
-    }) 
-    xit("Card Player: Renders correctly Card Image", () => {
-        cy.get(".CardDetails_imageContainer__jsEx1").should("exist");
+    it("Card Player: Renders correctly Card Title", () => {
+        cy.get("#titleCardDetail").should("exist");
     })
-    xit("Card Player: Renders correctly Card Title", () => {
-        cy.get(".CardDetails_title__L--r5").should("exist");
+    it("Card Player: Renders correctly Card Status", () => {
+        cy.get("#statusCardDetail").should("exist");
     })
-    xit("Card Player: Renders correctly Card Status", () => {
-        cy.get(".CardDetails_spanStatus__S5RfX").should("exist");
+    it("Card Player: Renders correctly Card ID", () => {
+        cy.get("#infoCardDetail").should("exist");
     })
-    xit("Card Player: Renders correctly Card ID", () => {
-        cy.get(".CardDetails_infoId__dVDVf").should("exist");
-    })
-    xit("Card Player: Renders correctly Card Ranking", () => {
-        cy.get(".CardDetails_infoRanking__7qMnb").should("exist");
+    it("Card Player: Renders correctly Card Ranking", () => {
+        cy.get("#rankingCardDetail").should("exist");
     })
     it("Renders correctly boton Edit Profile", () => {
-        cy.visit("/login", { timeout: 10000 });
+        cy.visit("/login");
         cy.findAllByText("Sign In here!").click();
-        cy.get('input[name=email]').type('gabriel5@gmail.com');
-        cy.get('input[name=password]').type('123456');
+        cy.get('input[name=email]').type('gabriel6@hotmail.com');
+        cy.get('input[name=password]').type('1234567');
         cy.get('form').find('button[type=submit]').click();
-        cy.get('#search').click()
-        cy.get('button[name=details]').first().click();
+        cy.get('#playerIcon').should("exist");
+        cy.get('#playerIcon').click();
+        cy.findAllByText('View Profile').should("exist");
+        cy.findAllByText('View Profile').click();
         cy.get('button[name=editprofile]').should("exist");        
     })
     it("Renders correctly boton Confirme Change", () => {
         cy.get('button[name=editprofile]').click();
         cy.get('button[name=confirme]').should("exist");        
     })
-    it("Close correctly Card Details", () => {
+    xit("Close correctly Card Details", () => {
         cy.get('.CardDetails_closeCard__VYOog').should("exist");
         cy.get('button[name=closeCardDetail]').should("exist");
         cy.get('button[name=closeCardDetail]').click();

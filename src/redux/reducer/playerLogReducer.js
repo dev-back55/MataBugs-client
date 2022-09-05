@@ -1,12 +1,7 @@
 import { createReducer } from "@reduxjs/toolkit";
-<<<<<<< HEAD
-import { signupPlayer, signinPlayer, editPlayer, clearEditPlayer, logoutPlayer } from "../action/playerDetailsActions";
-// import { fetchHasFinished, fetchIsPending } from '../../lib/util';
-=======
 import { editPlayer, clearEditPlayer } from "../action/playerDetailsActions";
 import { signupPlayer, signinPlayer, logoutPlayer, fetchPlayerWithToken, dontFetchPlayerWithToken, finishDelay } from "../action/PlayerLogActions";
 import { fetchHasFinished, fetchIsPending, saveToken } from '../../lib/util';
->>>>>>> 8c44ebe8de538592da72e40fb7443bbea11fc827
 
 const initalState = {
   player: {},
@@ -48,7 +43,6 @@ const reducer = createReducer(initalState, builder => {
       saveToken(action.payload.player.id, action.payload.token);
     })
     .addCase(signinPlayer.rejected, (state, action) => {
-      console.log(action.error)
       state.error = action.error;
     })
 
@@ -79,12 +73,6 @@ const reducer = createReducer(initalState, builder => {
       state.successEditPlayer = false;
       state.loadingEditPlayer = false;
     })
-<<<<<<< HEAD
-    .addCase(logoutPlayer.fulfilled, (state, action) => {
-      state.player = {};
-      state.error = false;
-      state.success = false;
-=======
 
     .addCase(dontFetchPlayerWithToken, state => {
       state.loadingFetchWithToken = false;
@@ -108,7 +96,6 @@ const reducer = createReducer(initalState, builder => {
     })
 
     .addMatcher(fetchHasFinished, state => {
->>>>>>> 8c44ebe8de538592da72e40fb7443bbea11fc827
       state.loading = false;
     })
 });

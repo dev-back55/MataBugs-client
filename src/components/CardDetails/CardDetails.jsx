@@ -82,12 +82,16 @@ export default function CardDetails() {
   }
 
   function handleConfirmeFeature(e) {
+    console.log(e.target.value)
     e.preventDefault();
     setEditPerfilFeature({
       ...editPerfilFeature,
-      [e.target.name]: false
+      [e.target.name]: e.target.value
     })
+
+   
   }
+  console.log(editPerfilFeature)
 
   function handleConfirme(e) {
     e.preventDefault();
@@ -122,7 +126,7 @@ export default function CardDetails() {
         <div id="componentCardDetail" className = {`${s.container} ${!show.both ? s.hideContainer : '' }`}>
           <div className = {s.statusContainer}>
             <img src = {selectMedal[player.status]} alt = {`MEDALLA-${player.status}`} className = {s.medal} onLoad = {handleOnLoadMedal} />
-            <span className = {s.spanStatus}>
+            <span id="statusCardDetail" className = {s.spanStatus}>
               {`status: ${player.status}`}
               {editPerfil && <h6>New Player Data:</h6> }
               {info?.ranking && <h5 className = {s.spanEditChange}> New Ranking: {info.ranking}</h5> }
@@ -143,21 +147,21 @@ export default function CardDetails() {
           </div>
           <div className = {s.detailsContainer}>
             <div>
-              <Link to="/search"><h3 className={s.closeCard}>X</h3></Link>
+              <Link to="/search"><button name="closeCardDetail" className={s.closeCard}>X</button></Link>
             </div>
-            <div className = {s.imageContainer}>
+            <div id="imageCardDetail" className = {s.imageContainer}>
               <ImageLoader image = {player.avatar} alt = {"Thor"} setImageLoaded = {handleOnLoadAvatar} delay = {0}/>
               {editPerfil && <button className = {s.btnEditFeature} name='avatar' onClick={(e) => handleEditFeature(e)}>🪶</button>}
             </div>
-            <span className = {s.title}>
+            <span id="titleCardDetail" className = {s.title}>
               {player.nickname}
               {editPerfil && <button className = {s.btnEditFeature} name='nickname' onClick={(e) => handleEditFeature(e)}>🪶</button>}
               </span>
-            <div className = {s.infoId}>
+            <div id="infoCardDetail" className = {s.infoId}>
               <span>ID</span>
               <span>{player.id}</span>
             </div>
-            <div className = {s.infoRanking}>
+            <div id="rankingCardDetail" className = {s.infoRanking}>
               <span>
                 RANKING
                 {editPerfil && loginPlayer?.admin && <button className={s.btnEditFeature} name='ranking' onClick={(e) => handleEditFeature(e)}>🪶</button>}
@@ -166,8 +170,8 @@ export default function CardDetails() {
                 {player.ranking}
               </span>
             </div>
-            {isAdmin && !editPerfil&& <button className = {s.btnDetails} onClick={(e) => handleEdit(e)}>Edit Profile</button>}
-            {isAdmin && editPerfil && <button className = {s.btnDetails} onClick={(e) => handleConfirme(e)}>Confirme</button>}
+            {isAdmin && !editPerfil&& <button name="editprofile" className = {s.btnDetails} onClick={(e) => handleEdit(e)}>Edit Profile</button>}
+            {isAdmin && editPerfil && <button name="confirme" className = {s.btnDetails} onClick={(e) => handleConfirme(e)}>Confirme</button>}
           </div>
         </div>
       }

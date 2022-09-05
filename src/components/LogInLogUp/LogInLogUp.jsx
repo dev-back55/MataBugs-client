@@ -53,29 +53,25 @@ export function LogInLogUp() {
         e.preventDefault();
         setErrorsEmail(validateEmail({...player,[e.target.name]: e.target.value}))
         setErrorsPassword(validatePassword({...player,[e.target.name]: e.target.value}))
-        console.log("submit sign in: false", signup)
         if(signup) {
             setErrorsNickname(validateNickname({...player,[e.target.name]: e.target.value}))
             setErrorsAvatar(validateAvatar({...player,[e.target.name]: e.target.value}));
+        } 
+    }
+
+    useEffect(() => {
+        if(signup) {
+            console.log("submit use Effect sign in: false", signup)
 
             if(errorsEmail.email === true && errorsPassword.password === true && errorsNickname.nickname === true && errorsAvatar.avatar === true ){
-                // setDataErrors(false)
                 dispatch(signupPlayer(player))
             } 
         } else {
             if(errorsEmail.email === true && errorsPassword.password === true ){
-                // setDataErrors(false)
                 dispatch(signinPlayer(player))
             } 
-        }
-    }
-
-    useEffect(() => {
-        if(player.email !== '') setErrorsEmail(validateEmail(player));
-        if(player.password !== '') setErrorsPassword(validatePassword(player));
-        if(player.nickname !== '' && signup) setErrorsNickname(validateNickname(player));
-        if(player.avatar !== '' && signup) setErrorsAvatar(validateAvatar(player));    
-    }, [ signup, player ])
+        } 
+    }, [ signup, player, errorsEmail, errorsPassword, errorsNickname, errorsAvatar ])
 
 
         return (
@@ -110,9 +106,8 @@ export function LogInLogUp() {
                                 </> )}
                             </div>
 
-                                {/* {dataErrors && (<span className={s.danger}>Please check all Errors, before to submit.</span>)} */}
                             <div >
-                                <button className={s.buttonCreate} type='submit'>{signup ? "Sign Up" : "Sign In"}</button>
+                                <button className={s.buttonCreate} type='submit' onClick={(e) => handleOnSubmit(e)}>{signup ? "Sign Up" : "Sign In"}</button>
                             </div>
                             {
                                 !signup &&

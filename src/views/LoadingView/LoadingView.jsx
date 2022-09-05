@@ -23,7 +23,7 @@ export default function LoadingView() {
   }, []);
 
   return (
-    <div className = {s.container}>
+    <div id="loadingView" className = {s.container}>
       <div className = {s.logoContainer}>
         <Logo alwaysVisible = {true}/>
       </div>

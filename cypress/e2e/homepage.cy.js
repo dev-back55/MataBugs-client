@@ -2,6 +2,9 @@ describe("Render the Home Page components:", () => {
     before(() => {
         cy.visit("/home");
     });
+    it("Renders correctly Loading View", () => {
+        cy.get("#loadingView").should("exist");
+    })
     it("Renders correctly NavBar", () => {
         cy.get("#componentNavBar").should("exist");
     })
