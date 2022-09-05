@@ -10,4 +10,4 @@
 
 #start our node app in the background
 #node app.js > app.out.log 2> app.err.log < /dev/null & 
-#sudo service nginx restart >> /home/ec2-user/app/MataBugs-API/deploy.log
+sudo service nginx restart >> /home/ec2-user/app/MataBugs-API/deploy.log
