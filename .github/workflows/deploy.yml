@@ -27,3 +27,8 @@ jobs:
         --deployment-group-name matabugs-react-app-group \
         --deployment-config-name CodeDeployDefault.OneAtATime \
         --github-location repository=${{ github.repository }},commitId=${{ github.sha }}
+
+      # Step 4
+    - name: Npm i an run build
+      run: npm install
+      run: npm run build    
