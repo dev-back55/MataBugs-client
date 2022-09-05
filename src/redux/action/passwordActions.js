@@ -15,7 +15,7 @@ export const sendEmailToRecoverPassword = createAsyncThunk(
 export const recoverPassword = createAsyncThunk(
   ActionTypes.PASSWORD_RECOVERED,
   async (passwordWithToken) => {
-    await axios.post(`${API_ROUTE}/passwordtest`, passwordWithToken);
+    await axios.put(`${API_ROUTE}/password`, passwordWithToken);
     return;
   }
 );

@@ -122,7 +122,7 @@ export function LogInLogUp() {
                             {
                                 !signup &&
                                 <div className={s.changeLoginLogout}>
-                                    <Link to = '/recovery' style = {{ textDecoration: 'none' }}>
+                                    <Link to = '/recoverpassword' style = {{ textDecoration: 'none' }}>
                                         <span className={s.loginlogup}>Forgot your Password?</span>
                                     </Link>
                                 </div>

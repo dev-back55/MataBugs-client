@@ -23,7 +23,7 @@ export const signinPlayer = createAsyncThunk(
 export const logoutPlayer = createAsyncThunk(
   ActionTypes.PLAYER_HAS_LOGGED_OUT,
   async () => {
-    await axios.post(`${API_ROUTE}/logout`);
+    await axios.get(`${API_ROUTE}/logout`);
   }
 );
 
