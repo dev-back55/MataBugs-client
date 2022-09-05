@@ -7,6 +7,7 @@ import PlayerIcon from '../PlayerIcon/PlayerIcon';
 import ModalPickOption from '../ModalPickOption/ModalPickOption';
 import { logoutPlayer } from '../../redux/action/PlayerLogActions';
 
+
 import s from './NavBar.module.css';
 
 export default function NavBar() {
@@ -18,7 +19,6 @@ export default function NavBar() {
 
   React.useEffect(() => {
     if (success && (!player || !player.player)) {
-      alert('logout');
       navigate('/home');
     }
   }, [player, success]);
@@ -30,6 +30,7 @@ export default function NavBar() {
   let handlePickOption = function(optionPicked) {
     switch (optionPicked) {
       case "View Profile":
+        navigate(`/player/${player.player.id}`)
         break;
       case "Edit Password":
         navigate('/updatepassword');
@@ -41,7 +42,7 @@ export default function NavBar() {
   }
 
   return (
-    <div className = {s.container}>
+    <div id="componentNavBar" className = {s.container}>
       <SearchPlayer />
       <Logo isInNavbar = {true} />
       <div className = {s.navbarOptions}>
@@ -59,7 +60,7 @@ export default function NavBar() {
           (!player || !player.player) && 
           <Link to = '/login' style = {{textDecoration: 'none'}}>
             <div className = {s.containerLogin}>
-              <button className = {s.btnDetails}>SIGN IN</button>
+              <button name="buttonLoginNavbar" className = {s.btnDetails}>SIGN IN</button>
             </div>
           </Link>
         }
