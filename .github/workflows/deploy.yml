@@ -26,8 +26,4 @@ jobs:
         --application-name Matabugs-React-app \
         --deployment-group-name matabugs-react-app-group \
         --deployment-config-name CodeDeployDefault.OneAtATime \
-        --github-location repository=${{ github.repository }},commitId=${{ github.sha }}
-            |
-            run: npm install
-            |
-            npm run build    
+        --github-location repository=${{ github.repository }},commitId=${{ github.sha }}  
