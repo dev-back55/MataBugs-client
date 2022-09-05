@@ -15,8 +15,7 @@ export default function About() {
             <h2 className={s.titleAbout}>Game Images: </h2>
             <h2 >{detailabout.img.map((e) => {
               return <img className={s.imgenAbout} src={e} />
-            })}</h2>
-            
+            })}</h2>            
           </div>
         </div>
         <h1 className={s.titleAbout}>Developers: </h1>
