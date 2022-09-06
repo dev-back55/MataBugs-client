@@ -1,5 +1,11 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { resetFilter, searchPlayers, updateFilter, updateFilterResetPage } from "../action/searchPlayersActions";
+import { 
+  resetFilter, 
+  searchPlayers, 
+  updateFilter, 
+  updateFilterResetPage, 
+  enableCreatebyAdmin 
+} from "../action/searchPlayersActions";
 import { fetchHasFinished, fetchIsPending } from '../../lib/util';
 
 const initalState = {
@@ -15,6 +21,8 @@ const initalState = {
   currentPage: 1,
   pages: 1,
   results: 0,
+
+  createbyAdmin: false
 };
 
 const reducer = createReducer(initalState, builder => {
@@ -53,7 +61,6 @@ const reducer = createReducer(initalState, builder => {
     .addCase(searchPlayers.rejected, state => {
       state.error = true;
     })
-
     .addMatcher(fetchIsPending, state => {
       state.error = false;
       state.success = false;

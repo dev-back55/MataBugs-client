@@ -4,6 +4,7 @@ import searchReducer from '../reducer/searchPlayersReducer';
 import detailsReducer from '../reducer/playerDetailsReducer';
 import playerLogPlayer from '../reducer/playerLogReducer';
 import passwordReducer from '../reducer/passwordReducer';
+import createdAdmin from '../reducer/createPlayerByAdmin';
 
 export const store = configureStore({
   reducer: { 
@@ -11,7 +12,8 @@ export const store = configureStore({
     player: playerLogPlayer,
     search: searchReducer,
     hallOfFame: hallOfFameReducer,
-    password: passwordReducer
+    password: passwordReducer,
+    createdAdmin: createdAdmin,
   },
   devTools: process.env.NODE_ENV !== "production"
 });

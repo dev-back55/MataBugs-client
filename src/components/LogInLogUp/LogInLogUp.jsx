@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { signupPlayer, signinPlayer } from '../../redux/action/PlayerLogActions';
+import { createPlayerByAdmin, clearStoreNewPlayer } from '../../redux/action/createPlayerByAdminActions';
 import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from 'react-router-dom';
 import s from './LogInLogUp.module.scss';
 import { validateEmail, validatePassword, validateNickname, validateAvatar } from "../../lib/validate";
-import { Link } from 'react-router-dom';
+
 
 export function LogInLogUp() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const { createbyAdmin, success } = useSelector((state) => state.createdAdmin)
     const { error } = useSelector((state) => state.player);
     const [ signup, setSignup ] = useState(true);
     const [ player, setPlayer ] = useState({
@@ -44,7 +48,6 @@ export function LogInLogUp() {
         if(!signup) {
             setErrorsNickname({})
             setErrorsAvatar({})
-            // setDataErrors(false)
         } 
         setSignup(!signup)
     }
@@ -62,10 +65,12 @@ export function LogInLogUp() {
 
     useEffect(() => {
         if(signup) {
-            console.log("submit use Effect sign in: false", signup)
-
             if(errorsEmail.email === true && errorsPassword.password === true && errorsNickname.nickname === true && errorsAvatar.avatar === true ){
-                dispatch(signupPlayer(player))
+                if(createbyAdmin) {
+                    dispatch(createPlayerByAdmin(player))
+                } else {
+                    dispatch(signupPlayer(player))
+                }
             } 
         } else {
             if(errorsEmail.email === true && errorsPassword.password === true ){
@@ -100,11 +105,23 @@ export function LogInLogUp() {
         })
       }
 
+      function clearNewPlayerFromStore(e) {
+        e.preventDefault();
+        dispatch(clearStoreNewPlayer())
+        navigate('/search');
+      }
+
+
         return (
             <div id="componentLogin" className = {s.container}>
-                <div className={s.containerCreatePlayer}>
+                <div>
+                    <button name="closeLogin" className={s.closeCard} onClick={(e)=> clearNewPlayerFromStore(e)}>X</button>
+                </div>
+                { success && <h2 className={s.titleSuccess}> ✅ Player Created Successfully </h2> }
+
+                { !success && <div className={s.containerCreatePlayer}>
                     <div>
-                        <h2 className={s.title}> {signup ? "Sign Up" : "Sign In" } </h2>
+                        { createbyAdmin && <h2 className={s.title}> {createbyAdmin ? "Create Player" : signup ? "Sign Up" : "Sign In" } </h2> }
                         <form onSubmit={e => handleOnSubmit(e)}> 
                             <div className={s.containerInput}>
                                     <label className={s.labelInput}> 
@@ -128,14 +145,12 @@ export function LogInLogUp() {
                                 {signup && ( <>
                                 <label className={s.labelInput}> Avatar: {errorsAvatar?.avatar !== true && (<span className={s.danger}>{errorsAvatar.avatar}</span>)} </label>
                                     <button type="file" name="image" onChange={e => changeSetImage(e)} variant="contained" className={s.inputCreate}><input type="file"  name="image"/></button>
-                                    
-                                    {/* <input className={s.inputCreate} placeholder='Add a avatar¨s link' type='text' value={player.avatar} name='avatar' onChange={(e) => handleChangePlayer(e)}></input> */}
                                     <br></br>
                                 </> )}
                             </div>
 
                             <div >
-                                <button className={s.buttonCreate} type='submit' onClick={(e) => handleOnSubmit(e)}>{signup ? "Sign Up" : "Sign In"}</button>
+                                <button className={s.buttonCreate} type='submit' onClick={(e) => handleOnSubmit(e)}>{createbyAdmin ? "Create Player" : signup ? "Sign Up" : "Sign In"}</button>
                             </div>
                             {
                                 !signup &&
@@ -146,11 +161,11 @@ export function LogInLogUp() {
                                 </div>
                             }
                             <div className={s.changeLoginLogout}>
-                                {signup ? "Already a user?" : "No account yet?" } <span onClick={(e) => handleChangeSignup(e)} className={s.loginlogup}>{signup ? "Sign In here!" : "Sign Up here!"}</span>
+                                { !createbyAdmin && <>{signup ? "Already a user?" : "No account yet?" } <span onClick={(e) => handleChangeSignup(e)} className={s.loginlogup}>{signup ? "Sign In here!" : "Sign Up here!"}</span></>}
                             </div>
                         </form>
                     </div>
-                </div>
+                </div>}
             </div>
         )
     
