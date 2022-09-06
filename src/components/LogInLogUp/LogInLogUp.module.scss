@@ -28,6 +28,12 @@
   margin-top: 0px;
 }
 
+.titleSuccess {
+  padding: 40px 20px 20px;
+  color: white;
+  margin-top: 0px;
+}
+
 .containerInput {
   display: flex;
   flex-direction: column;
@@ -57,6 +63,17 @@
   align-self: flex-start;
   font-weight: 500;
   color: rgb(133, 133, 133);
+}
+
+.closeCard {
+  color: white;
+  background: rgba(255, 255, 255, 0);
+  border-color: #ffffff00;
+  position: fixed;
+  right: 25px;
+  top: 25px;
+  font-size: 15px;
+  cursor: pointer;
 }
 
 .buttonCreate {
