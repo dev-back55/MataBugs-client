@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import SidebarTitle from '../SidebarTitle/SidebarTitle';
 import PasswordInput from '../PasswordInput/PasswordInput';
 import Shield from '../SVG/Shield';
-import { recoverPassword, clearPasswordModal } from '../../redux/action/passwordActions';
+import { recoverPassword, clearPasswordModal, changePassword } from '../../redux/action/passwordActions';
 import { validatePassword } from '../../lib/validate';
 
 import s from './ChangePasswordModal.module.css';
@@ -12,11 +12,10 @@ import s from './ChangePasswordModal.module.css';
 export default function ChangePasswordModal() {
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const { player } = useSelector((state) => state.player);
-  const { loading, success, error } = useSelector((state) => state.password);
+  const { loading, success, error, errorMsg } = useSelector((state) => state.password);
   const [ newPassword, setNewPassword ] = React.useState({ 
     value: {
       input: '',
@@ -68,9 +67,14 @@ export default function ChangePasswordModal() {
   }, [newPassword.value.animate, newPassword.repeat.animate, oldPassword]);
 
   React.useEffect(() => {
-    if (!error) return;
+    if (!error || oldPassword) return;
     setNewPassword({ ...newPassword, value: { ...newPassword.value, animate: true, errorMsg: 'Server error. Try again.' } });
   }, [error]);
+
+  React.useEffect(() => {
+    if (!error || errorMsg.length === 0) return;
+    setOldPassword({ ...oldPassword, animate: true, errorMsg: errorMsg });
+  }, [error, errorMsg])
 
   React.useEffect(() => {
     if (player && player.player) setOldPassword({
@@ -147,8 +151,7 @@ export default function ChangePasswordModal() {
   }
 
   let handleUpdatePassword = function(bothPasswordsAreValid) {
-    if (bothPasswordsAreValid) console.log('Ok');
-    else console.error('NOT OK');
+    if (bothPasswordsAreValid) dispatch(changePassword({ oldPassword: oldPassword.input, newPassword: newPassword.value.input }));
   }
 
   return (
@@ -160,7 +163,7 @@ export default function ChangePasswordModal() {
       </div>
       <SidebarTitle title = { !success ? (player?.player ? "Update Password" : "Restore Password") : "Password Updated"} />
       {
-        oldPassword &&
+        oldPassword && !success &&
         <PasswordInput
           title = {'Current Password'}
           name = {'oldPassword'}
@@ -222,10 +225,18 @@ export default function ChangePasswordModal() {
         </button>
       }
       {
-        success &&
+        success && !oldPassword &&
         <Link to = "/login" style = {{ textDecoration: 'none' }}>
           <button className = {s.btnDetails}>
             Go Back To Login
+          </button>
+        </Link>
+      }
+      {
+        success && oldPassword &&
+        <Link to = "/home" style = {{ textDecoration: 'none' }}>
+          <button className = {s.btnDetails}>
+            Go Back To Home
           </button>
         </Link>
       }
