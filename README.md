@@ -2,20 +2,10 @@
     <img src='https://static.wixstatic.com/media/85087f_0d84cbeaeb824fca8f7ff18d7c9eaafd~mv2.png/v1/fill/w_160,h_30,al_c,q_85,usm_0.66_1.00_0.01/Logo_completo_Color_1PNG.webp' </img>
 </p>
 
-# Tech Market
-
-![Status](https://img.shields.io/badge/Status-Deployed-orange)
-![React](https://shields.io/badge/FrontEnd-React-green?logo=react&style=plastic)
-![Redux](https://shields.io/badge/FrontEnd-Redux-green?logo=redux&style=plastic)
-![Material UI](https://shields.io/badge/FrontEnd-MUI-green?logo=mui&style=plastic)
-![Node.js](https://shields.io/badge/BackEnd-Node.js-violet?logo=nodedotjs&style=plastic)
-![Express](https://shields.io/badge/BackEnd-Express-violet?logo=express&style=plastic)
-![Sequelize](https://shields.io/badge/BackEnd-Sequelize-violet?logo=sequelize&style=plastic)
-![PostgreSQL](https://shields.io/badge/DataBase-PostgreSQL-yellow?logo=postgresql&style=plastic)
-
+# Bugs Hunters
 ## Introduction
 
-This is a student group project, in which all the technologies learned in the SoyHenry bootcamp come together. The project is a fully functional e-commerce of technology products on the user side, as well as on the side of the administrator or owner of the e-commerce.
+Bugs Hunters is an App where you can access to see all the players, see the ranking of the best players, create a player and more, Bugs Hunters it is an RPG game where a group of players assumes the role of programmers of the new metaverse where they must destroy bugs, which in said virtual reality take the form of giant insects that devour space itself. As players progress, destroying more bugs and overcoming the challenges that will be imposed on them in the metaverse, they will earn more points, which will allow them to improve their equipment and increase their ranking.
 
 ## Project Objetives
 
@@ -27,10 +17,10 @@ This is a student group project, in which all the technologies learned in the So
 ## Stack of Technologies
 
 ### Front End:
-HTML, CSS, Javascript, React, React-Bootstrap, Redux, SendGrid, Google and Mercado Pago Integration, Material UI, SASS
+HTML, CSS, Javascript, React, Redux, SendGrid, Cloudinary, SASS, AWS
 
 ### Back End:
-Node.js, Express, Passport, Sequelize
+Node.js, Express, Passport, AWS
 
 ### Database:
 PostgreSQL
@@ -155,3 +145,6 @@ Live Proyect TechMarket: https://techmarketfront.vercel.app/
 
 - About Page
 ![About](https://res.cloudinary.com/djgghmpgh/image/upload/v1662477285/HallOfFameAbout_k3ir5q.jpg)
+
+- Login Page
+![About](https://res.cloudinary.com/djgghmpgh/image/upload/v1662478479/HallOfFameSignIn_ivfelo.jpg)
