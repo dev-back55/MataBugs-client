@@ -6,6 +6,7 @@ import Logo from '../Logo/Logo';
 import PlayerIcon from '../PlayerIcon/PlayerIcon';
 import ModalPickOption from '../ModalPickOption/ModalPickOption';
 import { logoutPlayer } from '../../redux/action/PlayerLogActions';
+import { enableCreatebyAdmin } from '../../redux/action/createPlayerByAdminActions'
 
 
 import s from './NavBar.module.css';
@@ -34,6 +35,10 @@ export default function NavBar() {
         break;
       case "Edit Password":
         navigate('/updatepassword');
+        break;
+      case "Create Player":
+        dispatch(enableCreatebyAdmin());
+        navigate('/login');
         break;
       default:
         dispatch(logoutPlayer());
@@ -67,7 +72,7 @@ export default function NavBar() {
       </div>
       <ModalPickOption 
         style = {s.modalPickOptionStyle}
-        values = {["View Profile", "Edit Password", "Logout"]}
+        values = {player?.player?.admin === true ? ["View Profile", "Edit Password", "Create Player", "Logout"] : ["View Profile", "Edit Password", "Logout"]}
         show = {showOptions}
         handleClose = {handleClick}
         handlePickOption = {handlePickOption}
