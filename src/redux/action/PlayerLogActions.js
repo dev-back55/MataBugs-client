@@ -17,7 +17,7 @@ export const signinPlayer = createAsyncThunk(
   async (player) => {
     const getPlayer = await axios.post(`${API_ROUTE}/login`, player)
     return getPlayer.data;
-  }
+  } 
 );
 
 export const logoutPlayer = createAsyncThunk(

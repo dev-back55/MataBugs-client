@@ -34,7 +34,8 @@ export default function CardDetails() {
     ranking: false
   });
   const [ info, setInfo ] = React.useState({idEditer: loginPlayer?.id, idCard: id});
- 
+  const [ image, setImage ] = React.useState("");
+
   React.useEffect(() => {
     if(loginPlayer?.admin || loginPlayer?.id === parseInt(id)) {
       setIsAdmin(true)
@@ -82,22 +83,39 @@ export default function CardDetails() {
   }
 
   function handleConfirmeFeature(e) {
-    console.log(e.target.value)
     e.preventDefault();
     setEditPerfilFeature({
       ...editPerfilFeature,
-      [e.target.name]: e.target.value
-    })
-
-   
+      [e.target.name]: false
+    })   
   }
-  console.log(editPerfilFeature)
 
   function handleConfirme(e) {
     e.preventDefault();
     dispatch(editPlayer(info))
     setEditPerfil(false)
     setInfo({idEditer: loginPlayer?.id, idCard: id})
+  }
+
+  const upload = async(e) => {
+    const files = image;
+    const formData = new FormData
+    formData.append("file", files[0])
+    formData.append("upload_preset", "tech_market_henry")
+    const res = await fetch(
+        "https://api.cloudinary.com/v1_1/techmarket/image/upload",
+        { method: "POST", body: formData }
+    );
+    const file = await res.json();
+    const data = { image: file.secure_url }
+    setInfo({
+      ...info,
+      avatar: data.image
+    })
+    setEditPerfilFeature({
+      ...editPerfilFeature,
+      [e.target.name]: false
+    })  
   }
 
   return (
@@ -135,11 +153,11 @@ export default function CardDetails() {
               {successEditPlayer && <h5 className = {s.spanEditChange}> ✅{successEditPlayer} </h5> } 
             </span>
             <span className = {s.spanEditChange}>
-
+           
               {editPerfilFeature.ranking && <input className={s.inputCreate} placeholder='New Ranking' type='text' name='ranking' onChange={(e) => handleChange(e)}></input>}
               {editPerfilFeature.ranking && <button name='ranking' className={s.btnEditFeature} onClick={(e) => handleConfirmeFeature(e)}>✅</button>}
-              {editPerfilFeature.avatar && <input className={s.inputCreate} placeholder='New avatar' type='text' name='avatar' onChange={(e) => handleChange(e)}></input>}
-              {editPerfilFeature.avatar && <button name='avatar' className={s.btnEditFeature} onClick={(e) => handleConfirmeFeature(e)}>✅</button>}
+              {editPerfilFeature.avatar && <button type="file" name="image" onChange={e => setImage(e.target.files)} variant="contained" className={s.inputCreate}><input type="file"  name="image"/></button>}
+              {editPerfilFeature.avatar && <button name='avatar' className={s.btnEditFeature} onClick={(e) => upload(e)}>✅</button>}
               {editPerfilFeature.nickname && <input className={s.inputCreate} placeholder='New nickname' type='text' name='nickname' onChange={(e) => handleChange(e)}></input>}
               {editPerfilFeature.nickname && <button name='nickname' className={s.btnEditFeature} onClick={(e) => handleConfirmeFeature(e)}>✅</button>}
 
@@ -150,7 +168,7 @@ export default function CardDetails() {
               <Link to="/search"><button name="closeCardDetail" className={s.closeCard}>X</button></Link>
             </div>
             <div id="imageCardDetail" className = {s.imageContainer}>
-              <ImageLoader image = {player.avatar} alt = {"Thor"} setImageLoaded = {handleOnLoadAvatar} delay = {0}/>
+              <ImageLoader image = {info.avatar ? info.avatar : player.avatar} alt = {"Thor"} setImageLoaded = {handleOnLoadAvatar} delay = {0}/>
               {editPerfil && <button className = {s.btnEditFeature} name='avatar' onClick={(e) => handleEditFeature(e)}>🪶</button>}
             </div>
             <span id="titleCardDetail" className = {s.title}>

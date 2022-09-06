@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 export function LogInLogUp() {
     const dispatch = useDispatch();
-    const { error } = useSelector((state) => state.player)
+    const { error } = useSelector((state) => state.player);
     const [ signup, setSignup ] = useState(true);
     const [ player, setPlayer ] = useState({
         email: '',
@@ -16,10 +16,11 @@ export function LogInLogUp() {
         avatar: ''
     });
 
-    const [errorsEmail, setErrorsEmail] = useState({})
-    const [errorsPassword, setErrorsPassword] = useState({})
-    const [errorsNickname, setErrorsNickname] = useState({})
-    const [errorsAvatar, setErrorsAvatar] = useState({})
+    const [errorsEmail, setErrorsEmail] = useState({});
+    const [errorsPassword, setErrorsPassword] = useState({});
+    const [errorsNickname, setErrorsNickname] = useState({});
+    const [errorsAvatar, setErrorsAvatar] = useState({});
+    const [ image, setImage ] = React.useState("");
 
     // const [ dataErrors, setDataErrors] = useState(false);
   
@@ -73,6 +74,31 @@ export function LogInLogUp() {
         } 
     }, [ signup, player, errorsEmail, errorsPassword, errorsNickname, errorsAvatar ])
 
+    useEffect(() => {
+        upload()
+    },[ image ])
+
+    function changeSetImage(e) {
+        e.preventDefault();
+        setImage(e.target.files)
+    }
+
+    const upload = async() => {
+        const files = image;
+        const formData = new FormData
+        formData.append("file", files[0])
+        formData.append("upload_preset", "tech_market_henry")
+        const res = await fetch(
+            "https://api.cloudinary.com/v1_1/techmarket/image/upload",
+            { method: "POST", body: formData }
+        );
+        const file = await res.json();
+        const data = { image: file.secure_url }
+        setPlayer({
+            ...player,
+            avatar: data.image
+        })
+      }
 
         return (
             <div id="componentLogin" className = {s.container}>
@@ -101,7 +127,9 @@ export function LogInLogUp() {
 
                                 {signup && ( <>
                                 <label className={s.labelInput}> Avatar: {errorsAvatar?.avatar !== true && (<span className={s.danger}>{errorsAvatar.avatar}</span>)} </label>
-                                    <input className={s.inputCreate} placeholder='Add a avatar¨s link' type='text' value={player.avatar} name='avatar' onChange={(e) => handleChangePlayer(e)}></input>
+                                    <button type="file" name="image" onChange={e => changeSetImage(e)} variant="contained" className={s.inputCreate}><input type="file"  name="image"/></button>
+                                    
+                                    {/* <input className={s.inputCreate} placeholder='Add a avatar¨s link' type='text' value={player.avatar} name='avatar' onChange={(e) => handleChangePlayer(e)}></input> */}
                                     <br></br>
                                 </> )}
                             </div>
