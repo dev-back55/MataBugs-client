@@ -1,70 +1,157 @@
-# Getting Started with Create React App
+<p align='left'>
+    <img src='https://static.wixstatic.com/media/85087f_0d84cbeaeb824fca8f7ff18d7c9eaafd~mv2.png/v1/fill/w_160,h_30,al_c,q_85,usm_0.66_1.00_0.01/Logo_completo_Color_1PNG.webp' </img>
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Tech Market
 
-## Available Scripts
+![Status](https://img.shields.io/badge/Status-Deployed-orange)
+![React](https://shields.io/badge/FrontEnd-React-green?logo=react&style=plastic)
+![Redux](https://shields.io/badge/FrontEnd-Redux-green?logo=redux&style=plastic)
+![Material UI](https://shields.io/badge/FrontEnd-MUI-green?logo=mui&style=plastic)
+![Node.js](https://shields.io/badge/BackEnd-Node.js-violet?logo=nodedotjs&style=plastic)
+![Express](https://shields.io/badge/BackEnd-Express-violet?logo=express&style=plastic)
+![Sequelize](https://shields.io/badge/BackEnd-Sequelize-violet?logo=sequelize&style=plastic)
+![PostgreSQL](https://shields.io/badge/DataBase-PostgreSQL-yellow?logo=postgresql&style=plastic)
 
-In the project directory, you can run:
+## Introduction
 
-### `npm start`
+This is a student group project, in which all the technologies learned in the SoyHenry bootcamp come together. The project is a fully functional e-commerce of technology products on the user side, as well as on the side of the administrator or owner of the e-commerce.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Project Objetives
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Build a JavaScript App from scratch
+- Afirm and conect all the learned concepts in the Carreer 
+- Learn and practice GIT workflow / team work
+- Use Scrum agile methodology
 
-### `npm test`
+## Stack of Technologies
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Front End:
+HTML, CSS, Javascript, React, React-Bootstrap, Redux, SendGrid, Google and Mercado Pago Integration, Material UI, SASS
 
-### `npm run build`
+### Back End:
+Node.js, Express, Passport, Sequelize
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Database:
+PostgreSQL
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## **Starting Instructions** 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+__IMPORTANT:__ Necesary version of node and NPM 
 
-### `npm run eject`
+ * __Node__: 12.18.3 or higher
+ * __NPM__: 6.14.16 or higher
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+ 
+## BoilerPlate
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The boilerPlate has two folders: `api` and `client`.
+You can find the first folder 'client' in this repo and the second folder like 'PF-BackEnd' in this same github.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Inside `api` you must have to create a file called: `.env` 
+that has the following form: 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+DB_USER=postgress
+DB_PASSWORD=12345
+DB_HOST=localhost:5432
+PORT=3001
+DB_KEY=techmarket
+ACCESS_TOKEN=*****
 
-## Learn More
+# Auth Config
+AUTH_SECRET=****
+AUTH_EXPIRES=1d
+AUTH_ROUNDS=10
+CLIENT_URL=http://localhost:3000
+GOOGLE_CLIENT_ID=*****
+GOOGLE_CLIENT_SECRET=*****
+SENDGRID_API_KEY=*****
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+You have to replace `DB_USER` and `DB_PASSWORD` with your own credentials to connect to postgres database. This file will be ignored by github, as it contains sensitive information (the credentials).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The `DB_KEY` is a random security keyword, you can change or keep it. 
+The `ACCESS_TOKEN` is a security keyword to Mercado Pago, you can create one in this platform and make a success buy. In this link https://www.mercadopago.com.ar/developers/es/docs/checkout-api/integration-test/test-cards you can get all information to check a success buy in TechMarket.
 
-### Code Splitting
+In Auth Config you must generated your own Google and SendGrid credential to use this functionalities.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Next 
+### _Connect the data base_
 
-### Analyzing the Bundle Size
+ - Go to your postgres database manager and create a new  database called `techmarket`, this is the name of the database to which we will connect.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### _Install the necesary package to run it_
 
-### Making a Progressive Web App
+- Open the project console
+    + Inside `api` folder, run the command line, `npm install`
+    + Inside `client` folder, run the command line, `npm install` 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### _Run the project_
 
-### Advanced Configuration
+- Open the project console
+    + Inside `api` folder, run the command line, `npm start`
+    + Inside `api` folder, run the command line, `node Api-Store.js` and `node Api-Users.js` to create standard products and users.
+        
+    + Inside `client` folder, run the command line, `npm start` (go to http://localhost:3000/) 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+# For testing
 
-### Deployment
+- You can find in `api/index.js`
+    + `conn.sync({ force: false })`, switch it between " true " ( if you want reset database in each loaded ) or " false "( if you dont want reset database in each loaded ) 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- You can use a testing admin user with login credentials, look inside Api-Users.js to find admin users and a standard user.
 
-### `npm run build` fails to minify
+# Deploy Project 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Live Proyect TechMarket: https://techmarketfront.vercel.app/
+- You can create a standard user to see all funcionality or use this user like admin to see admin funcionality:
+    + email: juan@gmail.com
+    + password: 123456
+
+# Developers
+
+- Federico Romero
+    + Linkedin: https://www.linkedin.com/in/federico-romero-fullstack
+    + Github: https://github.com/RomeroFederico
+    + email: romerof14@gmail.com
+
+- Enzo Sanchez
+    + Linkedin: https://www.linkedin.com/in/enzo-sanchez-733b85165/
+    + Github: https://github.com/Enzos97
+    + email: enz997.ing.ind@gmail.com
+
+- Lucas Battaglia
+    + Linkedin: https://www.linkedin.com/in/battaglialucas/
+    + Github: https://github.com/battaglialucas
+    + email: lucassebastianbattaglia@gmail.com     
+
+- Horacio Abitu
+    + Linkedin: https://www.linkedin.com/in/horacioabitu/
+    + Github: https://github.com/dev-back55
+    + email: ahabitu@gmail.com
+
+- Gabriel Pitrella
+    + Linkedin: https://www.linkedin.com/in/gabrielpitrella
+    + Github: https://github.com/gpitrella
+    + email: gabrielpitrella@gmail.com
+
+# Project Screens 
+
+- Charging Page
+![ChargingPage](https://res.cloudinary.com/djgghmpgh/image/upload/v1662477282/HallOfFameInitial_kesfiu.jpg)
+
+- Home Page 
+![HomePage](https://res.cloudinary.com/djgghmpgh/image/upload/v1662477119/HallOfFame_ai7rks.jpg)
+
+- Search Player Page
+![SearchPlayer](https://res.cloudinary.com/djgghmpgh/image/upload/v1662477287/HallOfFameSearch_hr4nog.jpg)
+
+- Details Player Page
+![DetailsPlayer](https://res.cloudinary.com/djgghmpgh/image/upload/v1662477284/HallOfFamePlayerDetail_ilrpoq.jpg)
+
+- Create Player Page
+![CreatePlayer](https://res.cloudinary.com/djgghmpgh/image/upload/v1662477282/HallOfFameCreatePlayer_vz4xob.jpg)
+
+- About Page
+![About](https://res.cloudinary.com/djgghmpgh/image/upload/v1662477285/HallOfFameAbout_k3ir5q.jpg)

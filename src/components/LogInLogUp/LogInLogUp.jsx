@@ -121,7 +121,7 @@ export function LogInLogUp() {
 
                 { !success && <div className={s.containerCreatePlayer}>
                     <div>
-                        { createbyAdmin && <h2 className={s.title}> {createbyAdmin ? "Create Player" : signup ? "Sign Up" : "Sign In" } </h2> }
+                        <h2 className={s.title}> {createbyAdmin ? "Create Player" : signup ? "Sign Up" : "Sign In" } </h2> 
                         <form onSubmit={e => handleOnSubmit(e)}> 
                             <div className={s.containerInput}>
                                     <label className={s.labelInput}> 
