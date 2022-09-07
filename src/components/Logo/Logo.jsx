@@ -5,7 +5,7 @@ import s from './Logo.module.css';
 
 export default function Logo({ isInNavbar = false, alwaysVisible = false }) {
   return (
-    <div className = {`${s.container} ${isInNavbar ? s.showOnNavbar : ''} ${alwaysVisible ? s.alwaysVisible : ''}`}>
+    <div id="componentLogo" className = {`${s.container} ${isInNavbar ? s.showOnNavbar : ''} ${alwaysVisible ? s.alwaysVisible : ''}`}>
       <div className = {s.imageContainer}>
         <img src = {logo} alt = {"Bugs Hunter Hall Of Fame"} className = {s.logo} />
       </div>

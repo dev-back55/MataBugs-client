@@ -27,7 +27,7 @@ export default function Cards({ users, loading, error, retryCB }) {
   )
 
   return (
-    <div className = {s.cardsContainer}>
+    <div id="componentCards" className = {s.cardsContainer}>
     {
       users && users.length > 0 && users.map((user, index) => 
 

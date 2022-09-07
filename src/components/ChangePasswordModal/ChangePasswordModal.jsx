@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useSearchParams, useNavigate } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import SidebarTitle from '../SidebarTitle/SidebarTitle';
 import PasswordInput from '../PasswordInput/PasswordInput';
@@ -114,8 +114,8 @@ export default function ChangePasswordModal() {
     setNewPassword({ 
       value: { 
         ...newPassword.value,
-        errorMsg: errorPassword ? errorPassword : '',
-        animate: errorPassword ? true : false
+        errorMsg: errorPassword !== true ? errorPassword : '',
+        animate: errorPassword !== true ? true : false
       },
       repeat: {
         ...newPassword.repeat,
@@ -125,18 +125,18 @@ export default function ChangePasswordModal() {
       view: newPassword.view
     });
 
-    return (!errorPassword && !passwordsAreNotEqual);
+    return (errorPassword === true && !passwordsAreNotEqual);
   }
 
   let getValidationOldPassword = function() {
     const { password: errorOldPassword } = validatePassword({ password: oldPassword.input });
     setOldPassword({
       ...oldPassword,
-      errorMsg: errorOldPassword ? errorOldPassword : '',
-      animate: errorOldPassword ? true : false
+      errorMsg: errorOldPassword !== true ? errorOldPassword : '',
+      animate: errorOldPassword !== true ? true : false
     });
 
-    return !errorOldPassword;
+    return (errorOldPassword === true);
   }
 
   let handleUpdate = function() {
@@ -155,7 +155,7 @@ export default function ChangePasswordModal() {
   }
 
   return (
-    <div className = {s.container}>
+    <div id="editUpdatePassword" className = {s.container}>
       <div className = {s.closeCardContainer}>
         <Link to = {`${ !oldPassword ? '/login' : '/home' }`} style = {{ textDecoration: 'none' }}>
           <h3 className = {s.closeCard}>X</h3>

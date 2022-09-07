@@ -18,3 +18,7 @@ export const updateFilterResetPage = createAction(ActionTypes.FILTER_UPDATED_RET
 export const resetFilter = createAction(ActionTypes.FILTER_RESETED);
 
 //export const clearPlayerDetails = createAction(ActionTypes.PLAYER_DETAILS_CLEARED);
+
+
+
+

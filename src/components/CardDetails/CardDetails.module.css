@@ -194,6 +194,7 @@
 }
 
 .inputCreate::placeholder {
+  width: 215px;
   font-weight: bold;
   opacity: .5;
   color: rgb(255, 255, 255);
@@ -217,9 +218,12 @@
 
 .closeCard {
   color: white;
+  background: rgba(255, 255, 255, 0);
+  border-color: #ffffff00;
   position: fixed;
   right: 25px;
-  top: 0px;
+  top: 25px;
+  font-size: 15px;
   cursor: pointer;
 }
 

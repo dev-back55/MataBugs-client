@@ -21,5 +21,7 @@ export const editPlayer = createAsyncThunk(
   }
 );
 
-
 export const clearEditPlayer = createAction(ActionTypes.CLEAR_EDIT_PLAYER);
+
+export const enableCreatebyAdmin = createAction(ActionTypes.ENABLE_CREATE_BY_ADMIN);
+

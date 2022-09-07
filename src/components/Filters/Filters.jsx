@@ -30,7 +30,7 @@ export default function Filters() {
   }
   
   if (isActive()) return (
-    <>
+    <span id="componentFilters">
       <SidebarTitle title = {"Options"} />
       <h4 className = {s.label}>Filter Status: </h4>
       <CustomSelect
@@ -56,6 +56,6 @@ export default function Filters() {
         handleValue = {handleChangeSelect}
         name = {"order"}
       />
-    </>
+    </span>
   )
 }

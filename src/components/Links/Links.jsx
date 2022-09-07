@@ -9,7 +9,7 @@ import s from './Links.module.css';
 
 export default function Links({ showAsFooter = false }) {
   return (
-    <div className = {`${showAsFooter ? s.containerAsFooter : s.container}`}>
+    <div id="componentLinks" className = {`${showAsFooter ? s.containerAsFooter : s.container}`}>
       {
         !showAsFooter &&
         <SidebarTitle title = {"Explore"} />

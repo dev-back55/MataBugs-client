@@ -18,7 +18,7 @@ export default function Card({ id, nickname, status, ranking, avatar }) {
   }
 
   return (
-    <div className = {`${s.cardContainer} ${s.gradientBorder}`}>
+    <div id="componentCard" className = {`${s.cardContainer} ${s.gradientBorder}`}>
       <div className = {`${s.banner} ${s[status]}`}>
       </div>
       <div className = {s.imageContainer}>
@@ -38,7 +38,7 @@ export default function Card({ id, nickname, status, ranking, avatar }) {
           <Trophy /> 
         </div>
         <span className = {s.infoRanking}>{ranking}</span>
-        <button className = {s.btnDetails} onClick = {handleClick}>Details</button>
+        <button className = {s.btnDetails} name="details" onClick = {handleClick}>Details</button>
       </div>
     </div>
   );

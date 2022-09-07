@@ -1,10 +1,7 @@
-describe("Render the Home Page components:", () => {
+describe("Render the About components:", () => {
     before(() => {
-        cy.visit("/home");
+        cy.visit("/about");
     });
-    it("Renders correctly Loading View", () => {
-        cy.get("#loadingView").should("exist");
-    })
     it("Renders correctly NavBar", () => {
         cy.get("#componentNavBar").should("exist");
     })
@@ -17,7 +14,7 @@ describe("Render the Home Page components:", () => {
     it("Renders correctly Links", () => {
         cy.get("#componentLinks").should("exist");
     })
-    it("Renders correctly Hall of Fame", () => {
-        cy.get("#componentHallOfFame").should("exist");
+    it("Renders correctly About", () => {
+        cy.get("#componentAbout").should("exist");
     })
-})
+});

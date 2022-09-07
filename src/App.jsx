@@ -10,6 +10,7 @@ import CardDetails from './components/CardDetails/CardDetails';
 import HallOfFameView from './views/HallOfFameView/HallOfFameView';
 import PasswordRecoveryModal from './components/PasswordRecoveryModal/PasswordRecoveryModal';
 import ChangePasswordModal from './components/ChangePasswordModal/ChangePasswordModal';
+import About from './components/About/About';
 
 import './constants.css';
 import './App.css';
@@ -17,10 +18,7 @@ import './App.css';
 function App() {
 
   const { player, loadingFetchWithToken, delay } = useSelector((state) => state.player);
-
-  // useEffect(() => {
-  //     // Envia a Home cuando esta logeado
-  // }, [player])
+  const { createbyAdmin } = useSelector((state) => state.createdAdmin)
 
   return (
     <>
@@ -34,10 +32,11 @@ function App() {
           <Routes>
             <Route exact path = '/home' element = { <HallOfFameView /> } />
             <Route exact path = '/search' element = { <SearchView /> } />
-            <Route exact path = '/login' element = { !player?.player ? <LogInLogUp /> : <Navigate to = "/"/> } />
+            <Route exact path = '/login' element = { !player?.player || createbyAdmin ? <LogInLogUp /> : <Navigate to = "/"/> } />
             <Route exact path = '/player/:id' element = { <CardDetails /> } />
             <Route exact path = '/recoverpassword' element = { !player?.player ? <PasswordRecoveryModal /> : <Navigate to = "/"/>} />
             <Route exact path = '/updatepassword' element = { <ChangePasswordModal /> } />
+            <Route exact path = '/about' element = { <About />} />
             <Route path = "*" element = { <Navigate to = "/home" replace /> } />
           </Routes>
         </div>
