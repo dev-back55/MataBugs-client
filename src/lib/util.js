@@ -47,6 +47,10 @@ export let saveToken = function(id, token) {
   localStorage.setItem('player', JSON.stringify({ token, id }));
 }
 
+export let deleteToken = function() {
+  localStorage.removeItem('player');
+}
+
 export let getToken = function() {
   return JSON.parse(localStorage.getItem('player'));
 }
