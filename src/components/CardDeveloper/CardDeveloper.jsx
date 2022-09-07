@@ -1,23 +1,38 @@
 import React from 'react';
-import avatar from '../../lib/assets/avatar.png'
 import ImageLoader from '../ImageLoader/ImageLoader';
+import Linkedin from '../SVG/Linkedin';
+import Github from '../SVG/Github';
+import Email from '../SVG/Email';
 
 import s from './CardDeveloper.module.css';
 
-export default function CardDeveloper({ id, name, linkedin, github, email }) {
+export default function CardDeveloper({ id, name, linkedin, github, email, img }) {
 
+  let handleClick = function(link) {
+    window.open(link, '_blank');
+  }
+
+  let handleClickEmail = function() {
+    window.open(email);
+  }
   
   return (
     <div className = {`${s.cardContainer} ${s.gradientBorder}`}>
       <div className = {s.imageContainer}>
-        <ImageLoader image = {avatar} alt = {name} />
+        <ImageLoader image = {img} alt = {name} />
       </div>
       <div className = {s.detailsContainer}>
         <span className = {`${s.title}`}>{name}</span>
         <div className = {s.containerRibbon}>
-          <a title={name} href={linkedin} className={s.linksDevelper}>🔧 Linkedin</a><br/>
-          <a title={name} href={github} className={s.linksDevelper}>🐱 GitHub</a><br/>
-          <a title={name} className={s.linksDevelper}>📨 Contact</a>
+          <div className = {`${s.containerLink} ${s.linkedin}`} onClick = {() => handleClick(linkedin)}>
+            <Linkedin />
+          </div>
+          <div className = {`${s.containerLink} ${s.email}`} onClick = {handleClickEmail}>
+            <Email />
+          </div>
+          <div className = {`${s.containerLink} ${s.github}`} onClick = {() => handleClick(github)}>
+            <Github />
+          </div>
         </div>
       </div>
     </div>

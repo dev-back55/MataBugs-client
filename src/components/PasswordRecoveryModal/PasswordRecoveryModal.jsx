@@ -44,7 +44,7 @@ export default function PasswordRecoveryModal() {
 
   let handleClick = function() {
     const { email: errorEmail } = validateEmail({ email });
-    if (errorEmail) {
+    if (errorEmail !== true) {
       setAnimateError(true);
       setErrorMsg(errorEmail);
     }
