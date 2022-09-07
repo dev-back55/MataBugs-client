@@ -2,6 +2,7 @@ import { ActionTypes } from './index';
 import axios from 'axios';
 import { createAsyncThunk, createAction } from '@reduxjs/toolkit';
 import { API_ROUTE } from '../../lib/constants';
+import { getHeaderWithToken, getToken } from '../../lib/util';
 
 export const clearPlayerDetails = createAction(ActionTypes.PLAYER_DETAILS_CLEARED);
 
@@ -15,9 +16,15 @@ export const getPlayerDetails = createAsyncThunk(
 
 export const editPlayer = createAsyncThunk(
   ActionTypes.EDIT_PLAYER,
-  async (data) => {
-    const playerEdited = await axios.put(`${API_ROUTE}/player/${data.idEditer}`, data)
-    return playerEdited.data;
+  async (data, { rejectWithValue, fulfillWithValue }) => {
+    try {
+      let { token, id } = getToken();
+       await axios.put(`${API_ROUTE}/player`, data, getHeaderWithToken(token))
+       fulfillWithValue(true);
+    }
+    catch (error) {
+      throw rejectWithValue(error?.response?.data);
+    }
   }
 );
 
