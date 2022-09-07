@@ -6,7 +6,7 @@ import hunter5 from './assets/hunter5.jpg';
 
 export const API_ROUTE = "http://localhost:3001";
 
-//export const API_ROUTE = "http://15.229.74.105:3000";
+// export const API_ROUTE = "http://15.229.74.105:3000";
 
 export const detailabout = {
     title: 'Bugs Hunters',
@@ -25,6 +25,7 @@ export const detailabout = {
       linkedin: "https://www.linkedin.com/in/federico-romero-f ullstack",
       github: "https://github.com/RomeroFederico",
       email: "mailto:romerof14@gmail.com",
+      img: "https://avatars.githubusercontent.com/u/17879446?v=4"
     },
     {
       id: 2,
@@ -32,6 +33,7 @@ export const detailabout = {
       linkedin: "https://www.linkedin.com/in/enzo-sanchez-733b85165/",
       github: "https://github.com/Enzos97",
       email: "mailto:enz997.ing.ind@gmail.com",
+      img: "https://avatars.githubusercontent.com/u/96807793?v=4"
     },
     {
       id: 3,
@@ -39,6 +41,7 @@ export const detailabout = {
       linkedin: "https://www.linkedin.com/in/battaglialucas/",
       github: "https://github.com/battaglialucas",
       email: "mailto:lucassebastianbattaglia@gmail.com",
+      img: "https://avatars.githubusercontent.com/u/70060515?v=4"
     },
     { 
       id: 4,
@@ -46,6 +49,7 @@ export const detailabout = {
       linkedin: "https://www.linkedin.com/in/horacioabitu/",
       github: "https://github.com/dev-back55",
       email: "mailto:ahabitu@gmail.com",
+      img: "https://avatars.githubusercontent.com/u/97068418?v=4"
     },
     {
       id: 5,
@@ -53,5 +57,6 @@ export const detailabout = {
       linkedin: "https://www.linkedin.com/in/gabrielpitrella",
       github: "https://github.com/gpitrella",
       email: "mailto:gabrielpitrella@gmail.com",
+      img: "https://avatars.githubusercontent.com/u/71048358?v=4"
     }
 ];

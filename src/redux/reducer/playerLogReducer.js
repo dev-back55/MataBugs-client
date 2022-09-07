@@ -1,7 +1,7 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { editPlayer, clearEditPlayer } from "../action/playerDetailsActions";
 import { signupPlayer, signinPlayer, logoutPlayer, fetchPlayerWithToken, dontFetchPlayerWithToken, finishDelay } from "../action/PlayerLogActions";
-import { fetchHasFinished, fetchIsPending, saveToken } from '../../lib/util';
+import { fetchHasFinished, fetchIsPending, saveToken, deleteToken } from '../../lib/util';
 
 const initalState = {
   player: {},
@@ -52,6 +52,7 @@ const reducer = createReducer(initalState, builder => {
     .addCase(logoutPlayer.fulfilled, state => {
       state.success = true;
       state.player = {};
+      deleteToken();
     })
     .addCase(logoutPlayer.rejected, state => {
       state.error = true;

@@ -8,7 +8,7 @@
   width: var(--cardWidth);
 
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 2fr 1fr;
   grid-template-columns: 1fr;
 
   grid-gap: 1rem;
@@ -150,4 +150,58 @@
 
 .cardContainer:hover > .banner {
   opacity: 1; 
+}
+
+.imageContainer {
+  height: 90%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  overflow: hidden;
+  align-self: center;
+  justify-self: center;
+}
+
+.containerRibbon {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-gap: 1rem;
+
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+}
+
+.containerLink {
+  height: 80%;
+  width: 80%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+
+.containerLink > svg {
+  transition: 0.3s;
+  fill: white;
+  opacity: 0.2;
+}
+
+.cardContainer:hover > .detailsContainer > .containerRibbon > .containerLink > svg {
+  opacity: 1;
+}
+
+.cardContainer:hover > .detailsContainer > .containerRibbon > .linkedin > svg {
+  fill: rgb(8, 100, 192);
+}
+
+.cardContainer:hover > .detailsContainer > .containerRibbon > .email > svg {
+  fill: beige;
+}
+
+.cardContainer:hover > .detailsContainer > .containerRibbon > .github > svg {
+  fill: violet;
 }
