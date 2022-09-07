@@ -6,20 +6,28 @@ import { getHeaderWithToken, getToken } from '../../lib/util';
 
 export const signupPlayer = createAsyncThunk(
   ActionTypes.SIGNUP_PLAYER,
-  async (player) => {
-    const newPlayer = await axios.post(`${API_ROUTE}/signup`, player)
-    return newPlayer.data;
+  async (player, {rejectWithValue}) => {
+    try {
+      const newPlayer = await axios.post(`${API_ROUTE}/signup`, player)
+      return newPlayer.data;
+    }
+    catch (error) {
+      throw rejectWithValue(error?.response?.data);
+    }
   }
 );
 
 export const signinPlayer = createAsyncThunk(
   ActionTypes.SIGNIN_PLAYER,
-  async (player) => {
-    const getPlayer = await axios.post(`${API_ROUTE}/login`, player)
-    console.log(getPlayer)
-    return getPlayer.data;
+  async (player, {rejectWithValue}) => {
+  try {
+      const getPlayer = await axios.post(`${API_ROUTE}/login`, player)
+      return getPlayer.data;
   } 
-);
+  catch (error) {
+    throw rejectWithValue(error?.response?.data);
+  }
+});
 
 export const logoutPlayer = createAsyncThunk(
   ActionTypes.PLAYER_HAS_LOGGED_OUT,
@@ -37,5 +45,6 @@ export const fetchPlayerWithToken = createAsyncThunk(
   }
 );
 
+export const clearLog = createAction(ActionTypes.CLEAR_LOG);
 export const dontFetchPlayerWithToken = createAction(ActionTypes.NO_PLAYER_FETCHED_WITH_TOKEN);
 export const finishDelay = createAction(ActionTypes.DELAY_FINISHED);

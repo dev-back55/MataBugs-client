@@ -1,5 +1,5 @@
 <p align='left'>
-    <img src='https://static.wixstatic.com/media/85087f_0d84cbeaeb824fca8f7ff18d7c9eaafd~mv2.png/v1/fill/w_160,h_30,al_c,q_85,usm_0.66_1.00_0.01/Logo_completo_Color_1PNG.webp' </img>
+    <img src='https://res.cloudinary.com/djgghmpgh/image/upload/v1662586699/logo192_qoyg0i.png' style='width:150px;height:150px;'> </img>
 </p>
 
 # Bugs Hunters
@@ -9,95 +9,85 @@ Bugs Hunters is an App where you can access to see all the players, see the rank
 
 ## Project Objetives
 
-- Build a JavaScript App from scratch
-- Afirm and conect all the learned concepts in the Carreer 
-- Learn and practice GIT workflow / team work
-- Use Scrum agile methodology
+- Build a React - Express - Postgres App 
+- Implement services in AWS cloud. 
+- Test implementation both in the Front (Cypress) and in the back (Jest).
+- Use Scrum agile methodology.
 
 ## Stack of Technologies
 
 ### Front End:
-HTML, CSS, Javascript, React, Redux, SendGrid, Cloudinary, SASS, AWS
+- HTML, CSS, Javascript, React, Redux, SendGrid, Cloudinary, SASS, AWS(EC2 - PM2)
 
 ### Back End:
-Node.js, Express, Passport, AWS
+- Node.js, Express, Sequelize, Passport, AWS (EC2 - ngnix)
 
 ### Database:
-PostgreSQL
+- PostgreSQL
 
 ## **Starting Instructions** 
 
 __IMPORTANT:__ Necesary version of node and NPM 
 
- * __Node__: 12.18.3 or higher
- * __NPM__: 6.14.16 or higher
-
+ * __Node__: 16.15.1 or higher
+ * __NPM__: 8.11.0 or higher
  
 ## BoilerPlate
 
 The boilerPlate has two folders: `api` and `client`.
-You can find the first folder 'client' in this repo and the second folder like 'PF-BackEnd' in this same github.
+You can find the first folder `MataBugs-client` in this repo (https://github.com/dev-back55/MataBugs-client) and the second folder in the same repo like `MataBugs-api` in this same github.
 
 Inside `api` you must have to create a file called: `.env` 
 that has the following form: 
 
 ```
-DB_USER=postgress
-DB_PASSWORD=12345
-DB_HOST=localhost:5432
-PORT=3001
-DB_KEY=techmarket
-ACCESS_TOKEN=*****
 
-# Auth Config
-AUTH_SECRET=****
-AUTH_EXPIRES=1d
-AUTH_ROUNDS=10
-CLIENT_URL=http://localhost:3000
-GOOGLE_CLIENT_ID=*****
-GOOGLE_CLIENT_SECRET=*****
-SENDGRID_API_KEY=*****
+DB_USER=postgres
+DB_PASSWORD=12345
+DB_HOST=localhost
+DB_DIALECT=postgres
+PORT=3000
+
 ```
 
 You have to replace `DB_USER` and `DB_PASSWORD` with your own credentials to connect to postgres database. This file will be ignored by github, as it contains sensitive information (the credentials).
-
-The `DB_KEY` is a random security keyword, you can change or keep it. 
-The `ACCESS_TOKEN` is a security keyword to Mercado Pago, you can create one in this platform and make a success buy. In this link https://www.mercadopago.com.ar/developers/es/docs/checkout-api/integration-test/test-cards you can get all information to check a success buy in TechMarket.
 
 In Auth Config you must generated your own Google and SendGrid credential to use this functionalities.
 
 ## Next 
 ### _Connect the data base_
 
- - Go to your postgres database manager and create a new  database called `techmarket`, this is the name of the database to which we will connect.
+ - Go to your postgres database manager and create a new  database called `halloffame`, this is the name of the database to which we will connect.
 
 ### _Install the necesary package to run it_
 
 - Open the project console
-    + Inside `api` folder, run the command line, `npm install`
-    + Inside `client` folder, run the command line, `npm install` 
+    + Inside `MataBugs-api` folder, run the command line, `npm install`
+    + Inside `MataBugs-client` folder, run the command line, `npm install` 
 
 ### _Run the project_
 
 - Open the project console
-    + Inside `api` folder, run the command line, `npm start`
-    + Inside `api` folder, run the command line, `node Api-Store.js` and `node Api-Users.js` to create standard products and users.
+    + Inside `MataBugs-api` folder, run the command line, `npm start`
+    + Inside `MataBugs-api` folder, run the command line, `node dataBaseTemporal.js` to create standard users with theirs avatars.
+    + Inside `MataBugs-api` folder, run the command line, `npm run test 'Number of test'` (Ej.: npm run test 01) to run each api's test. Run individual API test to ensure successful verification.
         
-    + Inside `client` folder, run the command line, `npm start` (go to http://localhost:3000/) 
+    + Inside `MataBugs-client` folder, run the command line, `npm start` and then (go to http://localhost:3000/).
+    + Inside `MataBugs-client` folder, run the command line, `npm run test` to run each client's test. This test will open a new browser window where you need to select which test you want to test.
 
 # For testing
 
-- You can find in `api/index.js`
+- You can find in `api/src/index.js`
     + `conn.sync({ force: false })`, switch it between " true " ( if you want reset database in each loaded ) or " false "( if you dont want reset database in each loaded ) 
-
-- You can use a testing admin user with login credentials, look inside Api-Users.js to find admin users and a standard user.
 
 # Deploy Project 
 
-Live Proyect TechMarket: https://techmarketfront.vercel.app/
+Live Front End Proyect Bugs Hunters: http://15.229.74.105
 - You can create a standard user to see all funcionality or use this user like admin to see admin funcionality:
-    + email: juan@gmail.com
+    + email: gabrielpitrella@gmail.com
     + password: 123456
+
+Live Back End Proyect Bugs Hunters: http://15.229.74.105:3000
 
 # Developers
 

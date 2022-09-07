@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { signupPlayer, signinPlayer } from '../../redux/action/PlayerLogActions';
+import { signupPlayer, signinPlayer, clearLog } from '../../redux/action/PlayerLogActions';
 import { createPlayerByAdmin, clearStoreNewPlayer } from '../../redux/action/createPlayerByAdminActions';
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from 'react-router-dom';
@@ -11,7 +11,7 @@ export function LogInLogUp() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { createbyAdmin, success } = useSelector((state) => state.createdAdmin)
-    const { error } = useSelector((state) => state.player);
+    const { errorMsg } = useSelector((state) => state.player);
     const [ signup, setSignup ] = useState(true);
     const [ player, setPlayer ] = useState({
         email: '',
@@ -81,6 +81,9 @@ export function LogInLogUp() {
 
     useEffect(() => {
         upload()
+        return () => {
+            dispatch(clearLog());
+          }
     },[ image ])
 
     function changeSetImage(e) {
@@ -127,7 +130,7 @@ export function LogInLogUp() {
                                     <label className={s.labelInput}> 
                                         Email: * 
                                         {errorsEmail?.email !== true && (<span className={s.danger}>{errorsEmail.email}</span>)} 
-                                        {error && (<span className={s.danger}>{error.message}</span>)} 
+                                        {errorMsg !== "" && (<span className={s.danger}>{errorMsg}</span>)} 
                                     </label>
                                     <input className={s.inputCreate} placeholder='Add an email' type='email' value={player.email} name='email' onChange={(e) => handleChangePlayer(e)}></input>                   
                                     <br></br>

@@ -43,8 +43,8 @@ describe("Render Card Details elements", () => {
     it("Renders correctly boton Edit Profile", () => {
         cy.visit("/login");
         cy.findAllByText("Sign In here!").click();
-        cy.get('input[name=email]').type('gabriel6@hotmail.com');
-        cy.get('input[name=password]').type('1234567');
+        cy.get('input[name=email]').type('gabrielpitrella@gmail.com');
+        cy.get('input[name=password]').type('123456');
         cy.get('form').find('button[type=submit]').click();
         cy.get('#playerIcon').should("exist");
         cy.get('#playerIcon').click();
@@ -56,8 +56,7 @@ describe("Render Card Details elements", () => {
         cy.get('button[name=editprofile]').click();
         cy.get('button[name=confirme]').should("exist");        
     })
-    xit("Close correctly Card Details", () => {
-        cy.get('.CardDetails_closeCard__VYOog').should("exist");
+    it("Close correctly Card Details", () => {
         cy.get('button[name=closeCardDetail]').should("exist");
         cy.get('button[name=closeCardDetail]').click();
         cy.url().should('not.include', "/player");

@@ -227,6 +227,32 @@
   cursor: pointer;
 }
 
+.playeredit {
+  display: flex;
+  flex-direction: row;
+  margin-left: 100px;
+}
+
+.editblock {
+  display: flex;
+  flex-direction: column;
+}
+
+.changeDetailPlayer {
+  font-size: 12px;
+  padding: 2px;
+  display: flex;
+  flex-direction: row;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: rgb(246, 47, 47);
+}
+
 .closeCard:hover {
   text-shadow: 1px 1px 2px pink;
 }
