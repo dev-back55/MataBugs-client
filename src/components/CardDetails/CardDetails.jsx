@@ -155,6 +155,7 @@ export default function CardDetails() {
       [e.target.name]: false
     })  
   }
+  console.log(loginPlayer)
 
   return (
     <>
@@ -185,7 +186,7 @@ export default function CardDetails() {
             <span id="statusCardDetail" className = {s.spanStatus}>
               {`status: ${player.status}`}
               <br />
-              {editPerfil && loginPlayer?.admin && <div className={s.playeredit}>
+              {editPerfil && loginPlayer.admin && <div className={s.playeredit}>
                 <div className={s.editblock}>
                   <div className = { s.changeDetailPlayer }>
                     <span >Player Status: </span>
