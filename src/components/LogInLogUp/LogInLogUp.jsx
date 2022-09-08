@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from 'react-router-dom';
 import s from './LogInLogUp.module.scss';
 import { validateEmail, validatePassword, validateNickname, validateAvatar } from "../../lib/validate";
+import avatarDefault from '../../lib/assets/avatar.png';
 
 export function LogInLogUp() {
     const dispatch = useDispatch();
@@ -61,6 +62,7 @@ export function LogInLogUp() {
         if(signup) {
             setErrorsNickname(validateNickname({...player,[e.target.name]: e.target.value}))
             setErrorsAvatar(validateAvatar({...player,[e.target.name]: e.target.value}));
+            if(player.avatar === '') setPlayer({...player, avatar: avatarDefault })
             if(errorsEmail.email === true && errorsPassword.password === true && errorsNickname.nickname === true && errorsAvatar.avatar === true ){
                 if(createbyAdmin) {
                     dispatch(createPlayerByAdmin(player))
@@ -88,6 +90,8 @@ export function LogInLogUp() {
         e.preventDefault();
         setImage(e.target.files)
     }
+
+    console.log(player)
 
     const upload = async() => {
         const files = image;
