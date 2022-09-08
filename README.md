@@ -17,13 +17,18 @@ Bugs Hunters is an App where you can access to see all the players, see the rank
 ## Stack of Technologies
 
 ### Front End:
-- HTML, CSS, Javascript, React, Redux, SendGrid, Cloudinary, SASS, AWS(EC2 - PM2)
+- HTML, CSS, Javascript, React, Redux, SendGrid, Cloudinary, SASS 
+- Deploy: AWS(EC2 - ngnix)
 
 ### Back End:
-- Node.js, Express, Sequelize, Passport, AWS (EC2 - ngnix)
+- Node.js, Express, Sequelize, Passport
+- Deploy: AWS(EC2 - RDS) - PM2
 
 ### Database:
-- PostgreSQL
+- PostgreSQL - AWS(RDS)
+
+### Development Interface:
+- Visual Studio Code
 
 ## **Starting Instructions** 
 
@@ -47,12 +52,16 @@ DB_PASSWORD=12345
 DB_HOST=localhost
 DB_DIALECT=postgres
 PORT=3000
+CLIENT_URL=http://15.229.74.105:3000
+
+** Auth Config: **
+SENDGRID_API_KEY=**********
 
 ```
 
 You have to replace `DB_USER` and `DB_PASSWORD` with your own credentials to connect to postgres database. This file will be ignored by github, as it contains sensitive information (the credentials).
 
-In Auth Config you must generated your own Google and SendGrid credential to use this functionalities.
+In Auth Config you must generated your own SendGrid credential to use this functionalities.
 
 ## Next 
 ### _Connect the data base_
@@ -69,16 +78,18 @@ In Auth Config you must generated your own Google and SendGrid credential to use
 
 - Open the project console
     + Inside `MataBugs-api` folder, run the command line, `npm start`
-    + Inside `MataBugs-api` folder, run the command line, `node dataBaseTemporal.js` to create standard users with theirs avatars.
-    + Inside `MataBugs-api` folder, run the command line, `npm run test 'Number of test'` (Ej.: npm run test 01) to run each api's test. Run individual API test to ensure successful verification.
+    + Inside `MataBugs-api` folder, run the command line, `node dataBaseTemporal.js` to create standard users with theirs avatars in local environments.
         
     + Inside `MataBugs-client` folder, run the command line, `npm start` and then (go to http://localhost:3000/).
-    + Inside `MataBugs-client` folder, run the command line, `npm run test` to run each client's test. This test will open a new browser window where you need to select which test you want to test.
 
 # For testing
 
 - You can find in `api/src/index.js`
     + `conn.sync({ force: false })`, switch it between " true " ( if you want reset database in each loaded ) or " false "( if you dont want reset database in each loaded ) 
+
+- Inside `MataBugs-api` folder, run the command line, `npm run test 'Number of test'` (Ej.: npm run test 01) to run each api's test. Run individual API test to ensure successful verification.
+
+- Inside `MataBugs-client` folder, run the command line, `npm run test` to run each client's test. This test will open a new browser window where you need to select which test you want to test. This test check the localhost App with api deployed. It is possible to execute the tests on the deployed app by changing the base url in `MataBugs-client/cypress.config.js`.
 
 # Deploy Project 
 
