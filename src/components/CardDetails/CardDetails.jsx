@@ -35,15 +35,13 @@ export default function CardDetails() {
   });
   const [ image, setImage ] = React.useState("");
   const [ info, setInfo ] = React.useState({ idCard: id });
-  const [ newstatus, setNewstatus ] = React.useState(player?.isactive ? "true" : "false");
-  console.log(newstatus)
-  const [ newAdmin, setNewAdmin ] = React.useState(player?.admin ? "true" : "false");
-  console.log(newAdmin)
+  const [ newstatus, setNewstatus ] = React.useState();
+  const [ newAdmin, setNewAdmin ] = React.useState();
   
   React.useEffect(() => {
     if(loginPlayer?.admin || loginPlayer?.id === parseInt(id)) {
       setIsAdmin(true)
-    }
+    }   
 
     loadPlayerDetails();
 
@@ -67,6 +65,8 @@ export default function CardDetails() {
 
   function handleEdit(e) {
     e.preventDefault();
+    setNewstatus(player.isactive)
+    setNewAdmin(player.admin)
     setEditPerfil(true)
   }
 
@@ -185,14 +185,14 @@ export default function CardDetails() {
             <span id="statusCardDetail" className = {s.spanStatus}>
               {`status: ${player.status}`}
               <br />
-              <div className={s.playeredit}>
+              {editPerfil && <div className={s.playeredit}>
                 <div className={s.editblock}>
                   <div className = { s.changeDetailPlayer }>
-                    <span >Banned Status: </span>
-                    <span className = { `${newstatus === 'true' ? s.green : s.red}`}>{newstatus === 'true' ? ' ACTIVE' : ' BANNED'}</span>
+                    <span >Player Status: </span>
+                    <span className = { `${newstatus == true ? s.green : s.red}`}>{newstatus == true ? ' ACTIVE' : ' BANNED'}</span>
                   </div>
                   <div className={s.changeDetailPlayer}>
-                    <span >Edit Banned</span>
+                    <span >Edit Player</span>
                     <select name="isactive"
                       onChange={(e) => handleSelect(e)}
                       value={newstatus}>
@@ -219,8 +219,7 @@ export default function CardDetails() {
                       </div>
                   </div>
                   }
-              </div>
-             
+              </div> }          
             
              
                 
