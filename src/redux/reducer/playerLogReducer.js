@@ -1,12 +1,21 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { editPlayer, clearEditPlayer } from "../action/playerDetailsActions";
-import { signupPlayer, signinPlayer, logoutPlayer, fetchPlayerWithToken, dontFetchPlayerWithToken, finishDelay } from "../action/PlayerLogActions";
+import { 
+  signupPlayer, 
+  signinPlayer, 
+  logoutPlayer, 
+  fetchPlayerWithToken, 
+  dontFetchPlayerWithToken, 
+  finishDelay, 
+  clearLog 
+} from "../action/PlayerLogActions";
 import { fetchHasFinished, fetchIsPending, saveToken, deleteToken } from '../../lib/util';
 
 const initalState = {
   player: {},
 
   error: false,
+  errorMsg: '',
   success: false,
   loading: false,
 
@@ -31,7 +40,8 @@ const reducer = createReducer(initalState, builder => {
       saveToken(action.payload.player.id, action.payload.token);
     })
     .addCase(signupPlayer.rejected, (state, action) => {
-      state.error = action.error;
+      state.error = true;
+      state.errorMsg = action.payload;
     })
 
     .addCase(signinPlayer.pending, state => {
@@ -43,7 +53,15 @@ const reducer = createReducer(initalState, builder => {
       saveToken(action.payload.player.id, action.payload.token);
     })
     .addCase(signinPlayer.rejected, (state, action) => {
-      state.error = action.error;
+      state.error = true;
+      state.errorMsg = action.payload;
+    })
+
+    .addCase(clearLog, state => {
+      state.error = false;
+      state.errorMsg = '';
+      state.success = false;
+      state.loading = false;
     })
 
     .addCase(logoutPlayer.pending, state => {

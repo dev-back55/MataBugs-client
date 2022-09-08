@@ -1,6 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import ImageLoader from '../ImageLoader/ImageLoader';
+import { useDispatch } from 'react-redux';
+import { getPlayerDetails } from '../../redux/action/playerDetailsActions';
+
 import Ribbon from '../SVG/Ribbon';
 import Tag from '../SVG/Tag';
 import Trophy from '../SVG/Trophy';
@@ -12,8 +15,9 @@ import s from './Card.module.css';
 export default function Card({ id, nickname, status, ranking, avatar }) {
 
   const navigate = useNavigate(); 
-
+  const dispatch = useDispatch();
   let handleClick = function() {
+    dispatch(getPlayerDetails(id));
     navigate(`/player/${id}`);
   }
 

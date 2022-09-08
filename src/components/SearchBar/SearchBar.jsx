@@ -22,6 +22,7 @@ export default function SearchBar({ maxLength, value, handleValue, handleSearch,
   return (
     <div className = {`${s.container} ${lastSearch.length > 0 ? s.containerWithReset : ''}`} >
       <input
+        name='searchbar'
         maxLength = {maxLength}
         value = {value}
         onChange = {handleInput}

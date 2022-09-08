@@ -33,9 +33,13 @@ export default function CardDetails() {
     nickname: false,
     ranking: false
   });
-  const [ info, setInfo ] = React.useState({idEditer: loginPlayer?.id, idCard: id});
   const [ image, setImage ] = React.useState("");
-
+  const [ info, setInfo ] = React.useState({ idCard: id });
+  const [ newstatus, setNewstatus ] = React.useState(player?.isactive ? "true" : "false");
+  console.log(newstatus)
+  const [ newAdmin, setNewAdmin ] = React.useState(player?.admin ? "true" : "false");
+  console.log(newAdmin)
+  
   React.useEffect(() => {
     if(loginPlayer?.admin || loginPlayer?.id === parseInt(id)) {
       setIsAdmin(true)
@@ -82,6 +86,39 @@ export default function CardDetails() {
     })
   }
 
+  function handleSelect(e){
+         
+    if(e.target.value === 'true'){
+       setNewstatus("true")
+       setInfo({
+         ...info,
+         [e.target.name]: true
+       })
+    }else {
+       setNewstatus("false");
+       setInfo({
+        ...info,
+        [e.target.name]: false
+      })
+    }
+  }  
+
+  function handleConfirmPromote(e){
+    if(e.target.value === 'true'){
+      setNewAdmin("true")
+      setInfo({
+        ...info,
+        [e.target.name]: true
+      })
+   }else {
+      setNewAdmin("false");
+      setInfo({
+       ...info,
+       [e.target.name]: false
+     })
+   }
+ }
+
   function handleConfirmeFeature(e) {
     e.preventDefault();
     setEditPerfilFeature({
@@ -92,9 +129,10 @@ export default function CardDetails() {
 
   function handleConfirme(e) {
     e.preventDefault();
+
     dispatch(editPlayer(info))
     setEditPerfil(false)
-    setInfo({idEditer: loginPlayer?.id, idCard: id})
+    setInfo({idCard: id})
   }
 
   const upload = async(e) => {
@@ -146,6 +184,46 @@ export default function CardDetails() {
             <img src = {selectMedal[player.status]} alt = {`MEDALLA-${player.status}`} className = {s.medal} onLoad = {handleOnLoadMedal} />
             <span id="statusCardDetail" className = {s.spanStatus}>
               {`status: ${player.status}`}
+              <br />
+              <div className={s.playeredit}>
+                <div className={s.editblock}>
+                  <div className = { s.changeDetailPlayer }>
+                    <span >Banned Status: </span>
+                    <span className = { `${newstatus === 'true' ? s.green : s.red}`}>{newstatus === 'true' ? ' ACTIVE' : ' BANNED'}</span>
+                  </div>
+                  <div className={s.changeDetailPlayer}>
+                    <span >Edit Banned</span>
+                    <select name="isactive"
+                      onChange={(e) => handleSelect(e)}
+                      value={newstatus}>
+                        <option value={"true"}>Active</option>
+                        <option value={"false"}>Banned</option>
+                    </select>
+                  </div>
+                </div>
+                  {
+                  player && !player?.admin && player?.isactive &&
+                  <div className={s.editblock}>
+                      <div className = {s.changeDetailPlayer}>
+                        <span>Admin Status</span>
+                        <span className = { `${newAdmin === 'true' ? s.green : s.red}` }>{newAdmin === 'true' ? 'ADMIN' : 'NO ADMIN'}</span>
+                      </div>
+                      <div className={s.changeDetailPlayer}>
+                        <span>Edit Admin</span>
+                        <select name="admin"
+                          onChange={(e) => handleConfirmPromote(e)}
+                          value={newAdmin}>
+                            <option value={"true"}>Admin</option>
+                            <option value={"false"}>No Admin</option>
+                        </select>
+                      </div>
+                  </div>
+                  }
+              </div>
+             
+            
+             
+                
               {editPerfil && <h6>New Player Data:</h6> }
               {info?.ranking && <h5 className = {s.spanEditChange}> New Ranking: {info.ranking}</h5> }
               {info?.avatar && <h5 className = {s.spanEditChange}> New Avatar: {info.avatar.slice(0,10)}</h5> }
