@@ -6,7 +6,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import s from './LogInLogUp.module.scss';
 import { validateEmail, validatePassword, validateNickname, validateAvatar } from "../../lib/validate";
 
-
 export function LogInLogUp() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -24,23 +23,25 @@ export function LogInLogUp() {
     const [errorsPassword, setErrorsPassword] = useState({});
     const [errorsNickname, setErrorsNickname] = useState({});
     const [errorsAvatar, setErrorsAvatar] = useState({});
-    const [ image, setImage ] = React.useState("");
+    const [ image, setImage ] = useState("");
+    const [ viewPassword, setViewPassword ] = useState(false);
 
-    // const [ dataErrors, setDataErrors] = useState(false);
+    function handleChangeViewPassword() {
+        setViewPassword(!viewPassword)
+    }
   
     // Email Control // NickName Control  // Image Control  // Email Control
     function handleChangePlayer(e){
         e.preventDefault();
-        // setDataErrors(false)
         setPlayer({
             ...player,
             [e.target.name]: e.target.value
         })
 
-        if(player.email !== '') setErrorsEmail(validateEmail({...player,[e.target.name]: e.target.value}));
-        if(player.password !== '') setErrorsPassword(validatePassword({...player,[e.target.name]: e.target.value}));
-        if(player.nickname !== '' && signup) setErrorsNickname(validateNickname({...player,[e.target.name]: e.target.value}));
-        if(player.avatar !== '' && signup) setErrorsAvatar(validateAvatar({...player,[e.target.name]: e.target.value}));
+        if(player.email !== '' && e.target.name === 'email') setErrorsEmail(validateEmail({...player,[e.target.name]: e.target.value}));
+        if(player.password !== '' && e.target.name === 'password') setErrorsPassword(validatePassword({...player,[e.target.name]: e.target.value}));
+        if(player.nickname !== '' && e.target.name === 'nickname' && signup) setErrorsNickname(validateNickname({...player,[e.target.name]: e.target.value}));
+        if(player.avatar !== '' && e.target.name === 'avatar' && signup) setErrorsAvatar(validateAvatar({...player,[e.target.name]: e.target.value}));
     };
     
     function handleChangeSignup(e) {
@@ -60,11 +61,6 @@ export function LogInLogUp() {
         if(signup) {
             setErrorsNickname(validateNickname({...player,[e.target.name]: e.target.value}))
             setErrorsAvatar(validateAvatar({...player,[e.target.name]: e.target.value}));
-        } 
-    }
-
-    useEffect(() => {
-        if(signup) {
             if(errorsEmail.email === true && errorsPassword.password === true && errorsNickname.nickname === true && errorsAvatar.avatar === true ){
                 if(createbyAdmin) {
                     dispatch(createPlayerByAdmin(player))
@@ -77,14 +73,16 @@ export function LogInLogUp() {
                 dispatch(signinPlayer(player))
             } 
         } 
-    }, [ signup, player, errorsEmail, errorsPassword, errorsNickname, errorsAvatar ])
+    }
 
     useEffect(() => {
-        upload()
+        if(image !== ''){
+            upload();
+        }
         return () => {
             dispatch(clearLog());
           }
-    },[ image ])
+    },[image])
 
     function changeSetImage(e) {
         e.preventDefault();
@@ -93,8 +91,8 @@ export function LogInLogUp() {
 
     const upload = async() => {
         const files = image;
-        const formData = new FormData
-        formData.append("file", files[0])
+        const formData = new FormData();
+        formData.append("file", files[0]);
         formData.append("upload_preset", "tech_market_henry")
         const res = await fetch(
             "https://api.cloudinary.com/v1_1/techmarket/image/upload",
@@ -139,10 +137,10 @@ export function LogInLogUp() {
                                     <label className={s.labelInput}> NickName: * {errorsNickname?.nickname !== true && (<span className={s.danger}>{errorsNickname.nickname}</span>)}</label>
                                         <input className={s.inputCreate} placeholder='Write a nickname' type='text' value={player.nickname} name='nickname' onChange={(e) => handleChangePlayer(e)}></input>                   
                                         <br></br> 
-                                </> )}
-
+                                </> )} 
+                                
                                 <label className={s.labelInput}> Password: * {errorsPassword?.password !== true && (<span className={s.danger}>{errorsPassword.password}</span>)} </label>
-                                    <input className={s.inputCreate} placeholder='Add a password' type='text' value={player.password} name='password' onChange={(e) => handleChangePlayer(e)}></input>
+                                    <input className={s.inputCreate} placeholder='Add a password' type={viewPassword ? 'text' : 'password'} value={player.password} name='password' onChange={(e) => handleChangePlayer(e)}></input>
                                     <br></br>
 
                                 {signup && ( <>
@@ -152,6 +150,11 @@ export function LogInLogUp() {
                                 </> )}
                             </div>
 
+                            <div className = {s.containerCheckLogin}>
+                                <label className = {s.labelInputCheck}>View Password</label>
+                                {console.log(viewPassword)}
+                                <input type = 'checkbox' onChange = {handleChangeViewPassword} name = 'view' checked={viewPassword}/>
+                            </div>
                             <div >
                                 <button className={s.buttonCreate} type='submit' onClick={(e) => handleOnSubmit(e)}>{createbyAdmin ? "Create Player" : signup ? "Sign Up" : "Sign In"}</button>
                             </div>

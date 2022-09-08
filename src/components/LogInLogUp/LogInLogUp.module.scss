@@ -58,11 +58,23 @@
   }
 }
 
-
 .labelInput {
   align-self: flex-start;
   font-weight: 500;
   color: rgb(133, 133, 133);
+}
+
+.containerCheckLogin {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0px 0px 15px;
+}
+
+.labelInputCheck {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: var(--fontSmall);
+  letter-spacing: 1px;
+  font-weight: 600;
 }
 
 .closeCard {
