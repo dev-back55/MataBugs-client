@@ -82,7 +82,7 @@ export function LogInLogUp() {
         return () => {
             dispatch(clearLog());
           }
-    },[ image ])
+    },[image])
 
     function changeSetImage(e) {
         e.preventDefault();
@@ -91,8 +91,8 @@ export function LogInLogUp() {
 
     const upload = async() => {
         const files = image;
-        const formData = new FormData
-        formData.append("file", files[0])
+        const formData = new FormData();
+        formData.append("file", files[0]);
         formData.append("upload_preset", "tech_market_henry")
         const res = await fetch(
             "https://api.cloudinary.com/v1_1/techmarket/image/upload",

@@ -137,7 +137,7 @@ export default function CardDetails() {
 
   const upload = async(e) => {
     const files = image;
-    const formData = new FormData
+    const formData = new FormData();
     formData.append("file", files[0])
     formData.append("upload_preset", "tech_market_henry")
     const res = await fetch(
@@ -155,7 +155,6 @@ export default function CardDetails() {
       [e.target.name]: false
     })  
   }
-  console.log(loginPlayer)
 
   return (
     <>
@@ -190,7 +189,7 @@ export default function CardDetails() {
                 <div className={s.editblock}>
                   <div className = { s.changeDetailPlayer }>
                     <span >Player Status: </span>
-                    <span className = { `${newstatus == true ? s.green : s.red}`}>{newstatus == true ? ' ACTIVE' : ' BANNED'}</span>
+                    <span className={ `${newstatus === true ? s.green : s.red}`}>{newstatus === true ? ' ACTIVE' : ' BANNED'}</span>
                   </div>
                   <div className={s.changeDetailPlayer}>
                     <span >Edit Player</span>
