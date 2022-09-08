@@ -6,8 +6,6 @@ import hunter5 from './assets/hunter5.jpg';
 
 export const API_ROUTE = "http://15.229.74.105:3000";
 
-// export const API_ROUTE = "http://15.229.74.105:3000";
-
 export const detailabout = {
     title: 'Bugs Hunters',
     description: `Bugs Hunters it is an RPG game where a group of players assumes the role of programmers of the new metaverse 
