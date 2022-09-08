@@ -1,70 +1,140 @@
-# Getting Started with Create React App
+<p align='left'>
+    <img src='https://res.cloudinary.com/djgghmpgh/image/upload/v1662586699/logo192_qoyg0i.png' style='width:150px;height:150px;'> </img>
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Bugs Hunters
+## Introduction
 
-## Available Scripts
+Bugs Hunters is an App where you can access to see all the players, see the ranking of the best players, create a player and more, Bugs Hunters it is an RPG game where a group of players assumes the role of programmers of the new metaverse where they must destroy bugs, which in said virtual reality take the form of giant insects that devour space itself. As players progress, destroying more bugs and overcoming the challenges that will be imposed on them in the metaverse, they will earn more points, which will allow them to improve their equipment and increase their ranking.
 
-In the project directory, you can run:
+## Project Objetives
 
-### `npm start`
+- Build a React - Express - Postgres App 
+- Implement services in AWS cloud. 
+- Test implementation both in the Front (Cypress) and in the back (Jest).
+- Use Scrum agile methodology.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Stack of Technologies
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Front End:
+- HTML, CSS, Javascript, React, Redux, SendGrid, Cloudinary, SASS, AWS(EC2 - PM2)
 
-### `npm test`
+### Back End:
+- Node.js, Express, Sequelize, Passport, AWS (EC2 - ngnix)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Database:
+- PostgreSQL
 
-### `npm run build`
+## **Starting Instructions** 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+__IMPORTANT:__ Necesary version of node and NPM 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+ * __Node__: 16.15.1 or higher
+ * __NPM__: 8.11.0 or higher
+ 
+## BoilerPlate
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The boilerPlate has two folders: `api` and `client`.
+You can find the first folder `MataBugs-client` in this repo (https://github.com/dev-back55/MataBugs-client) and the second folder in the same repo like `MataBugs-api` in this same github.
 
-### `npm run eject`
+Inside `api` you must have to create a file called: `.env` 
+that has the following form: 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+DB_USER=postgres
+DB_PASSWORD=12345
+DB_HOST=localhost
+DB_DIALECT=postgres
+PORT=3000
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+You have to replace `DB_USER` and `DB_PASSWORD` with your own credentials to connect to postgres database. This file will be ignored by github, as it contains sensitive information (the credentials).
 
-## Learn More
+In Auth Config you must generated your own Google and SendGrid credential to use this functionalities.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Next 
+### _Connect the data base_
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+ - Go to your postgres database manager and create a new  database called `halloffame`, this is the name of the database to which we will connect.
 
-### Code Splitting
+### _Install the necesary package to run it_
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Open the project console
+    + Inside `MataBugs-api` folder, run the command line, `npm install`
+    + Inside `MataBugs-client` folder, run the command line, `npm install` 
 
-### Analyzing the Bundle Size
+### _Run the project_
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Open the project console
+    + Inside `MataBugs-api` folder, run the command line, `npm start`
+    + Inside `MataBugs-api` folder, run the command line, `node dataBaseTemporal.js` to create standard users with theirs avatars.
+    + Inside `MataBugs-api` folder, run the command line, `npm run test 'Number of test'` (Ej.: npm run test 01) to run each api's test. Run individual API test to ensure successful verification.
+        
+    + Inside `MataBugs-client` folder, run the command line, `npm start` and then (go to http://localhost:3000/).
+    + Inside `MataBugs-client` folder, run the command line, `npm run test` to run each client's test. This test will open a new browser window where you need to select which test you want to test.
 
-### Making a Progressive Web App
+# For testing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- You can find in `api/src/index.js`
+    + `conn.sync({ force: false })`, switch it between " true " ( if you want reset database in each loaded ) or " false "( if you dont want reset database in each loaded ) 
 
-### Advanced Configuration
+# Deploy Project 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Live Front End Proyect Bugs Hunters: http://15.229.74.105
+- You can create a standard user to see all funcionality or use this user like admin to see admin funcionality:
+    + email: gabrielpitrella@gmail.com
+    + password: 123456
 
-### Deployment
+Live Back End Proyect Bugs Hunters: http://15.229.74.105:3000
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+# Developers
 
-### `npm run build` fails to minify
+- Federico Romero
+    + Linkedin: https://www.linkedin.com/in/federico-romero-fullstack
+    + Github: https://github.com/RomeroFederico
+    + email: romerof14@gmail.com
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Enzo Sanchez
+    + Linkedin: https://www.linkedin.com/in/enzo-sanchez-733b85165/
+    + Github: https://github.com/Enzos97
+    + email: enz997.ing.ind@gmail.com
+
+- Lucas Battaglia
+    + Linkedin: https://www.linkedin.com/in/battaglialucas/
+    + Github: https://github.com/battaglialucas
+    + email: lucassebastianbattaglia@gmail.com     
+
+- Horacio Abitu
+    + Linkedin: https://www.linkedin.com/in/horacioabitu/
+    + Github: https://github.com/dev-back55
+    + email: ahabitu@gmail.com
+
+- Gabriel Pitrella
+    + Linkedin: https://www.linkedin.com/in/gabrielpitrella
+    + Github: https://github.com/gpitrella
+    + email: gabrielpitrella@gmail.com
+
+# Project Screens 
+
+- Charging Page
+![ChargingPage](https://res.cloudinary.com/djgghmpgh/image/upload/v1662477282/HallOfFameInitial_kesfiu.jpg)
+
+- Home Page 
+![HomePage](https://res.cloudinary.com/djgghmpgh/image/upload/v1662477119/HallOfFame_ai7rks.jpg)
+
+- Search Player Page
+![SearchPlayer](https://res.cloudinary.com/djgghmpgh/image/upload/v1662477287/HallOfFameSearch_hr4nog.jpg)
+
+- Details Player Page
+![DetailsPlayer](https://res.cloudinary.com/djgghmpgh/image/upload/v1662477284/HallOfFamePlayerDetail_ilrpoq.jpg)
+
+- Create Player Page
+![CreatePlayer](https://res.cloudinary.com/djgghmpgh/image/upload/v1662477282/HallOfFameCreatePlayer_vz4xob.jpg)
+
+- About Page
+![About](https://res.cloudinary.com/djgghmpgh/image/upload/v1662477285/HallOfFameAbout_k3ir5q.jpg)
+
+- Login Page
+![About](https://res.cloudinary.com/djgghmpgh/image/upload/v1662478479/HallOfFameSignIn_ivfelo.jpg)

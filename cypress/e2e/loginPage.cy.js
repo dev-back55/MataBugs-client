@@ -25,20 +25,20 @@ describe("Render the Login components:", () => {
 });
 
 describe("Render the Login", () => {
-    xit("Sign Up Form: Check exist inputs", () => {
+    it("Sign Up Form: Check exist inputs", () => {
         cy.get('input[name=email]').should("exist");
         cy.get('input[name=nickname]').should("exist");
         cy.get('input[name=password]').should("exist");
-        cy.get('input[name=avatar]').should("exist");
+        cy.get('input[name=image]').should("exist");
         cy.findAllByText("Sign In here!").should("exist");
     })
-    xit("Sign Up Form: check empty data before submit", () => {
+    it("Sign Up Form: check empty data before submit", () => {
         cy.get('form').find('button[type=submit]').click();
         cy.findAllByText('Add an e-mail').should("exist");
         cy.findAllByText('Add a nickname').should("exist");
         cy.findAllByText('Add a password').should("exist");
     })
-    xit("Sign Up Form: submit wrong", () => {
+    it("Sign Up Form: submit wrong", () => {
         cy.get('form').find('button[type=submit]').click();
         cy.url().should("not.include", "home");
         cy.url().should("include", "login");
@@ -51,7 +51,7 @@ describe("Render the Login", () => {
         cy.url().should('not.include', { timeout: 10000 }, "login");
         cy.url().should('include', "home");
     })
-    xit("Sign In Form: Check exist inputs", () => {
+    it("Sign In Form: Check exist inputs", () => {
         cy.findAllByText("Sign In here!").should("exist");
         cy.findAllByText("Sign In here!").click();
         cy.get('input[name=email]').should("exist");
@@ -60,24 +60,24 @@ describe("Render the Login", () => {
         cy.get('input[name=avatar]').should("not.exist");
         cy.findAllByText("Sign Up here!").should("exist");
     })
-    xit("Sign In Form: check empty data before submit", () => {
+    it("Sign In Form: check empty data before submit", () => {
         cy.get('form').find('button[type=submit]').click();
         cy.findAllByText('Add an e-mail').should("exist");
         cy.findAllByText('Add a password').should("exist");
     })
-    xit("Sign In Form: submit wrong", () => {
+    it("Sign In Form: submit wrong", () => {
         cy.get('form').find('button[type=submit]').click();
         cy.url().should("not.include", "home");
         cy.url().should("include", "login");
     })
-    xit("Sign In Form: submit OK", () => { 
-        cy.get('input[name=email]').type('gabriel6@hotmail.com');
-        cy.get('input[name=password]').type('1234567');
+    it("Sign In Form: submit OK", () => { 
+        cy.get('input[name=email]').type('gabrielpitrella@gmail.com');
+        cy.get('input[name=password]').type('123456');
         cy.get('form').find('button[type=submit]').click();
         cy.url().should('not.include', "login");
         cy.url().should('include', "home");
      })
-    xit("Logout OK", () => { 
+    it("Logout OK", () => { 
         cy.get('#playerIcon').should("exist");
         cy.get('#playerIcon').click();
         cy.findAllByText('Logout').should("exist");
@@ -117,13 +117,5 @@ describe("Render the Login", () => {
         cy.get('input[name=password]').clear().type('pass$123')
         cy.findAllByText("Add password without Symbols").should("exist");
         cy.get('input[name=password]').clear();
-    })
-    it("Avatar input: Check exist input", () => {
-        cy.get('input[name=avatar]').type('https://www.imdb.com/txitle/tt0499549/mediaviewer/rm371527425/?ref_=tt_ov_i')
-    })
-    it("Avatar input: Check correct link input", () => {
-        cy.get('input[name=avatar]').clear().type('https/txitle/tt0499549/mediaviewer/rm37152ef_=tt_ov_i')
-        cy.findAllByText("Add a correct link").should("exist");
-        cy.get('input[name=avatar]').clear()
     })
 })

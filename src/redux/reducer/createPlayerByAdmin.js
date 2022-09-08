@@ -29,10 +29,11 @@ const reducer = createReducer(initalState, builder => {
       state.createbyAdmin = true;
     })
     .addCase(clearStoreNewPlayer, state => {
+      state.playerCreated = {};
       state.error = false;
       state.success = false;
       state.loading = false;
-      state.playerCreated = {};
+      state.createbyAdmin = false;
     })
 });
 

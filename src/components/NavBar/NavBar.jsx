@@ -6,7 +6,7 @@ import Logo from '../Logo/Logo';
 import PlayerIcon from '../PlayerIcon/PlayerIcon';
 import ModalPickOption from '../ModalPickOption/ModalPickOption';
 import { logoutPlayer } from '../../redux/action/PlayerLogActions';
-import { enableCreatebyAdmin } from '../../redux/action/createPlayerByAdminActions'
+import { enableCreatebyAdmin, clearStoreNewPlayer } from '../../redux/action/createPlayerByAdminActions'
 
 
 import s from './NavBar.module.css';
@@ -42,6 +42,7 @@ export default function NavBar() {
         break;
       default:
         dispatch(logoutPlayer());
+        dispatch(clearStoreNewPlayer());
     }
     setShowOptions(false);
   }
