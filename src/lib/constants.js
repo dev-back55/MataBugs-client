@@ -4,7 +4,7 @@ import hunter3 from './assets/hunter3.jpg';
 import hunter4 from './assets/hunter4.jpg';
 import hunter5 from './assets/hunter5.jpg';
 
-export const API_ROUTE = "http://localhost:3001";
+export const API_ROUTE = "http://15.229.74.105:3000";
 
 // export const API_ROUTE = "http://15.229.74.105:3000";
 
