@@ -162,14 +162,7 @@ export function LogInLogUp() {
                             <div >
                                 <button className={s.buttonCreate} type='submit' onClick={(e) => handleOnSubmit(e)}>{createbyAdmin ? "Create Player" : signup ? "Sign Up" : "Sign In"}</button>
                             </div>
-                            {
-                                !signup &&
-                                <div className={s.changeLoginLogout}>
-                                    <Link to = '/recoverpassword' style = {{ textDecoration: 'none' }}>
-                                        <span className={s.loginlogup}>Forgot your Password?</span>
-                                    </Link>
-                                </div>
-                            }
+                            
                             <div className={s.changeLoginLogout}>
                                 { !createbyAdmin && <>{signup ? "Already a user?" : "No account yet?" } <span onClick={(e) => handleChangeSignup(e)} className={s.loginlogup}>{signup ? "Sign In here!" : "Sign Up here!"}</span></>}
                             </div>
