@@ -19,7 +19,8 @@ export const editPlayer = createAsyncThunk(
   async (data, { rejectWithValue, fulfillWithValue }) => {
     try {
       let { token, id } = getToken();
-       await axios.put(`${API_ROUTE}/player`, data, getHeaderWithToken(token))
+      let newdata = {...data, idEditer: null }
+       await axios.put(`${API_ROUTE}/player`, newdata, getHeaderWithToken(token))
        fulfillWithValue(true);
     }
     catch (error) {
