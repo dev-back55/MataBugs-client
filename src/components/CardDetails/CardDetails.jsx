@@ -185,7 +185,7 @@ export default function CardDetails() {
             <span id="statusCardDetail" className = {s.spanStatus}>
               {`status: ${player.status}`}
               <br />
-              {editPerfil && <div className={s.playeredit}>
+              {editPerfil && loginPlayer?.admin && <div className={s.playeredit}>
                 <div className={s.editblock}>
                   <div className = { s.changeDetailPlayer }>
                     <span >Player Status: </span>
@@ -231,8 +231,8 @@ export default function CardDetails() {
             </span>
             <span className = {s.spanEditChange}>
            
-              {editPerfilFeature.ranking && <input className={s.inputCreate} placeholder='New Ranking' type='text' name='ranking' onChange={(e) => handleChange(e)}></input>}
-              {editPerfilFeature.ranking && <button name='ranking' className={s.btnEditFeature} onClick={(e) => handleConfirmeFeature(e)}>✅</button>}
+              {editPerfilFeature.ranking && loginPlayer?.admin && <input className={s.inputCreate} placeholder='New Ranking' type='text' name='ranking' onChange={(e) => handleChange(e)}></input>}
+              {editPerfilFeature.ranking && loginPlayer?.admin && <button name='ranking' className={s.btnEditFeature} onClick={(e) => handleConfirmeFeature(e)}>✅</button>}
               {editPerfilFeature.avatar && <button type="file" name="image" onChange={e => setImage(e.target.files)} variant="contained" className={s.inputCreate}><input type="file"  name="image"/></button>}
               {editPerfilFeature.avatar && <button name='avatar' className={s.btnEditFeature} onClick={(e) => upload(e)}>✅</button>}
               {editPerfilFeature.nickname && <input className={s.inputCreate} placeholder='New nickname' type='text' name='nickname' onChange={(e) => handleChange(e)}></input>}
