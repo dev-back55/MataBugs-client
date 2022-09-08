@@ -10,7 +10,6 @@ export const getHallOfFame = createAsyncThunk(
   ActionTypes.HALL_OF_FAME_FOUND,
   async () => {
     const hallOfFameFound = await axios.get(`${API_ROUTE}/hallOfFame`);
-    console.log('estoy en reducer',hallOfFameFound)
     return hallOfFameFound.data;
   }
 );
