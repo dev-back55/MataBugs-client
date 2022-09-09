@@ -54,8 +54,6 @@ DB_DIALECT=postgres
 PORT=3000
 CLIENT_URL=http://15.229.74.105:3000
 
-** Auth Config: **
-SENDGRID_API_KEY=**********
 
 ```
 
