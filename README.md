@@ -19,6 +19,7 @@ Bugs Hunters is an App where you can access to see all the players, see the rank
 ### Front End:
 - HTML, CSS, Javascript, React, Redux, SendGrid, Cloudinary, SASS 
 - Deploy: AWS(EC2 - ngnix)
+- Responsive Design
 
 ### Back End:
 - Node.js, Express, Sequelize, Passport
