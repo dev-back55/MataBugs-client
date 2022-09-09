@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import LoadingView from './views/LoadingView/LoadingView';
 import NavBar from './components/NavBar/NavBar';
@@ -28,7 +28,7 @@ function App() {
         <Sidebar />
         <div className = "mainZone">
           <NavBar />
-          <Switch>
+          <Routes>
             <Route exact path = '/' element = { <HallOfFameView /> } />
             <Route exact path = '/home' element = { <HallOfFameView /> } />
             <Route exact path = '/search' element = { <SearchView /> } />
@@ -37,7 +37,7 @@ function App() {
             <Route exact path = '/updatepassword' element = { <ChangePasswordModal /> } />
             <Route exact path = '/about' element = { <AboutView />} />
             <Route path = "*" element = { <Navigate to = "/home" replace /> } />
-          </Switch>
+          </Routes>
         </div>
       </div>
     </>
