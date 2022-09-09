@@ -29,6 +29,7 @@ function App() {
         <div className = "mainZone">
           <NavBar />
           <Routes>
+          <Route exact path = '/' element = { <HallOfFameView /> } />
             <Route exact path = '/home' element = { <HallOfFameView /> } />
             <Route exact path = '/search' element = { <SearchView /> } />
             <Route exact path = '/login' element = { !player?.player || createbyAdmin ? <LogInLogUp /> : <Navigate to = "/"/> } />
