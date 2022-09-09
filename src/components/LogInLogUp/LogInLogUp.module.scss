@@ -1,0 +1,147 @@
+.container {
+    padding: 20px;
+    width: 30rem;
+    padding: 1rem;
+    background-color: black;
+    border-radius: 8px;
+    background: linear-gradient(65.58deg, rgba(0, 66, 255, 0.5) -11.84%, rgba(235, 0, 27, 0.5) 98.75%);
+    box-shadow:inset 0px 0px 0px 3px rgba(255, 255, 255, 0.2);
+    position: relative;
+    animation: showContainer 1s;
+    animation-fill-mode: both;
+    margin-top: 5rem;
+}
+
+.containerCreatePlayer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 2rem;
+
+    img {
+        width: 250px;
+    }
+}
+
+.title {
+  color: white;
+  margin-top: 0px;
+}
+
+.titleSuccess {
+  padding: 40px 20px 20px;
+  color: white;
+  margin-top: 0px;
+}
+
+.containerInput {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+
+}
+
+.inputCreate{
+	width: 100%;
+  padding: 12px 20px;
+  margin-top: 5px;
+  font-weight: bold;
+  display: inline-block;
+  border: 1px solid #ccc;
+  background-color: rgba(172, 172, 172, 0.623);
+  border-radius: 4px;
+  box-sizing: border-box;
+  &::placeholder {
+    font-weight: bold;
+    opacity: .5;
+    color: rgb(255, 255, 255);
+  }
+}
+
+.labelInput {
+  align-self: flex-start;
+  font-weight: 500;
+  color: rgb(133, 133, 133);
+}
+
+.containerCheckLogin {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0px 0px 15px;
+}
+
+.labelInputCheck {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: var(--fontSmall);
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.closeCard {
+  color: white;
+  background: rgba(255, 255, 255, 0);
+  border-color: #ffffff00;
+  position: fixed;
+  right: 25px;
+  top: 25px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.buttonCreate {
+  background-color: rgba(0, 66, 255, 0.5); /* Green */
+  border: none;
+  color: white;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  border-radius: 8px;
+  cursor: pointer;
+
+  &:hover{
+    background-color: rgba(235, 0, 27, 0.5);
+    color: white;
+  }
+}
+
+.changeLoginLogout {
+  margin-top: 10px;
+}
+
+.loginlogup {
+  cursor: pointer;
+  color: rgb(76, 167, 247);
+  &:hover {
+    color: rgb(41, 120, 188);
+  }
+}
+
+.danger {
+  color: rgb(207, 51, 51);
+  font-size: 14px;
+}
+
+
+@keyframes showContainer {
+    from {
+      opacity: 0;
+      transform: translateY(2rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+@media (max-width: 900px) {
+.container {
+        // height: 25rem;
+        width: 18rem;
+        // grid-template-rows: 1fr;
+        // grid-template-columns: 1fr 1fr;
+    }
+}

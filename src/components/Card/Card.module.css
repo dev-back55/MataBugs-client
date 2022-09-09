@@ -1,0 +1,257 @@
+.cardContainer {
+
+  margin: 1REM;
+
+  border-radius: 8px;
+
+  height: var(--cardHeight);
+  width: var(--cardWidth);
+
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr;
+
+  grid-gap: 1rem;
+
+  padding: 1rem;
+
+  background-color: var(--primaryColor);
+
+  transition: 0.2s;
+}
+
+.banner {
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+
+  height: 50%;
+  align-self: flex-start;
+
+  z-index: 1;
+
+  opacity: 0.7;
+}
+
+.oro {
+  background: var(--goldenGradient);
+}
+
+.plata {
+  background: var(--silverGradient);
+}
+
+.bronce {
+  background: var(--bronzeGradient);
+}
+
+.imageContainer {
+
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+
+  width: 80%;
+  aspect-ratio: 1 / 1;
+  align-self: center;
+  justify-self: center;
+
+  display: flex;
+  justify-content: center;
+
+  z-index: 2;
+}
+
+.detailsContainer {
+  display: grid;
+  grid-template-rows: 1fr auto 2fr 2fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+
+  align-content: center;
+  justify-content: center;
+
+  align-items: center;
+
+  grid-row-gap: 0.5rem;
+}
+
+.containerRibbon {
+  grid-column: 1 / 7;
+  grid-row: 2 / 3;
+}
+
+.detailsContainer > .title,
+.detailsContainer > .subTitle,
+.detailsContainer > .btnDetails {
+  grid-column: 1 / 7;
+}
+
+.detailsContainer > .title {
+  grid-row: 1 / 2;
+}
+
+.detailsContainer > .subTitle {
+  grid-row: 2 / 3;
+}
+
+.detailsContainer > .infoId,
+.detailsContainer > .infoRanking {
+  grid-row: 3 / 4;
+}
+
+.infoId {
+  grid-column: 1 / 4;
+}
+
+.infoRanking {
+  grid-column: 4 / 7;
+}
+
+.btnDetails {
+
+  grid-row: 4 / 5;
+
+  height: 100%;
+  width: 50%;
+  border-radius: 8px;
+
+  align-self: center;
+  justify-self: center;
+
+  background: var(--primaryGradient);
+  background-size: 150% 150%;
+
+  color: white;
+  border: none;
+
+  font-weight: 600;
+  font-size: var(--fontMedium);
+
+  letter-spacing: 2px;
+
+  transition: 0.5s;
+}
+
+.btnDetails:hover {
+  cursor: pointer;
+  width: 100%;
+}
+
+.title {
+  font-weight: 600;
+  font-size: var(--fontLarge);
+  color: white;
+  text-transform: capitalize;
+
+  opacity: 0.8;
+}
+
+.subTitle,
+.infoId,
+.infoRanking {
+  font-weight: 500;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.infoRanking,
+.infoId {
+  font-size: var(--fontSmall);
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 2px;
+}
+
+.subTitle {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0.8;
+}
+
+.gradientBorder {
+  --borderWidth: 5px;
+  position: relative;
+  border-radius: var(--borderWidth);
+}
+
+.gradientBorder:after {
+  content: '';
+  position: absolute;
+  top: calc(-1 * var(--borderWidth));
+  left: calc(-1 * var(--borderWidth));
+  height: calc(100% + var(--borderWidth) * 2);
+  width: calc(100% + var(--borderWidth) * 2);
+  background: var(--primaryGradient);
+  border-radius: calc(2 * var(--borderWidth));
+  z-index: -1;
+  
+  background-size: 300% 300%;
+}
+
+
+@keyframes animatedgradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradientBorder:hover::after,
+.gradientBorder:hover > .detailsContainer > .btnDetails {
+  animation: animatedgradient 3s ease alternate infinite
+}
+
+.btnDetails:hover,
+.gradientBorder:hover {
+  box-shadow: var(--glowOutside);
+}
+
+.containerRibbon {
+  height: 100%;
+  width: 100%;
+}
+
+.containerTag {
+  grid-row: 3 / 4;
+  grid-column: 2 / 3;
+}
+
+.containerTrophy {
+  grid-row: 3 / 4;
+  grid-column: 5 / 6;
+}
+
+.containerRibbon > svg > path,
+.containerTrophy > svg > g,
+.containerTag > svg > g,
+.infoId,
+.infoRanking,
+.title,
+.banner {
+  transition: 0.5s;
+}
+
+.cardContainer:hover > .detailsContainer > .containerRibbon > svg > path,
+.cardContainer:hover > .detailsContainer > .title {
+  opacity: 1;
+}
+
+.cardContainer:hover > .detailsContainer > .containerTrophy > svg > g,
+.cardContainer:hover > .detailsContainer > .containerTag > svg > g  {
+  opacity: 0.3;
+}
+
+.cardContainer:hover > .detailsContainer > .infoId,
+.cardContainer:hover > .detailsContainer > .infoRanking {
+  color: rgba(255, 255, 255, 1);
+}
+
+.cardContainer:hover > .detailsContainer > .subTitle {
+  opacity: 1;
+}
+
+.cardContainer:hover > .banner {
+  opacity: 1; 
+}

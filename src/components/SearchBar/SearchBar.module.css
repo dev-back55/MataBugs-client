@@ -1,0 +1,109 @@
+.container {
+  background: var(--primaryColorLight);
+  border: none;
+
+  height: 100%;
+  width: 100%;
+
+  border-radius: 8px;
+
+  display: grid;
+  grid-template-columns: 1fr min-content;
+  grid-template-rows: 100%;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+
+  grid-gap: 1rem;
+
+  box-sizing: border-box;
+
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+}
+
+.containerWithReset {
+  grid-template-columns: 1fr auto min-content;
+}
+
+.inputStyle {
+  border: none;
+  background: transparent;
+
+  height: 100%;
+  width: 100%;
+
+  font-size: var(--fontMedium);
+
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 1);
+  font-weight: 500;
+
+  justify-self: flex-start;
+}
+
+.inputStyle:focus {
+  outline: none;
+}
+
+.inputStyle[disabled],
+.inputStyle::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.searchContainer {
+  grid-row: 1 / 2;
+  grid-column: 2 / 3;
+
+  height: 100%;
+  aspect-ratio: 1 / 1;
+
+  justify-self: flex-end;
+  cursor: pointer;
+}
+
+.containerWithReset > .searchContainer {
+  grid-column: 3 / 4;
+}
+
+.searchContainer:hover > svg > path {
+  fill: rgba(235, 0, 27, 1);
+}
+
+.inputStyle:focus {
+  outline: none;
+}
+
+.rotate {
+  cursor: default;
+}
+
+.rotate > svg {
+  animation: rotateLoading 2s infinite;
+  animation-timing-function: linear;
+  fill: var(--secondaryColor);
+}
+
+.resetSearch {
+  color: white;
+  background-color: crimson;
+  padding: 0 0.5rem 0 0.5rem;
+  border-radius: 8px;
+  font-size: var(--fontSmall);
+  letter-spacing: 1px;
+  box-shadow: var(--glowInside);
+  cursor: pointer;
+}
+
+.resetSearch:hover {
+  box-shadow: var(--glowInside), var(--glowOutside);
+}
+
+@keyframes rotateLoading {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
