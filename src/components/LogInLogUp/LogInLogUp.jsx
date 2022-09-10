@@ -57,13 +57,19 @@ export function LogInLogUp() {
     // Submit Game 
     function handleOnSubmit(e){
         e.preventDefault();
+<<<<<<< HEAD
         
+=======
+>>>>>>> 304562a2b8042588ee210c0ceac812f40e86d2c6
         setErrorsEmail(validateEmail(player))
         setErrorsPassword(validatePassword(player))
         if(signup) {
             setErrorsNickname(validateNickname(player))
             setErrorsAvatar(validateAvatar(player));
+<<<<<<< HEAD
 
+=======
+>>>>>>> 304562a2b8042588ee210c0ceac812f40e86d2c6
             if(player.avatar === '') setPlayer({...player, avatar: avatarDefault })
             if(errorsEmail.email === true && errorsPassword.password === true && errorsNickname.nickname === true && errorsAvatar.avatar === true ){
                 if(createbyAdmin) {
@@ -134,17 +140,29 @@ export function LogInLogUp() {
                                         {errorsEmail?.email !== true && (<span className={s.danger}>{errorsEmail.email}</span>)} 
                                         {errorMsg !== "" && (<span className={s.danger}>{errorMsg}</span>)} 
                                     </label>
+<<<<<<< HEAD
                                     <input className={s.inputCreate} placeholder='Add an email' autoComplete="none" type='email' value={player.email} name='email' onChange={handleChangePlayer}></input>                   
+=======
+                                    <input className={s.inputCreate} autoComplete="none" placeholder='Add an email' type='email' value={player.email} name='email' onChange={(e) => handleChangePlayer(e)}></input>                   
+>>>>>>> 304562a2b8042588ee210c0ceac812f40e86d2c6
                                     <br></br>
 
                                 {signup && ( <>
                                     <label className={s.labelInput}> NickName: * {errorsNickname?.nickname !== true && (<span className={s.danger}>{errorsNickname.nickname}</span>)}</label>
+<<<<<<< HEAD
                                         <input className={s.inputCreate}  placeholder='Write a nickname' autoComplete="none" type='text' value={player.nickname} name='nickname' onChange={(e) => handleChangePlayer(e)}></input>                   
+=======
+                                        <input className={s.inputCreate} autoComplete="none" placeholder='Write a nickname' type='text' value={player.nickname} name='nickname' onChange={(e) => handleChangePlayer(e)}></input>                   
+>>>>>>> 304562a2b8042588ee210c0ceac812f40e86d2c6
                                         <br></br> 
                                 </> )} 
                                 
                                 <label className={s.labelInput}> Password: * {errorsPassword?.password !== true && (<span className={s.danger}>{errorsPassword.password}</span>)} </label>
+<<<<<<< HEAD
                                     <input className={s.inputCreate}  placeholder='Add a password' autoComplete="on" type={viewPassword ? 'text' : 'password'} value={player.password} name='password' onChange={(e) => handleChangePlayer(e)}></input>
+=======
+                                    <input className={s.inputCreate} autoComplete="on" placeholder='Add a password' type={viewPassword ? 'text' : 'password'} value={player.password} name='password' onChange={(e) => handleChangePlayer(e)}></input>
+>>>>>>> 304562a2b8042588ee210c0ceac812f40e86d2c6
                                     <br></br>
 
                                 {signup && ( <>
@@ -156,19 +174,17 @@ export function LogInLogUp() {
 
                             <div className = {s.containerCheckLogin}>
                                 <label className = {s.labelInputCheck}>View Password</label>
+<<<<<<< HEAD
                                 <input type = 'checkbox' onChange={handleChangeViewPassword} name = 'view' checked={viewPassword}/>
+=======
+                                
+                                <input type = 'checkbox' onChange = {handleChangeViewPassword} name = 'view' checked={viewPassword}/>
+>>>>>>> 304562a2b8042588ee210c0ceac812f40e86d2c6
                             </div>
                             <div >
                                 <button className={s.buttonCreate} type='submit' onClick={(e) =>handleOnSubmit(e)}>{createbyAdmin ? "Create Player" : signup ? "Sign Up" : "Sign In"}</button>
                             </div>
-                            {
-                                !signup &&
-                                <div className={s.changeLoginLogout}>
-                                    <Link to = '/recoverpassword' style = {{ textDecoration: 'none' }}>
-                                        <span className={s.loginlogup}>Forgot your Password?</span>
-                                    </Link>
-                                </div>
-                            }
+                            
                             <div className={s.changeLoginLogout}>
                                 { !createbyAdmin && <>{signup ? "Already a user?" : "No account yet?" } <span onClick={(e) => handleChangeSignup(e)} className={s.loginlogup}>{signup ? "Sign In here!" : "Sign Up here!"}</span></>}
                             </div>

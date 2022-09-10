@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import LoadingView from './views/LoadingView/LoadingView';
@@ -8,7 +8,6 @@ import LogInLogUp from './components/LogInLogUp/LogInLogUp';
 import SearchView from './views/SearchView/SearchView';
 import CardDetails from './components/CardDetails/CardDetails';
 import HallOfFameView from './views/HallOfFameView/HallOfFameView';
-import PasswordRecoveryModal from './components/PasswordRecoveryModal/PasswordRecoveryModal';
 import ChangePasswordModal from './components/ChangePasswordModal/ChangePasswordModal';
 import AboutView from './views/AboutView/AboutView';
 
@@ -30,11 +29,11 @@ function App() {
         <div className = "mainZone">
           <NavBar />
           <Routes>
+            <Route exact path = '/' element = { <HallOfFameView /> } />
             <Route exact path = '/home' element = { <HallOfFameView /> } />
             <Route exact path = '/search' element = { <SearchView /> } />
             <Route exact path = '/login' element = { !player?.player || createbyAdmin ? <LogInLogUp /> : <Navigate to = "/"/> } />
             <Route exact path = '/player/:id' element = { <CardDetails /> } />
-            <Route exact path = '/recoverpassword' element = { !player?.player ? <PasswordRecoveryModal /> : <Navigate to = "/"/>} />
             <Route exact path = '/updatepassword' element = { <ChangePasswordModal /> } />
             <Route exact path = '/about' element = { <AboutView />} />
             <Route path = "*" element = { <Navigate to = "/home" replace /> } />
