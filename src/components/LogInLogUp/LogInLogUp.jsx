@@ -19,7 +19,6 @@ export function LogInLogUp() {
         password: '',
         avatar: ''
     });
-
     const [errorsEmail, setErrorsEmail] = useState({});
     const [errorsPassword, setErrorsPassword] = useState({});
     const [errorsNickname, setErrorsNickname] = useState({});
@@ -53,15 +52,18 @@ export function LogInLogUp() {
         } 
         setSignup(!signup)
     }
-    
+
+        
     // Submit Game 
     function handleOnSubmit(e){
         e.preventDefault();
-        setErrorsEmail(validateEmail({...player,[e.target.name]: e.target.value}))
-        setErrorsPassword(validatePassword({...player,[e.target.name]: e.target.value}))
+        
+        setErrorsEmail(validateEmail(player))
+        setErrorsPassword(validatePassword(player))
         if(signup) {
-            setErrorsNickname(validateNickname({...player,[e.target.name]: e.target.value}))
-            setErrorsAvatar(validateAvatar({...player,[e.target.name]: e.target.value}));
+            setErrorsNickname(validateNickname(player))
+            setErrorsAvatar(validateAvatar(player));
+
             if(player.avatar === '') setPlayer({...player, avatar: avatarDefault })
             if(errorsEmail.email === true && errorsPassword.password === true && errorsNickname.nickname === true && errorsAvatar.avatar === true ){
                 if(createbyAdmin) {
@@ -90,8 +92,6 @@ export function LogInLogUp() {
         e.preventDefault();
         setImage(e.target.files)
     }
-
-    console.log(player)
 
     const upload = async() => {
         const files = image;
@@ -134,33 +134,32 @@ export function LogInLogUp() {
                                         {errorsEmail?.email !== true && (<span className={s.danger}>{errorsEmail.email}</span>)} 
                                         {errorMsg !== "" && (<span className={s.danger}>{errorMsg}</span>)} 
                                     </label>
-                                    <input className={s.inputCreate} placeholder='Add an email' type='email' value={player.email} name='email' onChange={(e) => handleChangePlayer(e)}></input>                   
+                                    <input className={s.inputCreate} placeholder='Add an email' autoComplete="none" type='email' value={player.email} name='email' onChange={handleChangePlayer}></input>                   
                                     <br></br>
 
                                 {signup && ( <>
                                     <label className={s.labelInput}> NickName: * {errorsNickname?.nickname !== true && (<span className={s.danger}>{errorsNickname.nickname}</span>)}</label>
-                                        <input className={s.inputCreate} placeholder='Write a nickname' type='text' value={player.nickname} name='nickname' onChange={(e) => handleChangePlayer(e)}></input>                   
+                                        <input className={s.inputCreate}  placeholder='Write a nickname' autoComplete="none" type='text' value={player.nickname} name='nickname' onChange={(e) => handleChangePlayer(e)}></input>                   
                                         <br></br> 
                                 </> )} 
                                 
                                 <label className={s.labelInput}> Password: * {errorsPassword?.password !== true && (<span className={s.danger}>{errorsPassword.password}</span>)} </label>
-                                    <input className={s.inputCreate} placeholder='Add a password' type={viewPassword ? 'text' : 'password'} value={player.password} name='password' onChange={(e) => handleChangePlayer(e)}></input>
+                                    <input className={s.inputCreate}  placeholder='Add a password' autoComplete="on" type={viewPassword ? 'text' : 'password'} value={player.password} name='password' onChange={(e) => handleChangePlayer(e)}></input>
                                     <br></br>
 
                                 {signup && ( <>
                                 <label className={s.labelInput}> Avatar: {errorsAvatar?.avatar !== true && (<span className={s.danger}>{errorsAvatar.avatar}</span>)} </label>
-                                    <button type="file" name="image" onChange={e => changeSetImage(e)} variant="contained" className={s.inputCreate}><input type="file"  name="image"/></button>
+                                    <button type="file" name="image" onChange={(e) => changeSetImage(e)} variant="contained" className={s.inputCreate}><input type="file"  name="image"/></button>
                                     <br></br>
                                 </> )}
                             </div>
 
                             <div className = {s.containerCheckLogin}>
                                 <label className = {s.labelInputCheck}>View Password</label>
-                                {console.log(viewPassword)}
-                                <input type = 'checkbox' onChange = {handleChangeViewPassword} name = 'view' checked={viewPassword}/>
+                                <input type = 'checkbox' onChange={handleChangeViewPassword} name = 'view' checked={viewPassword}/>
                             </div>
                             <div >
-                                <button className={s.buttonCreate} type='submit' onClick={(e) => handleOnSubmit(e)}>{createbyAdmin ? "Create Player" : signup ? "Sign Up" : "Sign In"}</button>
+                                <button className={s.buttonCreate} type='submit' onClick={(e) =>handleOnSubmit(e)}>{createbyAdmin ? "Create Player" : signup ? "Sign Up" : "Sign In"}</button>
                             </div>
                             {
                                 !signup &&
