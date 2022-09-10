@@ -37,7 +37,8 @@ export default function CardDetails() {
   const [ info, setInfo ] = React.useState({ idCard: id });
   const [ newstatus, setNewstatus ] = React.useState();
   const [ newAdmin, setNewAdmin ] = React.useState();
-  
+
+ 
   React.useEffect(() => {
     if(loginPlayer?.admin || loginPlayer?.id === parseInt(id)) {
       setIsAdmin(true)
@@ -54,6 +55,8 @@ export default function CardDetails() {
   let loadPlayerDetails = function() {
     dispatch(getPlayerDetails(id));
   }
+
+  
 
   let handleOnLoadMedal = function() {
     setShow({ ...show, medal: true, both: show.avatar ? true : false });
@@ -182,7 +185,7 @@ export default function CardDetails() {
         <div id="componentCardDetail" className = {`${s.container} ${!show.both ? s.hideContainer : '' }`}>
           <div className = {s.statusContainer}>
             <img src = {selectMedal[player.status]} alt = {`MEDALLA-${player.status}`} className = {s.medal} onLoad = {handleOnLoadMedal} />
-            <span id="statusCardDetail" className = {s.spanStatus}>
+            <div id="statusCardDetail" className = {s.spanStatus}>
               {`status: ${player.status}`}
               <br />
               {editPerfil && loginPlayer.admin && <div className={s.playeredit}>
@@ -228,7 +231,7 @@ export default function CardDetails() {
               {info?.avatar && <h5 className = {s.spanEditChange}> New Avatar: {info.avatar.slice(0,10)}</h5> }
               {info?.nickname && <h5 className = {s.spanEditChange}> New Nickname: {info.nickname}</h5> }
               {successEditPlayer && <h5 className = {s.spanEditChange}> ✅{successEditPlayer} </h5> } 
-            </span>
+            </div>
             <span className = {s.spanEditChange}>
            
               {editPerfilFeature.ranking && loginPlayer?.admin && <input className={s.inputCreate} placeholder='New Ranking' type='text' name='ranking' onChange={(e) => handleChange(e)}></input>}

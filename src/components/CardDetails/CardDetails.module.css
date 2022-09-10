@@ -229,8 +229,8 @@
 
 .playeredit {
   display: flex;
-  flex-direction: row;
-  margin-left: 100px;
+  flex-direction: column;
+  margin-left: 0px;
 }
 
 .editblock {
@@ -272,6 +272,11 @@
   .container {
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 1fr;
+  }
+
+  .playeredit {
+    flex-direction: row;
+    margin-left: 100px;
   }
 
   .statusContainer {
