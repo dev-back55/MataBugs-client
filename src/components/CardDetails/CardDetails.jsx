@@ -188,7 +188,7 @@ export default function CardDetails() {
             <div id="statusCardDetail" className = {s.spanStatus}>
               {`status: ${player.status}`}
               <br />
-              {editPerfil && loginPlayer.admin && <div className={s.playeredit}>
+              {/* {editPerfil && loginPlayer.admin && <div className={s.playeredit}>
                 <div className={s.editblock}>
                   <div className = { s.changeDetailPlayer }>
                     <span >Player Status: </span>
@@ -222,7 +222,7 @@ export default function CardDetails() {
                       </div>
                   </div>
                   }
-              </div> }          
+              </div> }           */}
             
              
                 
@@ -271,8 +271,42 @@ export default function CardDetails() {
             {isAdmin && !editPerfil&& <button name="editprofile" className = {s.btnDetails} onClick={(e) => handleEdit(e)}>Edit Profile</button>}
             {isAdmin && editPerfil && <button name="confirme" className = {s.btnDetails} onClick={(e) => handleConfirme(e)}>Confirme</button>}
           </div>
-        </div>
-      }
+                {editPerfil && loginPlayer.admin && <div className={s.playeredit}>
+                <div className={s.editblock}>
+                  <div className = { s.changeDetailPlayer }>
+                    <span >Player Status: </span>
+                    <span className={ `${newstatus === true ? s.green : s.red}`}>{newstatus === true ? ' ACTIVE' : ' BANNED'}</span>
+                  </div>
+                  <div className={s.changeDetailPlayer}>
+                    <span >Edit Player</span>
+                    <select name="isactive"
+                      onChange={(e) => handleSelect(e)}
+                      value={newstatus}>
+                        <option value={"true"}>Active</option>
+                        <option value={"false"}>Banned</option>
+                    </select>
+                  </div>
+                </div>
+                  {
+                  player && !player?.admin && player?.isactive &&
+                  <div className={s.editblock}>
+                      <div className = {s.changeDetailPlayer}>
+                        <span>Admin Status</span>
+                        <span className = { `${newAdmin === 'true' ? s.green : s.red}` }>{newAdmin === 'true' ? 'ADMIN' : 'NO ADMIN'}</span>
+                      </div>
+                      <div className={s.changeDetailPlayer}>
+                        <span>Edit Admin</span>
+                        <select name="admin"
+                          onChange={(e) => handleConfirmPromote(e)}
+                          value={newAdmin}>
+                            <option value={"true"}>Admin</option>
+                            <option value={"false"}>No Admin</option>
+                        </select>
+                      </div>
+                  </div>
+                  }
+              </div> } 
+        </div> }
     </>
   );
 }
